@@ -1,34 +1,26 @@
-<%= form_with(model: contribution) do |form| %>
-  <% if contribution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
 
-      <ul>
-        <% contribution.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= stylesheet_link_tag 'contributions', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= form_with(model: contribution) do |form| %>
+  <br>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title, class:"form-label" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :text %>
+    <%= form.label :url, class:"form-label"%>
     <%= form.text_field :url%>
   </div>
 
-  <p>or</p>
+  <p class="margin-left text">or</p>
 
   <div class="field">
-    <%= form.label :text %>
+    <%= form.label :text, class:"form-label" %>
     <%= form.text_area :text %>
   </div>
 
-  <div class="actions">
+  <div class="actions margin-left">
     <%= form.submit "submit" %>
   </div>
 <% end %>

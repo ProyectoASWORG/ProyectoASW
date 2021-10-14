@@ -32,7 +32,7 @@ class ContributionsController < ApplicationController
         format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
         format.json { render :show, status: :created, location: @contribution }
       else
-        format.html { render :new }
+        format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
         format.json { render json: @contribution.errors, status: :unprocessable_entity }
       end
     end
