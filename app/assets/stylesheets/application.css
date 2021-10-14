@@ -1,5 +1,5 @@
 .container{
-    padding:1em;
+    padding: 0em 8em 0em 8em;
 }
 .content{
     background-color: #f6f6ef;
@@ -24,7 +24,10 @@
 }
 
 .nav-bar :first-child{
-    border-left: none;
+    border-left:none;
+}
+
+.nav-bar :first-child a{
     font-size:14px;
     font-weight:bold;
 }
@@ -36,4 +39,9 @@
     border-left: 1px solid black;
     margin: 5px;
     padding-left: 5px;
+}
+
+.navbar-item a {
+    color: black;
+    text-decoration: none;
 }

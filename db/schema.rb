@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_203023) do
+ActiveRecord::Schema.define(version: 2021_10_14_211712) do
 
   create_table "contributions", force: :cascade do |t|
-    t.string "contribution_type"
+    t.string "url"
     t.string "text"
     t.string "title"
     t.string "user_id"

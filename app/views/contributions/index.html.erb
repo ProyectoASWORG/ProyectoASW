@@ -8,7 +8,9 @@
       </div>
       <div class="contribution-text">
         <div class="contribution-title">
-          <%= link_to contribution.title ,  contribution.text %>
+          <%if contribution.url?%>
+            <%= link_to contribution.title ,  contribution.url %>
+          <% end %>
           <p> (<%= contribution.user.email %>) </p>
         </div>
         <div class="contribution-info">
