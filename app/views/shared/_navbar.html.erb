@@ -1,10 +1,20 @@
 <div class="nav-bar-container">
     <% if request.original_url == "http://localhost:3000/contributions/new" %>
        <ul class="nav-bar">
-           <li class="navbar-item" style="font-weight:bold;">Submit</li>
+           <li class="navbar-item">
+               <%= link_to contributions_url do %>
+                 <%= image_tag "y18.gif" %>
+               <% end %>
+           </li>
+           <li class="navbar-item" style="font-weight:bold;"><span>Submit</span></li>
        </ul> 
     <% else %>
         <ul class="nav-bar">
+           <li class="navbar-item">
+               <%= link_to contributions_url do %>
+                 <%= image_tag "y18.gif" %>
+               <% end %>
+           </li>
             <li class="navbar-item">
                 <%= link_to "Haker News", contributions_url %>
             </li>

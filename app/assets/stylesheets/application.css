@@ -15,26 +15,26 @@
     flex-direction:row;
     margin-top:0px;
     margin-bottom:0px;
+    padding:0px;
     list-style: none;
     
 }
 
-.nav-bar-auth :first-child{
+.nav-bar :first-child,
+.nav-bar-auth :first-child,
+.nav-bar-auth :nth-child(2),
+.nav-bar :nth-child(2){
     border-left:none;
 }
 
-.nav-bar :first-child{
-    border-left:none;
-}
-
-.nav-bar :first-child a{
+.nav-bar :nth-child(2) a{
     font-size:14px;
     font-weight:bold;
 }
 
-
-
 .navbar-item{
+    display:flex;
+    align-items: center;
     font-size: 12px;
     border-left: 1px solid black;
     margin: 5px;
@@ -45,3 +45,9 @@
     color: black;
     text-decoration: none;
 }
+
+.navbar-item a img {
+    border:1px solid white !important;
+    
+}
+

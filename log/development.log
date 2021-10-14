@@ -6947,3 +6947,792 @@ Processing by ContributionsController#new as HTML
 Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.0ms | Allocations: 7320)
 
 
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:33:12 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 8.1ms | Allocations: 3456)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 9.6ms | Allocations: 3868)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 1583)
+  Rendered layout layouts/application.html.erb (Duration: 55.5ms | Allocations: 18200)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 0.7ms | Allocations: 25438)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="nav-bar-container">
+    <% if request.original_url == "http://localhost:3000/contributions/new" %>
+       <ul class="nav-bar">
+           <li class="navbar-item">
+               <%= link_to contributions_url %>
+              <i></i>
+               <% end %>
+           </li>
+           <li class="navbar-item" style="font-weight:bold;">Submit</li>
+       </ul> 
+    <% else %>
+        <ul class="nav-bar">
+            <li class="navbar-item">
+                <%= link_to "Haker News", contributions_url %>
+            </li>
+            <li class="navbar-item">welcome</li>
+            <li class="navbar-item">new</li>
+            <li class="navbar-item">threads</li>
+            <li class="navbar-item">past</li>
+            <li class="navbar-item">comments</li>
+            <li class="navbar-item">ask</li>
+            <li class="navbar-item">show</li>
+            <li class="navbar-item">jobs</li>
+            <li class="navbar-item">
+                <%= link_to "submit", new_contribution_url %>
+            </li>
+        </ul>
+        <ul class="nav-bar-auth">
+            <% if user_signed_in? %>
+                <li class="navbar-item"><%= current_user.email %></li>
+                <li class="navbar-item">Log Out</li>
+            <% else %>
+                <li class="navbar-item">Log In</li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>
+):
+1:    <div class="nav-bar-container">
+2:        <% if request.original_url == "http://localhost:3000/contributions/new" %>
+3:           <ul class="nav-bar">
+4:               <li class="navbar-item">
+5:                   <%= link_to contributions_url %>
+6:                  <i></i>
+7:                   <% end %>
+8:               </li>
+9:               <li class="navbar-item" style="font-weight:bold;">Submit</li>
+10:           </ul> 
+11:        <% else %>
+12:            <ul class="nav-bar">
+13:                <li class="navbar-item">
+14:                    <%= link_to "Haker News", contributions_url %>
+15:                </li>
+16:                <li class="navbar-item">welcome</li>
+17:                <li class="navbar-item">new</li>
+18:                <li class="navbar-item">threads</li>
+19:                <li class="navbar-item">past</li>
+20:                <li class="navbar-item">comments</li>
+21:                <li class="navbar-item">ask</li>
+22:                <li class="navbar-item">show</li>
+23:                <li class="navbar-item">jobs</li>
+24:                <li class="navbar-item">
+25:                    <%= link_to "submit", new_contribution_url %>
+26:                </li>
+27:            </ul>
+28:            <ul class="nav-bar-auth">
+29:                <% if user_signed_in? %>
+30:                    <li class="navbar-item"><%= current_user.email %></li>
+31:                    <li class="navbar-item">Log Out</li>
+32:                <% else %>
+33:                    <li class="navbar-item">Log In</li>
+34:                <% end %>
+35:            </ul>
+36:        <% end %>
+37:    </div>
+  
+app/views/shared/_navbar.html.erb:11: else without rescue is useless
+app/views/shared/_navbar.html.erb:39: syntax error, unexpected `end', expecting end-of-input
+app/views/shared/_navbar.html.erb:11: else without rescue is useless
+app/views/shared/_navbar.html.erb:39: syntax error, unexpected `end', expecting end-of-input
+app/views/shared/_navbar.html.erb:11: else without rescue is useless
+app/views/shared/_navbar.html.erb:39: syntax error, unexpected `end', expecting end-of-input
+app/views/shared/_navbar.html.erb:11: else without rescue is useless
+app/views/shared/_navbar.html.erb:39: syntax error, unexpected `end', expecting end-of-input
+app/views/shared/_navbar.html.erb:11: else without rescue is useless
+app/views/shared/_navbar.html.erb:39: syntax error, unexpected `end', expecting end-of-input
+app/views/shared/_navbar.html.erb:11: else without rescue is useless
+app/views/shared/_navbar.html.erb:39: syntax error, unexpected `end', expecting end-of-input
+app/views/layouts/application.html.erb:18
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-14 23:33:13 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:33:23 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 5.7ms | Allocations: 1173)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1471)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 396)
+  Rendered shared/_alert_manager.html.erb (Duration: 1.0ms | Allocations: 194)
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 5623)
+Completed 200 OK in 34ms (Views: 30.7ms | ActiveRecord: 0.0ms | Allocations: 6951)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:33:32 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 11.4ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 15.0ms | Allocations: 1370)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 380)
+  Rendered shared/_alert_manager.html.erb (Duration: 1.0ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 46.9ms | Allocations: 5370)
+Completed 200 OK in 57ms (Views: 53.1ms | ActiveRecord: 0.0ms | Allocations: 6583)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:34:14 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 11.0ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 1370)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 396)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.9ms | Allocations: 191)
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 5392)
+Completed 200 OK in 67ms (Views: 54.6ms | ActiveRecord: 0.0ms | Allocations: 6594)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-14 23:34:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:34:30 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 14.0ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 17.9ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 9.9ms | Allocations: 4603)
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 9226)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.0ms | Allocations: 10410)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `y18' for #<ActionView::Base:0x00000000009c68>):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= y18.gif %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-14 23:34:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:20 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.9ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 834)
+  Rendered shared/_alert_manager.html.erb (Duration: 3.1ms | Allocations: 191)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 5837)
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 0.0ms | Allocations: 7056)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-14 23:35:20 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:21 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.8ms | Allocations: 741)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 831)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 514)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 4367)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms | Allocations: 4770)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:32 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 11.7ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 15.7ms | Allocations: 1372)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 5.2ms | Allocations: 1784)
+  Rendered layout layouts/application.html.erb (Duration: 36.4ms | Allocations: 6404)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 0.0ms | Allocations: 7583)
+
+
+  
+ActionView::Template::Error (The asset "images/y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("images/y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:33 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 8.3ms | Allocations: 738)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 10.0ms | Allocations: 828)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.4ms | Allocations: 1476)
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 5215)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms | Allocations: 5590)
+
+
+  
+ActionView::Template::Error (The asset "images/y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("images/y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:35 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 4.9ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 1476)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 5209)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms | Allocations: 5583)
+
+
+  
+ActionView::Template::Error (The asset "images/y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("images/y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:44 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 8.2ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 3.1ms | Allocations: 1784)
+  Rendered layout layouts/application.html.erb (Duration: 30.8ms | Allocations: 6408)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms | Allocations: 7587)
+
+
+  
+ActionView::Template::Error (The asset "assets/images/y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("assets/images/y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:35:50 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.3ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 819)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 5817)
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 7035)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:36:04 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 5.7ms | Allocations: 741)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 831)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 6.4ms | Allocations: 3625)
+  Rendered layout layouts/application.html.erb (Duration: 26.5ms | Allocations: 7357)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms | Allocations: 7732)
+
+
+  
+ActionView::Template::Error (The asset "y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:36:05 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.8ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 3.3ms | Allocations: 3625)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 7353)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms | Allocations: 7727)
+
+
+  
+ActionView::Template::Error (The asset "y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:36:06 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.0ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 4.1ms | Allocations: 3625)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 7353)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 7727)
+
+
+  
+ActionView::Template::Error (The asset "y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:36:08 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 4.9ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 10.2ms | Allocations: 3625)
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 7354)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms | Allocations: 7728)
+
+
+  
+ActionView::Template::Error (The asset "y18.gif" is not present in the asset pipeline.
+):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= image_path("y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:36:36 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 4.0ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 20.2ms | Allocations: 4417)
+  Rendered layout layouts/application.html.erb (Duration: 46.3ms | Allocations: 9043)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.0ms | Allocations: 10222)
+
+
+  
+ActionView::Template::Error (undefined method `link_tree' for #<ActionView::Base:0x0000000000c5d0>
+Did you mean?  link_to):
+    3:        <ul class="nav-bar">
+    4:            <li class="navbar-item">
+    5:                <%= link_to contributions_url do %>
+    6:                     <i> <%= link_tree("y18.gif") %></i>
+    7:                <% end %>
+    8:            </li>
+    9:            <li class="navbar-item" style="font-weight:bold;">Submit</li>
+  
+app/views/shared/_navbar.html.erb:6
+app/views/shared/_navbar.html.erb:5
+app/views/layouts/application.html.erb:18
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:37:47 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.4ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 13.2ms | Allocations: 874)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.8ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 5870)
+Completed 200 OK in 33ms (Views: 30.9ms | ActiveRecord: 0.0ms | Allocations: 7077)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:38:08 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 4.1ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1370)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 294)
+  Rendered shared/_alert_manager.html.erb (Duration: 1.3ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 5282)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.0ms | Allocations: 6483)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:38:19 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.8ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1370)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.2ms | Allocations: 823)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.4ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 5811)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.0ms | Allocations: 7012)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:39:22 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.6ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1374)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 825)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 5824)
+Completed 200 OK in 17ms (Views: 15.2ms | Allocations: 7032)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:39:39 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.0ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 822)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.4ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 5811)
+Completed 200 OK in 15ms (Views: 13.9ms | Allocations: 7012)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:40:24 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.7ms | Allocations: 741)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 831)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.9ms | Allocations: 518)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 7778)
+Completed 200 OK in 26ms (Views: 24.5ms | Allocations: 8181)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:40:51 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.3ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 517)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 9152)
+Completed 200 OK in 21ms (Views: 19.8ms | Allocations: 9554)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:41:18 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.1ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 516)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.3ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 28.7ms | Allocations: 8723)
+Completed 200 OK in 31ms (Views: 30.0ms | Allocations: 9125)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:41:51 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.2ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 519)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 7830)
+Completed 200 OK in 28ms (Views: 27.0ms | Allocations: 8233)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:42:15 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.4ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 516)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 8248)
+Completed 200 OK in 25ms (Views: 23.7ms | Allocations: 8650)
+
+
+Started POST "/contributions" for 127.0.0.1 at 2021-10-14 23:42:18 +0200
+Processing by ContributionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "contribution"=>{"title"=>"", "url"=>"", "text"=>""}, "commit"=>"submit"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/contributions_controller.rb:28:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/contributions_controller.rb:31:in `block in create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:31:in `block in create'
+  [1m[36mContribution Create (0.4ms)[0m  [1m[32mINSERT INTO "contributions" ("url", "text", "title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["url", ""], ["text", ""], ["title", ""], ["user_id", "1"], ["created_at", "2021-10-14 21:42:18.888979"], ["updated_at", "2021-10-14 21:42:18.888979"]]
+  ↳ app/controllers/contributions_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/contributions_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/contributions/3
+Completed 302 Found in 55ms (ActiveRecord: 14.5ms | Allocations: 17611)
+
+
+Started GET "/contributions/3" for 127.0.0.1 at 2021-10-14 23:42:18 +0200
+Processing by ContributionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:68:in `set_contribution'
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show.html.erb within layouts/application
+  Rendered contributions/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 269)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:29
+  Rendered shared/_navbar.html.erb (Duration: 2.7ms | Allocations: 1000)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 61)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4297)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 0.4ms | Allocations: 5504)
+
+
+Started GET "/contributions/3" for 127.0.0.1 at 2021-10-14 23:42:33 +0200
+Processing by ContributionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:68:in `set_contribution'
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show.html.erb within layouts/application
+  Rendered contributions/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 257)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:34
+  Rendered shared/_navbar.html.erb (Duration: 8.1ms | Allocations: 1830)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.7ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 5708)
+Completed 200 OK in 25ms (Views: 20.9ms | ActiveRecord: 0.3ms | Allocations: 7461)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:42:37 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 3.7ms | Allocations: 1073)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 518)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 4908)
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 5440)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-14 23:42:41 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions"[0m
+  ↳ app/views/contributions/index.html.erb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  Rendered contributions/index.html.erb within layouts/application (Duration: 19.4ms | Allocations: 4497)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:34
+  Rendered shared/_navbar.html.erb (Duration: 7.5ms | Allocations: 1480)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | Allocations: 8915)
+Completed 200 OK in 35ms (Views: 32.7ms | ActiveRecord: 0.6ms | Allocations: 9448)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-14 23:43:21 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions"[0m
+  ↳ app/views/contributions/index.html.erb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  Rendered contributions/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 4098)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:34
+  Rendered shared/_navbar.html.erb (Duration: 5.2ms | Allocations: 1470)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 41.2ms | Allocations: 12376)
+Completed 200 OK in 43ms (Views: 41.5ms | ActiveRecord: 0.6ms | Allocations: 12775)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-14 23:44:06 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.1ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions"[0m
+  ↳ app/views/contributions/index.html.erb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  Rendered contributions/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 4098)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:34
+  Rendered shared/_navbar.html.erb (Duration: 4.1ms | Allocations: 1470)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | Allocations: 12400)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.5ms | Allocations: 12798)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:44:10 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.6ms | Allocations: 736)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 826)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 516)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 4359)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 4765)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-14 23:44:12 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions"[0m
+  ↳ app/views/contributions/index.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  Rendered contributions/index.html.erb within layouts/application (Duration: 21.3ms | Allocations: 4098)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:34
+  Rendered shared/_navbar.html.erb (Duration: 4.7ms | Allocations: 1473)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.3ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 8499)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.6ms | Allocations: 8900)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-14 23:44:36 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions"[0m
+  ↳ app/views/contributions/index.html.erb:4
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/index.html.erb:14
+  Rendered contributions/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 4107)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:34
+  Rendered shared/_navbar.html.erb (Duration: 4.5ms | Allocations: 1473)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.3ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 39.4ms | Allocations: 12366)
+Completed 200 OK in 41ms (Views: 39.5ms | ActiveRecord: 0.5ms | Allocations: 12765)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-14 23:45:21 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 2.1ms | Allocations: 733)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 519)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 4361)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 4767)
+
+
