@@ -1,22 +1,5 @@
 
 <%= stylesheet_link_tag 'contributions', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<% @contributions.each.with_index do |contribution, index| %>
-    <div class="contribution">
-      <div class="contribution-index">
-        <p><%= index %>.</p>
-      </div>
-      <div class="contribution-text">
-        <div class="contribution-title">
-          <%if contribution.url?%>
-            <%= link_to contribution.title ,  contribution.url %>
-          <% end %>
-          <p> (<%= contribution.user.email %>) </p>
-        </div>
-        <div class="contribution-info">
-          <%= contribution.points %> points
-        </div>
-      </div>
-    </div> 
-<% end %>
+<%= render "contribution_list" %>
 
