@@ -1,0 +1,18 @@
+<p>
+  <strong>Contribution type:</strong>
+  <%= @contribution.contribution_type %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @contribution.text %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @contribution.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>

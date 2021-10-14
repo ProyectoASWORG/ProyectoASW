@@ -1,0 +1,42 @@
+p{
+    margin:0px;
+}
+
+.contribution{
+    display:grid;
+    grid-template-columns: auto 1fr;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.contribution-index{
+    margin-right:5px;
+    color:gray;
+}
+
+.contribution-text{
+    display:grid;
+}
+
+.contribution-info{
+    color:gray;
+    font-size:8pt;
+}
+
+.contribution-title{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    align-items:center;
+}
+
+.contribution-title a{
+    text-decoration: none;
+    color:black;
+}
+
+
+.contribution-title p{
+    color:gray;
+    font-size:8pt;
+    margin-left: 5px;
+}

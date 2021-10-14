@@ -1,0 +1,22 @@
+<div class="nav-bar-container">
+    <ul class="nav-bar">
+        <li class="navbar-item">Haker News</li>
+        <li class="navbar-item">welcome</li>
+        <li class="navbar-item">new</li>
+        <li class="navbar-item">threads</li>
+        <li class="navbar-item">past</li>
+        <li class="navbar-item">comments</li>
+        <li class="navbar-item">ask</li>
+        <li class="navbar-item">show</li>
+        <li class="navbar-item">jobs</li>
+        <li class="navbar-item">submit</li>
+    </ul>
+    <ul class="nav-bar-auth">
+        <% if user_signed_in? %>
+            <li class="navbar-item"><%= current_user.email %></li>
+            <li class="navbar-item">Log Out</li>
+        <% else %>
+            <li class="navbar-item">Log In</li>
+        <% end %>
+    </ul>
+</div>
