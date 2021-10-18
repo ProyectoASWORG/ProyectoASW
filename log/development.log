@@ -13011,3 +13011,34 @@ Processing by ContributionsController#show_news as HTML
 Completed 200 OK in 65ms (Views: 63.2ms | ActiveRecord: 0.9ms | Allocations: 21991)
 
 
+Started GET "/contributions" for 127.0.0.1 at 2021-10-18 21:49:14 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 48.0ms | Allocations: 16547)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 57.1ms | Allocations: 20391)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 5.6ms | Allocations: 1215)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.6ms | Allocations: 194)
+  Rendered layout layouts/application.html.erb (Duration: 70.9ms | Allocations: 25218)
+Completed 200 OK in 85ms (Views: 72.2ms | ActiveRecord: 2.3ms | Allocations: 29191)
+
+
