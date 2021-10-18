@@ -4,7 +4,7 @@ class ContributionsController < ApplicationController
   # GET /contributions
   # GET /contributions.json
   def index
-    @contributions = Contribution.all.order('points DESC') 
+    @contributions = Contribution.where(contribution_type: "url").order(points: :desc)
   end
 
   # GET /contributions/1
@@ -15,6 +15,10 @@ class ContributionsController < ApplicationController
    # GET /contributions/show_news
   def show_news
     @contributions = Contribution.all.order('created_at DESC') 
+  end
+
+  def show_news
+    @contributions = Contribution.all.order(created_at: :desc)
   end
 
   # GET /contributions/new
@@ -29,12 +33,21 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-    @contribution = Contribution.new(contribution_params)
-    @contribution.user_id = current_user.id
+
+    #TODO: change this to redirect if user is not logged in
+    ################################################################
+    if user_signed_in? 
+      user_id = current_user.id 
+    else
+      user_id = 1
+    end
+    ################################################################
+    
+    @contribution = ContributionServices::CreateContributionService.new(contribution_params, user_id).call
 
     respond_to do |format|
       if @contribution.save
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
+        format.html { redirect_to show_news_contributions_url }
         format.json { render :show, status: :created, location: @contribution }
       else
         format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
