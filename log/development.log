@@ -15061,3 +15061,49 @@ Processing by ContributionsController#index as HTML
 Completed 200 OK in 60ms (Views: 56.3ms | ActiveRecord: 1.0ms | Allocations: 8513)
 
 
+Started GET "/" for 127.0.0.1 at 2021-10-19 20:50:27 +0200
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 58.7ms | Allocations: 12504)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 80.0ms | Allocations: 16348)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 9.1ms | Allocations: 2152)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.7ms | Allocations: 194)
+  Rendered layout layouts/application.html.erb (Duration: 104.8ms | Allocations: 22118)
+Completed 200 OK in 130ms (Views: 108.3ms | ActiveRecord: 3.3ms | Allocations: 26095)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-19 20:50:27 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 20:50:36 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 12.2ms | Allocations: 2479)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 3787)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 757)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 59)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 7508)
+Completed 200 OK in 25ms (Views: 23.7ms | ActiveRecord: 0.3ms | Allocations: 8109)
+
+
