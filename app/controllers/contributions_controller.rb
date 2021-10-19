@@ -12,11 +12,7 @@ class ContributionsController < ApplicationController
   def show
   end
   
-   # GET /contributions/show_news
-  def show_news
-    @contributions = Contribution.all.order('created_at DESC') 
-  end
-
+  # GET /contributions/show_news
   def show_news
     @contributions = Contribution.all.order(created_at: :desc)
   end
