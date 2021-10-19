@@ -15231,3 +15231,459 @@ Processing by ContributionsController#index as HTML
 Completed 200 OK in 55ms (Views: 51.0ms | ActiveRecord: 0.6ms | Allocations: 7689)
 
 
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:24:07 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 26.9ms | Allocations: 12504)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 35.0ms | Allocations: 16348)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 4.2ms | Allocations: 1215)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.5ms | Allocations: 194)
+  Rendered layout layouts/application.html.erb (Duration: 48.2ms | Allocations: 21175)
+Completed 200 OK in 61ms (Views: 49.6ms | ActiveRecord: 1.3ms | Allocations: 25143)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:24:07 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 15.8ms | Allocations: 2378)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 19.4ms | Allocations: 3578)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 3.1ms | Allocations: 719)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 31.5ms | Allocations: 7229)
+Completed 200 OK in 34ms (Views: 31.8ms | ActiveRecord: 0.6ms | Allocations: 7693)
+
+
+Started GET "/contributions/show_news" for 127.0.0.1 at 2021-10-19 21:24:09 +0200
+Processing by ContributionsController#show_news as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show_news.html.erb within layouts/application
+  [1m[36mContribution Load (0.5ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."created_at" DESC[0m
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 20.5ms | Allocations: 3180)
+  Rendered contributions/show_news.html.erb within layouts/application (Duration: 25.9ms | Allocations: 4484)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 719)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 35.2ms | Allocations: 8137)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 0.9ms | Allocations: 8700)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:24:10 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 13.7ms | Allocations: 2377)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 3577)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 711)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 7217)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.5ms | Allocations: 7684)
+
+
+Started GET "/contributions/show_news" for 127.0.0.1 at 2021-10-19 21:24:11 +0200
+Processing by ContributionsController#show_news as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show_news.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."created_at" DESC[0m
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 20.9ms | Allocations: 3141)
+  Rendered contributions/show_news.html.erb within layouts/application (Duration: 26.5ms | Allocations: 4346)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.3ms | Allocations: 714)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.3ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 36.0ms | Allocations: 7992)
+Completed 200 OK in 39ms (Views: 36.6ms | ActiveRecord: 0.5ms | Allocations: 8418)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:48:07 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 38.3ms | Allocations: 12504)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 50.0ms | Allocations: 16348)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 5.4ms | Allocations: 1215)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.9ms | Allocations: 194)
+  Rendered layout layouts/application.html.erb (Duration: 64.3ms | Allocations: 21175)
+Completed 200 OK in 81ms (Views: 66.5ms | ActiveRecord: 2.1ms | Allocations: 25144)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:49:05 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 14.1ms | Allocations: 2377)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 3577)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 719)
+  Rendered shared/_alert_manager.html.erb (Duration: 4.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 58.6ms | Allocations: 16405)
+Completed 200 OK in 61ms (Views: 59.7ms | ActiveRecord: 0.5ms | Allocations: 16869)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:52:16 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.1ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 31.9ms | Allocations: 2377)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 34.1ms | Allocations: 3577)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 714)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 47.0ms | Allocations: 11183)
+Completed 200 OK in 48ms (Views: 47.1ms | ActiveRecord: 0.3ms | Allocations: 11646)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-19 21:52:38 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 15.2ms | Allocations: 2376)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 3580)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 711)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 34.7ms | Allocations: 11165)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.4ms | Allocations: 11627)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-19 21:53:39 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 608)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 20.0ms | Allocations: 4691)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 688)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 13257)
+Completed 200 OK in 43ms (Views: 41.1ms | ActiveRecord: 0.0ms | Allocations: 15051)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-19 21:53:40 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1005)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 677)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 4737)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 5313)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-10-19 21:53:46 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dannirodriguez99@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dannirodriguez99@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", "2021-10-19 19:53:46.496697"], ["updated_at", "2021-10-19 19:53:46.497166"], ["id", 1]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 305ms (ActiveRecord: 11.2ms | Allocations: 10386)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 21:53:46 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 11.8ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 3567)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.1ms | Allocations: 1571)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 60)
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 8082)
+Completed 200 OK in 28ms (Views: 24.9ms | ActiveRecord: 0.7ms | Allocations: 8546)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 21:54:41 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 18.0ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 21.2ms | Allocations: 3565)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.5ms | Allocations: 1540)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 44.5ms | Allocations: 12388)
+Completed 200 OK in 46ms (Views: 44.6ms | ActiveRecord: 0.5ms | Allocations: 12844)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 21:56:01 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (5.6ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 12.6ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 15.6ms | Allocations: 3568)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.3ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 11956)
+Completed 200 OK in 35ms (Views: 27.8ms | ActiveRecord: 5.9ms | Allocations: 12412)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 21:58:15 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 9.7ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 3564)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.1ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 11973)
+Completed 200 OK in 33ms (Views: 31.5ms | ActiveRecord: 0.6ms | Allocations: 12429)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:00:45 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 8.7ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3564)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.9ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 12480)
+Completed 200 OK in 35ms (Views: 33.4ms | ActiveRecord: 0.5ms | Allocations: 12936)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:02:09 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.4ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 14.9ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 3567)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.9ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 28.9ms | Allocations: 8032)
+Completed 200 OK in 31ms (Views: 29.1ms | ActiveRecord: 0.7ms | Allocations: 8488)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:02:15 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 14.2ms | Allocations: 2365)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 3568)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 6.8ms | Allocations: 1540)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 46.4ms | Allocations: 13843)
+Completed 200 OK in 49ms (Views: 46.3ms | ActiveRecord: 1.7ms | Allocations: 14300)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:02:39 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 9.0ms | Allocations: 2584)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 12.1ms | Allocations: 4028)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 6.0ms | Allocations: 1960)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.6ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 9520)
+Completed 200 OK in 31ms (Views: 29.0ms | ActiveRecord: 0.6ms | Allocations: 10784)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:05:11 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 8.6ms | Allocations: 2366)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 3565)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.2ms | Allocations: 1549)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.1ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 21.1ms | Allocations: 8045)
+Completed 200 OK in 29ms (Views: 21.2ms | ActiveRecord: 0.6ms | Allocations: 8504)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:08:02 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 15.0ms | Allocations: 2593)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 19.5ms | Allocations: 4027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.7ms | Allocations: 1959)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.9ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 37.9ms | Allocations: 9516)
+Completed 200 OK in 42ms (Views: 39.8ms | ActiveRecord: 0.6ms | Allocations: 10775)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-10-19 22:08:27 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", nil], ["updated_at", "2021-10-19 20:08:27.488318"], ["id", 1]]
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 29ms (ActiveRecord: 12.1ms | Allocations: 7041)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-19 22:08:27 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 9.2ms | Allocations: 2364)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 3569)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 722)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 59)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 7235)
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.3ms | Allocations: 7697)
+
+

@@ -1,23 +1,27 @@
 .container{
-    padding: 0em 8em 0em 8em;
 }
 .content{
     background-color: #f6f6ef;
 }
 .nav-bar-container{
-    display: flex;
+    display:grid;
+    grid-template-columns: auto auto;
     justify-content: space-between;
     background-color: #ff6600;
 }
+
 .nav-bar,
 .nav-bar-auth{
-    display:flex;
+    display:grid;
     flex-direction:row;
     margin-top:0px;
     margin-bottom:0px;
     padding:0px;
     list-style: none;
-    
+}
+
+.nav-bar{
+    grid-template-columns: repeat(4, auto);
 }
 
 .nav-bar :first-child,
@@ -51,3 +55,27 @@
     
 }
 
+@media (min-width: 500px){
+    .nav-bar{
+        grid-template-columns: repeat(6, auto);
+    }
+}
+
+@media (min-width: 750px){
+    .container{
+        padding: 0em 4em 0em 4em;
+    }
+    .nav-bar{
+        grid-template-columns: repeat(10, auto);
+    }
+}
+
+@media (min-width: 1000px){
+    .nav-bar{
+        grid-template-columns: repeat(11, auto);
+    }
+    .nav-bar-auth{
+        grid-template-columns: auto auto;
+    }
+    
+}
