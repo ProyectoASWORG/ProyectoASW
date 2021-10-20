@@ -5,6 +5,8 @@
   "repository": "https://github.com/heroku/ruby-rails-sample",
   "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ruby_on_Rails_logo.svg",
   "scripts": {
+    "test-setup": "bundle install --without development test",
+    "test":"rails test",
     "postdeploy": "bundle exec rake db:migrate"
   },
   "env": {
