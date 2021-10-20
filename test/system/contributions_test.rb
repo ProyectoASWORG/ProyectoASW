@@ -17,7 +17,6 @@ class ContributionsTest < ApplicationSystemTestCase
     fill_in "Contribution type", with: @contribution.contribution_type
     fill_in "Text", with: @contribution.text
     fill_in "Title", with: @contribution.title
-    fill_in "User email", with: @contribution.user_email
     click_on "Create Contribution"
 
     assert_text "Contribution was successfully created"
@@ -31,7 +30,6 @@ class ContributionsTest < ApplicationSystemTestCase
     fill_in "Contribution type", with: @contribution.contribution_type
     fill_in "Text", with: @contribution.text
     fill_in "Title", with: @contribution.title
-    fill_in "User email", with: @contribution.user_email
     click_on "Update Contribution"
 
     assert_text "Contribution was successfully updated"

@@ -17,7 +17,7 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create contribution" do
     assert_difference('Contribution.count') do
-      post contributions_url, params: { contribution: { contribution_type: @contribution.contribution_type, text: @contribution.text, title: @contribution.title, user_email: @contribution.user_email } }
+      post contributions_url, params: { contribution: { contribution_type: @contribution.contribution_type, text: @contribution.text, title: @contribution.title } }
     end
 
     assert_redirected_to contribution_url(Contribution.last)
@@ -34,7 +34,7 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update contribution" do
-    patch contribution_url(@contribution), params: { contribution: { contribution_type: @contribution.contribution_type, text: @contribution.text, title: @contribution.title, user_email: @contribution.user_email } }
+    patch contribution_url(@contribution), params: { contribution: { contribution_type: @contribution.contribution_type, text: @contribution.text, title: @contribution.title } }
     assert_redirected_to contribution_url(@contribution)
   end
 
@@ -44,5 +44,8 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to contributions_url
+  end
+  test "true" do
+    assert true
   end
 end

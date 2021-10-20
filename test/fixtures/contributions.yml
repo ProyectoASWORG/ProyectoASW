@@ -4,10 +4,8 @@ one:
   contribution_type: MyString
   text: MyString
   title: MyString
-  user_email: MyString
 
 two:
   contribution_type: MyString
   text: MyString
   title: MyString
-  user_email: MyString
