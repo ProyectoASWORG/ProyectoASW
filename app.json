@@ -2,7 +2,7 @@
   "environments":{
     "test":{
       "scripts": {
-        "test-setup": "bundle install --without development test",
+        "test-setup": "bundle install --without development",
         "test":"rails test",
         "postdeploy": "bundle exec rake db:migrate"
       },
