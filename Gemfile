@@ -9,9 +9,11 @@ gem 'turbolinks', '5.2.1'
 gem 'jbuilder',   '2.10.0'
 gem 'bootsnap',   '1.7.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3'
+group :development do
+  gem 'sqlite3', '1.4.2'
+end
 
 group :development, :test do
-  gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -28,7 +30,7 @@ group :test do
   gem 'webdrivers',         '4.6.0'
 end
 
-group :production do
+group :production, :test do
   gem 'pg'
 end
 
