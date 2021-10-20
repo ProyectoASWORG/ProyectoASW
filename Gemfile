@@ -10,7 +10,7 @@ gem 'jbuilder',   '2.10.0'
 gem 'bootsnap',   '1.7.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3'
 
-group :development do
+group :development, :test do
   gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -23,7 +23,6 @@ group :development do
 end
 
 group :test do
-  gem 'pg'
   gem 'capybara',           '3.35.3'
   gem 'selenium-webdriver', '3.142.7'
   gem 'webdrivers',         '4.6.0'
