@@ -1,5 +1,4 @@
 ## Lab Session #05
-dfd
 Students:
 
 * Surname_1, First_name_1
