@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-  idCreator: MyString
-  replayedCommentId: MyString
+  text: "texto primer comentario" 
+  user_id: 1
+  replayedCommentId: 2 
+  contribution_id: 1
 
 two:
-  text: MyString
-  idCreator: MyString
-  replayedCommentId: MyString
+  text: "texto segundo comentario" 
+  user_id: 1 
+  replayedCommentId: 2 
+  contribution_id: 1
