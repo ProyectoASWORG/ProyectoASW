@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :contributions do
     get :show_news, on: :collection
   end

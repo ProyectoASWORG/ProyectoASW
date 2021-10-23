@@ -13,7 +13,7 @@ module ContributionServices
         if contribution.url.present?
             contribution.contribution_type = 'url'
         else
-            contribution.contribution_type = 'text'
+            contribution.contribution_type = 'ask'
         end
 
         contribution.user_id = @user_id

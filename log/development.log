@@ -15841,3 +15841,1410 @@ Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 870
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20211023163052)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "idCreator" varchar, "replayedCommentId" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023163052"]]
+  [1m[36mTRANSACTION (15.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2021-10-23 18:35:16 +0200
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.5ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  Rendered contributions/_contribution_list.html.erb (Duration: 3.7ms | Allocations: 1260)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 62.0ms | Allocations: 16148)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 4.3ms | Allocations: 1204)
+  Rendered shared/_alert_manager.html.erb (Duration: 2.6ms | Allocations: 194)
+  Rendered layout layouts/application.html.erb (Duration: 79.4ms | Allocations: 21064)
+Completed 200 OK in 111ms (Views: 92.5ms | ActiveRecord: 0.8ms | Allocations: 25640)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-23 18:35:19 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 607)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 18.4ms | Allocations: 4689)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 685)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 28.5ms | Allocations: 8389)
+Completed 200 OK in 49ms (Views: 32.0ms | ActiveRecord: 1.2ms | Allocations: 14095)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-10-23 18:35:22 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.8ms | Allocations: 222)
+  Rendered devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 141)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 16.6ms | Allocations: 1786)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 685)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 5484)
+Completed 200 OK in 42ms (Views: 38.7ms | ActiveRecord: 0.0ms | Allocations: 6678)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-10-23 18:35:27 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dannirodriguez99@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dannirodriguez99@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "dannirodriguez99@gmail.com"], ["encrypted_password", "$2a$12$yYRDNO.0QkYPXAGfeOfvp.vV4Ypm/4CbWBh3GQQS.qm1YHFiaFcQm"], ["created_at", "2021-10-23 16:35:27.690352"], ["updated_at", "2021-10-23 16:35:27.690352"]]
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 299ms (ActiveRecord: 9.8ms | Allocations: 10116)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-23 18:35:27 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.1ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  Rendered contributions/_contribution_list.html.erb (Duration: 2.4ms | Allocations: 723)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1927)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.2ms | Allocations: 1626)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 61)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 6495)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.4ms | Allocations: 6961)
+
+
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-23 18:35:51 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 13.1ms | Allocations: 7729)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 14.9ms | Allocations: 8031)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 520)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 11389)
+Completed 200 OK in 36ms (Views: 22.2ms | ActiveRecord: 0.6ms | Allocations: 15634)
+
+
+Started POST "/contributions" for 127.0.0.1 at 2021-10-23 18:36:05 +0200
+Processing by ContributionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "contribution"=>{"title"=>"New url contribution", "url"=>"https://www.google.com", "text"=>""}, "commit"=>"submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:35:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+  [1m[36mContribution Create (0.4ms)[0m  [1m[32mINSERT INTO "contributions" ("url", "text", "title", "user_id", "created_at", "updated_at", "contribution_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["url", "https://www.google.com"], ["text", ""], ["title", "New url contribution"], ["user_id", "1"], ["created_at", "2021-10-23 16:36:05.873146"], ["updated_at", "2021-10-23 16:36:05.873146"], ["contribution_type", "url"]]
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+  [1m[36mTRANSACTION (17.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+Redirected to http://localhost:3000/contributions/show_news
+Completed 302 Found in 62ms (ActiveRecord: 18.4ms | Allocations: 8628)
+
+
+Started GET "/contributions/show_news" for 127.0.0.1 at 2021-10-23 18:36:05 +0200
+Processing by ContributionsController#show_news as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show_news.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."created_at" DESC[0m
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 6.3ms | Allocations: 1588)
+  Rendered contributions/show_news.html.erb within layouts/application (Duration: 10.7ms | Allocations: 2896)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.7ms | Allocations: 1545)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 7378)
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.5ms | Allocations: 7930)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-23 18:36:09 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 14.1ms | Allocations: 1571)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 18.9ms | Allocations: 2775)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 14.1ms | Allocations: 1538)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 7245)
+Completed 200 OK in 47ms (Views: 44.1ms | ActiveRecord: 0.7ms | Allocations: 7706)
+
+
+Started GET "/contributions/show_news" for 127.0.0.1 at 2021-10-23 18:36:10 +0200
+Processing by ContributionsController#show_news as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show_news.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."created_at" DESC[0m
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 6.1ms | Allocations: 1552)
+  Rendered contributions/show_news.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2756)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.4ms | Allocations: 1536)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 7226)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.5ms | Allocations: 7655)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-23 18:36:11 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 8.8ms | Allocations: 1579)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 21.1ms | Allocations: 2790)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.6ms | Allocations: 1536)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 36.5ms | Allocations: 7259)
+Completed 200 OK in 43ms (Views: 37.0ms | ActiveRecord: 0.5ms | Allocations: 7729)
+
+
+  [1m[36mContribution Load (0.8ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mContribution Load (0.4ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddContributionIdToComment (20211023163854)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddContributionIdToComment (20211023163854)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "comments" ADD "contribution_id" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023163854"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mContribution Load (0.6ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? ORDER BY "contributions"."id" ASC LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mContribution Load (0.4ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/" for 127.0.0.1 at 2021-10-23 18:42:54 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 17.4ms | Allocations: 8921)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 20.1ms | Allocations: 10132)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.5ms | Allocations: 1607)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 31.0ms | Allocations: 14580)
+Completed 200 OK in 35ms (Views: 31.1ms | ActiveRecord: 0.7ms | Allocations: 16307)
+
+
+Started GET "/comment/new" for 127.0.0.1 at 2021-10-23 18:42:58 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/comment/new"):
+  
+Started GET "/comments/new" for 127.0.0.1 at 2021-10-23 18:43:09 +0200
+Processing by CommentsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 3.3ms | Allocations: 1467)
+  Rendered comments/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1806)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.2ms | Allocations: 1653)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 59)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 6608)
+Completed 200 OK in 31ms (Views: 18.7ms | ActiveRecord: 1.1ms | Allocations: 11529)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:43:17 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"nuevo comentario", "idCreator"=>"1", "replayedCommentId"=>""}, "commit"=>"Create Comment"}
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 10.1ms | Allocations: 1802)
+  Rendered comments/new.html.erb within layouts/application (Duration: 10.7ms | Allocations: 1909)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.6ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 6403)
+Completed 200 OK in 35ms (Views: 30.5ms | ActiveRecord: 0.2ms | Allocations: 8546)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mContribution Load (0.8ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 18:46:47 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/comments/index.html.erb:16
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1714)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 15.0ms | Allocations: 5821)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.5ms | Allocations: 177)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 11139)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 1.8ms | Allocations: 12901)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2021-10-23 18:46:50 +0200
+Processing by CommentsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 4.6ms | Allocations: 1378)
+  Rendered comments/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1719)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.9ms | Allocations: 1533)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 6276)
+Completed 200 OK in 25ms (Views: 18.4ms | ActiveRecord: 1.0ms | Allocations: 9847)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:46:55 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Texto", "idCreator"=>"1", "commentId"=>"1"}, "commit"=>"Create Comment"}
+[31mUnpermitted parameter: :commentId[0m
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 6.7ms | Allocations: 1672)
+  Rendered comments/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1779)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.7ms | Allocations: 1540)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 6276)
+Completed 200 OK in 26ms (Views: 18.7ms | ActiveRecord: 0.2ms | Allocations: 9170)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-23 18:46:55 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:47:44 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Texto", "idCreator"=>"1", "commentId"=>"1"}, "commit"=>"Create Comment"}
+[31mUnpermitted parameter: :commentId[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/comments_controller.rb:27:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 4.0ms | Allocations: 1824)
+  Rendered comments/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1932)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 12.8ms | Allocations: 5157)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 22.1ms | Allocations: 10056)
+Completed 200 OK in 37ms (Views: 22.2ms | ActiveRecord: 2.3ms | Allocations: 17460)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:47:45 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Texto", "idCreator"=>"1", "commentId"=>""}, "commit"=>"Create Comment"}
+[31mUnpermitted parameter: :commentId[0m
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 7.3ms | Allocations: 1670)
+  Rendered comments/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1777)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.0ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.4ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 6271)
+Completed 200 OK in 31ms (Views: 24.9ms | ActiveRecord: 0.2ms | Allocations: 7362)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:47:53 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Texto", "idCreator"=>"1", "commentId"=>"1"}, "commit"=>"Create Comment"}
+[31mUnpermitted parameter: :commentId[0m
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 7.4ms | Allocations: 1670)
+  Rendered comments/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 1777)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 6.1ms | Allocations: 1538)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 6272)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 0.3ms | Allocations: 7358)
+
+
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 18:48:33 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 988)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.0ms | Allocations: 1951)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.8ms | Allocations: 177)
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 6562)
+Completed 200 OK in 27ms (Views: 25.1ms | ActiveRecord: 0.5ms | Allocations: 7793)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-23 18:48:35 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 6.6ms | Allocations: 2195)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 2493)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 518)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.3ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 5905)
+Completed 200 OK in 37ms (Views: 21.9ms | ActiveRecord: 3.6ms | Allocations: 10864)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2021-10-23 18:48:40 +0200
+Processing by CommentsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 4.6ms | Allocations: 1320)
+  Rendered comments/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1654)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.3ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 20.1ms | Allocations: 6215)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.2ms | Allocations: 6737)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:48:45 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"texto", "idCreator"=>"1", "contributionId"=>"1"}, "commit"=>"Create Comment"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 783)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'contributionId' for Comment.):
+  
+app/controllers/comments_controller.rb:27:in `create'
+Started GET "/comments/new" for 127.0.0.1 at 2021-10-23 18:49:25 +0200
+Processing by CommentsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/comments_controller.rb:17:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 3.3ms | Allocations: 1278)
+  Rendered comments/new.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1809)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 14.3ms | Allocations: 5562)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.6ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 10982)
+Completed 200 OK in 59ms (Views: 38.2ms | ActiveRecord: 2.7ms | Allocations: 16624)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:49:32 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"texto comentario", "idCreator"=>"1", "contribution_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 3.3ms | Allocations: 1280)
+  Rendered comments/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1388)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 5.1ms | Allocations: 1541)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 5887)
+Completed 200 OK in 45ms (Views: 16.5ms | ActiveRecord: 1.6ms | Allocations: 16429)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 18:50:47 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"texto comentario", "idCreator"=>"1", "contribution_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 3.1ms | Allocations: 1269)
+  Rendered comments/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1376)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.8ms | Allocations: 1535)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 5868)
+Completed 200 OK in 32ms (Views: 16.3ms | ActiveRecord: 0.5ms | Allocations: 9182)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mContribution Load (0.5ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? /* loading for inspect */ LIMIT ?[0m  [["id", 1], ["LIMIT", 11]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mContribution Load (0.4ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mContribution Load (0.8ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mContribution Load (0.4ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mContribution Load (0.9ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."contribution_id" = ? /* loading for inspect */ LIMIT ?[0m  [["contribution_id", "1"], ["LIMIT", 11]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeIdCreatorToUserIdInComments (20211023170306)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acomments" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "replayedCommentId" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "contribution_id" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "acomments" ("id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id")
+                     SELECT "id","text","idCreator","replayedCommentId","created_at","updated_at","contribution_id" FROM "comments"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "comments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "replayedCommentId" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "contribution_id" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id")
+                     SELECT "id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id" FROM "acomments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acomments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023170306"]]
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mContribution Load (0.7ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mContribution Load (5.6ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."user_id" = ? ORDER BY "contributions"."id" ASC LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContribution Load (0.5ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Create (6.7ms)[0m  [1m[32mINSERT INTO "comments" ("text", "user_id", "created_at", "updated_at", "contribution_id") VALUES (?, ?, ?, ?, ?)[0m  [["text", "texto comentario"], ["user_id", "1"], ["created_at", "2021-10-23 17:05:49.237463"], ["updated_at", "2021-10-23 17:05:49.237463"], ["contribution_id", "1"]]
+  [1m[36mTRANSACTION (16.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 11]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? ORDER BY "comments"."id" ASC LIMIT ?[0m  [["user_id", "1"], ["LIMIT", 1]]
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:06:58 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 25.6ms | Allocations: 8087)
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | Allocations: 8156)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.0ms | Allocations: 11654)
+
+
+  
+ActionView::Template::Error (undefined method `idCreator' for #<Comment:0x00007f8c20651068>):
+    16:     <% @comments.each do |comment| %>
+    17:       <tr>
+    18:         <td><%= comment.text %></td>
+    19:         <td><%= comment.idCreator %></td>
+    20:         <td><%= comment.replayedCommentId %></td>
+    21:         <td><%= link_to 'Show', comment %></td>
+    22:         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+  
+app/views/comments/index.html.erb:19
+app/views/comments/index.html.erb:16
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:07:00 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 3948)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 4013)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms | Allocations: 4493)
+
+
+  
+ActionView::Template::Error (undefined method `idCreator' for #<Comment:0x000055ba7d0268f8>):
+    16:     <% @comments.each do |comment| %>
+    17:       <tr>
+    18:         <td><%= comment.text %></td>
+    19:         <td><%= comment.idCreator %></td>
+    20:         <td><%= comment.replayedCommentId %></td>
+    21:         <td><%= link_to 'Show', comment %></td>
+    22:         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+  
+app/views/comments/index.html.erb:19
+app/views/comments/index.html.erb:16
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:07:04 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 41.0ms | Allocations: 3844)
+  Rendered layout layouts/application.html.erb (Duration: 41.7ms | Allocations: 3909)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.4ms | Allocations: 4290)
+
+
+  
+ActionView::Template::Error (undefined method `idCreator' for #<Comment:0x00007f8c20837eb8>):
+    16:     <% @comments.each do |comment| %>
+    17:       <tr>
+    18:         <td><%= comment.text %></td>
+    19:         <td><%= comment.idCreator %></td>
+    20:         <td><%= comment.replayedCommentId %></td>
+    21:         <td><%= link_to 'Show', comment %></td>
+    22:         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+  
+app/views/comments/index.html.erb:19
+app/views/comments/index.html.erb:16
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:07:25 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 1170)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 32.4ms | Allocations: 11775)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.8ms | Allocations: 181)
+  Rendered layout layouts/application.html.erb (Duration: 81.1ms | Allocations: 19177)
+Completed 200 OK in 89ms (Views: 83.7ms | ActiveRecord: 1.8ms | Allocations: 20417)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2021-10-23 19:07:28 +0200
+Processing by CommentsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (Duration: 10.8ms | Allocations: 3343)
+  Rendered comments/new.html.erb within layouts/application (Duration: 14.9ms | Allocations: 3686)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 6.6ms | Allocations: 1537)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 33.1ms | Allocations: 8248)
+Completed 200 OK in 38ms (Views: 34.3ms | ActiveRecord: 0.2ms | Allocations: 8789)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-10-23 19:07:35 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"Segundo comentario", "user_id"=>"1", "contribution_id"=>"1"}, "commit"=>"Create Comment"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mComment Create (2.4ms)[0m  [1m[32mINSERT INTO "comments" ("text", "user_id", "created_at", "updated_at", "contribution_id") VALUES (?, ?, ?, ?, ?)[0m  [["text", "Segundo comentario"], ["user_id", "1"], ["created_at", "2021-10-23 17:07:35.631629"], ["updated_at", "2021-10-23 17:07:35.631629"], ["contribution_id", "1"]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (13.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/comments/2
+Completed 302 Found in 62ms (ActiveRecord: 17.4ms | Allocations: 14329)
+
+
+Started GET "/comments/2" for 127.0.0.1 at 2021-10-23 19:07:35 +0200
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:67:in `set_comment'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/show.html.erb within layouts/application
+  Rendered comments/show.html.erb within layouts/application (Duration: 9.0ms | Allocations: 3363)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3427)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms | Allocations: 4589)
+
+
+  
+ActionView::Template::Error (undefined method `idCreator' for #<Comment:0x00007f8c20666030>):
+     7: 
+     8: <p>
+     9:   <strong>Idcreator:</strong>
+    10:   <%= @comment.idCreator %>
+    11: </p>
+    12: 
+    13: <p>
+  
+app/views/comments/show.html.erb:10
+Started GET "/comments/2" for 127.0.0.1 at 2021-10-23 19:07:48 +0200
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:67:in `set_comment'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/show.html.erb within layouts/application
+  Rendered comments/show.html.erb within layouts/application (Duration: 20.4ms | Allocations: 3182)
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 3247)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 1.6ms | Allocations: 4183)
+
+
+  
+ActionView::Template::Error (undefined method `idCreator' for #<Comment:0x00007f8c20f545e8>):
+     7: 
+     8: <p>
+     9:   <strong>Idcreator:</strong>
+    10:   <%= @comment.idCreator %>
+    11: </p>
+    12: 
+    13: <p>
+  
+app/views/comments/show.html.erb:10
+Started GET "/comments/2" for 127.0.0.1 at 2021-10-23 19:07:49 +0200
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:67:in `set_comment'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/show.html.erb within layouts/application
+  Rendered comments/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 284)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 8.0ms | Allocations: 1952)
+  Rendered shared/_alert_manager.html.erb (Duration: 1.5ms | Allocations: 181)
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 5863)
+Completed 200 OK in 73ms (Views: 47.1ms | ActiveRecord: 0.6ms | Allocations: 7617)
+
+
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:07:53 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1172)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 6.3ms | Allocations: 1534)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 45)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 5726)
+Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 0.4ms | Allocations: 6257)
+
+
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:07:54 +0200
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 915)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 23.4ms | Allocations: 1532)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 44)
+  Rendered layout layouts/application.html.erb (Duration: 65.8ms | Allocations: 5460)
+Completed 200 OK in 72ms (Views: 68.5ms | ActiveRecord: 0.7ms | Allocations: 5861)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "votedContribution" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023171035"]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20211014191532)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014191532"]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateContributions (20211014192212)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "contribution_type" varchar, "text" varchar, "title" varchar, "user_email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014192212"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeUserEmailForUserId (20211014192719)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","contribution_type","text","title","user_id","created_at","updated_at")
+                     SELECT "id","contribution_type","text","title","user_email","created_at","updated_at" FROM "contributions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","contribution_type","text","title","user_id","created_at","updated_at")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014192719"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPointsToContribution (20211014202859)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contributions" ADD "points" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014202859"]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangePoints (20211014203023)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","contribution_type","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at","points" FROM "contributions"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","contribution_type","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at","points" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014203023"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeTypeToUrl (20211014211449)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at","points" FROM "contributions"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","url","text","title","user_id","created_at","updated_at","points" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014211449"]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeTypeToUrll (20211014211712)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","url","text","title","user_id","created_at","updated_at","points" FROM "contributions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","url","text","title","user_id","created_at","updated_at","points" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014211712"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddContributionTypeToContributions (20211018185203)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contributions" ADD "contribution_type" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211018185203"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20211023163052)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "idCreator" varchar, "replayedCommentId" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023163052"]]
+  [1m[36mTRANSACTION (11.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddContributionIdToComment (20211023163854)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "comments" ADD "contribution_id" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023163854"]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeIdCreatorToUserIdInComments (20211023170306)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acomments" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "replayedCommentId" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "contribution_id" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acomments" ("id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id")
+                     SELECT "id","text","idCreator","replayedCommentId","created_at","updated_at","contribution_id" FROM "comments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "comments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "replayedCommentId" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "contribution_id" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id")
+                     SELECT "id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id" FROM "acomments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acomments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023170306"]]
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "voted_contribution_ids" text[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "voted_comment_ids" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023171035"]]
+  [1m[36mTRANSACTION (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-10-23 17:23:18.549717"], ["updated_at", "2021-10-23 17:23:18.549717"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/comments" for 127.0.0.1 at 2021-10-23 19:24:17 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/views/comments/index.html.erb:16
+  Rendered comments/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 16.6ms | Allocations: 3254)
+  Rendered shared/_alert_manager.html.erb (Duration: 1.3ms | Allocations: 181)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | Allocations: 10636)
+Completed 200 OK in 60ms (Views: 43.8ms | ActiveRecord: 1.3ms | Allocations: 14431)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-23 19:24:18 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-23 19:24:19 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.3ms | Allocations: 607)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 4627)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 701)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.3ms | Allocations: 59)
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 8461)
+Completed 200 OK in 45ms (Views: 26.0ms | ActiveRecord: 0.0ms | Allocations: 14499)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-10-23 19:24:22 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 221)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 141)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1787)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 688)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 5492)
+Completed 200 OK in 39ms (Views: 16.7ms | ActiveRecord: 0.0ms | Allocations: 6679)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-10-23 19:24:28 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dannirodriguez99@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dannirodriguez99@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "dannirodriguez99@gmail.com"], ["encrypted_password", "$2a$12$Q240G.2N0IjvLve0Hl51zO3jA7j0aiwkQ8FXXnDVUdfVCghpZtYnK"], ["created_at", "2021-10-23 17:24:28.469956"], ["updated_at", "2021-10-23 17:24:28.469956"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 314ms (ActiveRecord: 15.6ms | Allocations: 9802)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-23 19:24:28 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  Rendered contributions/_contribution_list.html.erb (Duration: 5.7ms | Allocations: 989)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2558)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.9ms | Allocations: 1571)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 61)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 7071)
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 0.9ms | Allocations: 9549)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-23 19:24:29 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 8.1ms | Allocations: 2376)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 12.2ms | Allocations: 2675)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 518)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 6128)
+Completed 200 OK in 58ms (Views: 20.3ms | ActiveRecord: 5.2ms | Allocations: 10406)
+
+
+Started POST "/contributions" for 127.0.0.1 at 2021-10-23 19:24:36 +0200
+Processing by ContributionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "contribution"=>{"title"=>"url contribution", "url"=>"aoeuaoeuaoeu", "text"=>""}, "commit"=>"submit"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:35:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+  [1m[36mContribution Create (0.5ms)[0m  [1m[32mINSERT INTO "contributions" ("url", "text", "title", "user_id", "created_at", "updated_at", "contribution_type") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["url", "aoeuaoeuaoeu"], ["text", ""], ["title", "url contribution"], ["user_id", "1"], ["created_at", "2021-10-23 17:24:36.292365"], ["updated_at", "2021-10-23 17:24:36.292365"], ["contribution_type", "url"]]
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/contributions_controller.rb:45:in `block in create'
+Redirected to http://localhost:3000/contributions/show_news
+Completed 302 Found in 47ms (ActiveRecord: 10.4ms | Allocations: 8638)
+
+
+Started GET "/contributions/show_news" for 127.0.0.1 at 2021-10-23 19:24:36 +0200
+Processing by ContributionsController#show_news as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/show_news.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" ORDER BY "contributions"."created_at" DESC[0m
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 6.0ms | Allocations: 1589)
+  Rendered contributions/show_news.html.erb within layouts/application (Duration: 8.9ms | Allocations: 2899)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 8.1ms | Allocations: 1547)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 28.7ms | Allocations: 7387)
+Completed 200 OK in 31ms (Views: 28.8ms | ActiveRecord: 0.5ms | Allocations: 7939)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-23 19:24:43 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 10.8ms | Allocations: 1577)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 2781)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.4ms | Allocations: 1536)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 7249)
+Completed 200 OK in 34ms (Views: 31.2ms | ActiveRecord: 0.8ms | Allocations: 7711)
+
+
+Started GET "/contributions/new" for 127.0.0.1 at 2021-10-23 19:24:53 +0200
+Processing by ContributionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/new.html.erb within layouts/application
+  Rendered contributions/_form.html.erb (Duration: 9.4ms | Allocations: 1864)
+  Rendered contributions/new.html.erb within layouts/application (Duration: 10.1ms | Allocations: 1954)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 516)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 25.5ms | Allocations: 5401)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.0ms | Allocations: 5807)
+
+
+Started GET "/contributions" for 127.0.0.1 at 2021-10-23 19:24:55 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.3ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/contributions/_contribution_list.html.erb:13
+  Rendered contributions/_contribution_list.html.erb (Duration: 16.7ms | Allocations: 1567)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 21.5ms | Allocations: 2771)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.2ms | Allocations: 1536)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 54)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 7239)
+Completed 200 OK in 45ms (Views: 39.2ms | ActiveRecord: 0.6ms | Allocations: 7698)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (3.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "voted_contribution_ids" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-10-23 17:25:41.712598"], ["voted_contribution_ids", "[1]"], ["id", 1]]
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "voted_contribution_ids" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-10-23 17:26:33.373964"], ["voted_contribution_ids", "[]"], ["id", 1]]
+  [1m[36mTRANSACTION (15.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20211014191532)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014191532"]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateContributions (20211014192212)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "contribution_type" varchar, "text" varchar, "title" varchar, "user_email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014192212"]]
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeUserEmailForUserId (20211014192719)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","contribution_type","text","title","user_id","created_at","updated_at")
+                     SELECT "id","contribution_type","text","title","user_email","created_at","updated_at" FROM "contributions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","contribution_type","text","title","user_id","created_at","updated_at")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014192719"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPointsToContribution (20211014202859)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "contributions" ADD "points" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014202859"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangePoints (20211014203023)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","contribution_type","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at","points" FROM "contributions"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "contribution_type" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","contribution_type","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at","points" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014203023"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeTypeToUrl (20211014211449)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","contribution_type","text","title","user_id","created_at","updated_at","points" FROM "contributions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "contributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","url","text","title","user_id","created_at","updated_at","points" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014211449"]]
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeTypeToUrll (20211014211712)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acontributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acontributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","url","text","title","user_id","created_at","updated_at","points" FROM "contributions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "contributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer NOT NULL PRIMARY KEY, "url" varchar DEFAULT NULL, "text" varchar DEFAULT NULL, "title" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "points" integer DEFAULT 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "contributions" ("id","url","text","title","user_id","created_at","updated_at","points")
+                     SELECT "id","url","text","title","user_id","created_at","updated_at","points" FROM "acontributions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "acontributions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211014211712"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddContributionTypeToContributions (20211018185203)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contributions" ADD "contribution_type" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211018185203"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20211023163052)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "idCreator" varchar, "replayedCommentId" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023163052"]]
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddContributionIdToComment (20211023163854)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "comments" ADD "contribution_id" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023163854"]]
+  [1m[36mTRANSACTION (13.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeIdCreatorToUserIdInComments (20211023170306)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acomments" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "replayedCommentId" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "contribution_id" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acomments" ("id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id")
+                     SELECT "id","text","idCreator","replayedCommentId","created_at","updated_at","contribution_id" FROM "comments"[0m
+  [1m[35m (2.8ms)[0m  [1m[35mDROP TABLE "comments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "user_id" varchar DEFAULT NULL, "replayedCommentId" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "contribution_id" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id")
+                     SELECT "id","text","user_id","replayedCommentId","created_at","updated_at","contribution_id" FROM "acomments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acomments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023170306"]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddVotedContributionsToUser (20211023171035)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "voted_contribution_ids" text[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "voted_comment_ids" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211023171035"]]
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-10-23 17:27:45.595689"], ["updated_at", "2021-10-23 17:27:45.595689"]]
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/contributions" for 127.0.0.1 at 2021-10-23 19:30:40 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.2ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  Rendered contributions/_contribution_list.html.erb (Duration: 2.5ms | Allocations: 747)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1958)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 7.2ms | Allocations: 1868)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 6747)
+Completed 200 OK in 25ms (Views: 19.7ms | ActiveRecord: 0.5ms | Allocations: 8483)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-10-23 19:30:41 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-10-23 19:30:41 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 161)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1074)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.2ms | Allocations: 688)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 4779)
+Completed 200 OK in 28ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 9324)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-10-23 19:30:44 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 111)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.7ms | Allocations: 1067)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 5.6ms | Allocations: 685)
+  Rendered shared/_alert_manager.html.erb (Duration: 1.3ms | Allocations: 56)
+  Rendered layout layouts/application.html.erb (Duration: 26.5ms | Allocations: 4763)
+Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 0.0ms | Allocations: 5490)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-10-23 19:30:48 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dannirodriguez99@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dannirodriguez99@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (4.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "dannirodriguez99@gmail.com"], ["encrypted_password", "$2a$12$RJ1mNl3WnFvyKtFj1BIqbuBSlVWpE7vTwKWxSIfQ9ZKTrWpW1Yzci"], ["created_at", "2021-10-23 17:30:49.102325"], ["updated_at", "2021-10-23 17:30:49.102325"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 323ms (ActiveRecord: 14.9ms | Allocations: 6988)
+
+
+Started GET "/" for 127.0.0.1 at 2021-10-23 19:30:49 +0200
+Processing by ContributionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering contributions/index.html.erb within layouts/application
+  [1m[36mContribution Load (0.1ms)[0m  [1m[34mSELECT "contributions".* FROM "contributions" WHERE "contributions"."contribution_type" = ? ORDER BY "contributions"."points" DESC[0m  [["contribution_type", "url"]]
+  ↳ app/views/contributions/_contribution_list.html.erb:1
+  Rendered contributions/_contribution_list.html.erb (Duration: 2.4ms | Allocations: 724)
+  Rendered contributions/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1932)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:36
+  Rendered shared/_navbar.html.erb (Duration: 4.5ms | Allocations: 1548)
+  Rendered shared/_alert_manager.html.erb (Duration: 0.2ms | Allocations: 59)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 6417)
+Completed 200 OK in 18ms (Views: 16.4ms | ActiveRecord: 0.3ms | Allocations: 6882)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (6.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "voted_contribution_ids" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2021-10-23 17:35:08.438305"], ["voted_contribution_ids", "---\n- 1\n- 2\n- 3\n"], ["id", 1]]
+  [1m[36mTRANSACTION (17.2ms)[0m  [1m[36mcommit transaction[0m

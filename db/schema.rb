@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_185203) do
+ActiveRecord::Schema.define(version: 2021_10_23_171035) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "text"
+    t.string "user_id"
+    t.string "replayedCommentId"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "contribution_id"
+  end
 
   create_table "contributions", force: :cascade do |t|
     t.string "url"
@@ -31,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_10_18_185203) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "voted_contribution_ids"
+    t.text "voted_comment_ids"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
