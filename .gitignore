@@ -1,3 +1,4 @@
 tmp/
 log/
 .vscode/
+node_modules/
