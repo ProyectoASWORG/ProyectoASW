@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -24,10 +25,9 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
-    
+    @comment = current_user.comments.create(comment_params) 
     respond_to do |format|
-      if @comment.save
+      if @comment 
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
@@ -69,6 +69,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:text, :user_id, :contribution_id, :replayedCommentId)
+      params.require(:comment).permit(:text, :contribution_id, :replayedComment_id)
     end
 end

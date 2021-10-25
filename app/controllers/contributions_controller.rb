@@ -32,17 +32,16 @@ class ContributionsController < ApplicationController
 
     #TODO: change this to redirect if user is not logged in
     ################################################################
-    if user_signed_in? 
-      user_id = current_user.id 
-    else
-      user_id = 1
-    end
+
     ################################################################
     
-    @contribution = ContributionServices::CreateContributionService.new(contribution_params, user_id).call
+    @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
+    puts @contribution.inspect
+    puts current_user.inspect
+    current_user.contributions << @contribution
 
     respond_to do |format|
-      if @contribution.save
+      if current_user.save 
         format.html { redirect_to show_news_contributions_url }
         format.json { render :show, status: :created, location: @contribution }
       else

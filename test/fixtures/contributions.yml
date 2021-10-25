@@ -1,0 +1,9 @@
+
+contribution_one:
+  id: 1
+  url: url de la contribucion
+  text: 
+  title: titulo de la contribución
+  user_id: 1
+  points: 0
+  contribution_type: url

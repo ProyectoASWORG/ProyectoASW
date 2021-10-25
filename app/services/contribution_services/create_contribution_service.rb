@@ -1,10 +1,8 @@
 module ContributionServices
   class CreateContributionService
-    include Devise
 
-    def initialize(params, user_id)
+    def initialize(params)
         @params = params
-        @user_id = user_id
     end
 
     def call 
@@ -15,8 +13,6 @@ module ContributionServices
         else
             contribution.contribution_type = 'ask'
         end
-
-        contribution.user_id = @user_id
 
         contribution
     end

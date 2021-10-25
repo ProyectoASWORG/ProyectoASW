@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class CommentsTest < ApplicationSystemTestCase
+  
+
   setup do
     @comment = comments(:one)
   end
@@ -15,7 +17,7 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "New Comment"
 
     fill_in "Idcreator", with: @comment.idCreator
-    fill_in "Replayedcommentid", with: @comment.replayedCommentId
+    fill_in "Replayedcommentid", with: @comment.replayedComment_id
     fill_in "Text", with: @comment.text
     click_on "Create Comment"
 
@@ -28,7 +30,7 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Idcreator", with: @comment.idCreator
-    fill_in "Replayedcommentid", with: @comment.replayedCommentId
+    fill_in "Replayedcommentid", with: @comment.replayedComment_id
     fill_in "Text", with: @comment.text
     click_on "Update Comment"
 
