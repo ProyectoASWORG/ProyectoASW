@@ -2,7 +2,7 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
-    get users_edit_url
+    get users_edit_path(1)
     assert_response :success
   end
 end
