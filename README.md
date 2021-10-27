@@ -6,8 +6,8 @@ En este proyecto se van  autilizar todos los conocimientos adquiridos de aplicac
 El proyecto que vamos a realizar consiste en realizar un clon de un aplicación muy conocida llamada <b>Hacker News</b>
 </p>
 Students:
-* Rodríguez, Daniel
 
+* Rodríguez, Daniel
 * Sabat, Pau
 * Daniel
 * Mariana
