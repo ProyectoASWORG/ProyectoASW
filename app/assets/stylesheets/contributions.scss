@@ -19,8 +19,13 @@ p{
 }
 
 .contribution-info{
+    display:flex;
     color:gray;
     font-size:8pt;
+}
+
+.contribution-info p{
+    margin:2px;
 }
 
 .contribution-title{

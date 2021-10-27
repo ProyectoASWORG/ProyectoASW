@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments do
+    put :like, on: :member 
+    put :dislike, on: :member
+  end
   resources :contributions do
+    put :like, on: :member 
+    put :dislike, on: :member
     get :show_news, on: :collection
   end
   devise_for :users

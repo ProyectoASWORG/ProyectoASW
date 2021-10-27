@@ -1,6 +1,6 @@
 class ContributionsController < ApplicationController
-  before_action :set_contribution, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_contribution, only: [:show, :edit, :update, :destroy, :like, :dislike]
+  skip_before_action :verify_authenticity_token, only: [:like, :dislike]
   # GET /contributions
   # GET /contributions.json
   def index
@@ -74,6 +74,33 @@ class ContributionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like 
+    @contribution.points += 1
+    
+    if @contribution.save
+      current_user.voted_contribution_ids << @contribution.id
+      if current_user.save
+        head :ok
+      end
+    else
+      head :unprocessable_entity
+    end
+  end
+
+  def dislike 
+    @contribution.points -= 1
+    
+    if @contribution.save
+      current_user.voted_contribution_ids.delete(@contribution.id)
+      if current_user.save
+        head :ok
+      end
+    else
+      hoad :unprocessable_entity
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

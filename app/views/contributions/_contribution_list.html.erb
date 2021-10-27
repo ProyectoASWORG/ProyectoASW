@@ -1,7 +1,10 @@
 <% @contributions.each.with_index do |contribution, index| %>
     <div class="contribution">
       <div class="contribution-index">
-        <p><%= index %>.</p>
+        <p><%= index %>. 
+            <%= image_tag "grayarrow.gif", id:contribution.id, 
+            style:"cursor:pointer;#{liked_contribution(contribution.id)}", onClick:"like_contribution(#{contribution.id})" %>
+        </p>
       </div>
       <div class="contribution-text">
         <div class="contribution-title">
@@ -10,11 +13,41 @@
           <%else%>
             <%= contribution.title %>
           <% end %>
-          <p> (<%= contribution.user.email %>) </p>
+          <p> (<%= contribution.user.user_name%>) </p>
         </div>
         <div class="contribution-info">
-          <%= contribution.points %> points
+          <p><%= contribution.points %> points </p>
+          <% if liked_contribution(contribution.id) %>
+            <p style="cursor:pointer;" id=<%= "#{contribution.id}_unvote" %> onclick="dislike_contribution(<%=contribution.id%>)" >unvote</p>
+          <% end %>
         </div>
       </div>
     </div> 
 <% end %>
+<script>
+like_contribution = (id) =>{
+    var arrow = document.getElementById(id);
+    arrow.style.visibility = "hidden";
+    fetch(`http://localhost:3000/contributions/${id}/like`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    var unvote = document.getElementById(`${id}_unvote`);
+    unvote.style.display = "block";
+}
+
+dislike_contribution = (id) =>{
+    var arrow = document.getElementById(id);
+    arrow.style.visibility = "visible";
+    fetch(`http://localhost:3000/contributions/${id}/dislike`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    var unvote = document.getElementById(`${id}_unvote`);
+    unvote.style.display = "none";
+}
+</script>
