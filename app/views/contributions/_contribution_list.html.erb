@@ -3,7 +3,7 @@
       <div class="contribution-index">
         <p><%= index %>. 
             <%= image_tag "grayarrow.gif", id:contribution.id, 
-            style:"cursor:pointer;#{liked_contribution(contribution.id)}", onClick:"like_contribution(#{contribution.id})" %>
+            style:"cursor:pointer;#{liked_contribution(contribution.id) ? "visibility:hidden":""}", onClick:"like_contribution(#{contribution.id})" %>
         </p>
       </div>
       <div class="contribution-text">
@@ -17,9 +17,7 @@
         </div>
         <div class="contribution-info">
           <p><%= contribution.points %> points </p>
-          <% if liked_contribution(contribution.id) %>
-            <p style="cursor:pointer;" id=<%= "#{contribution.id}_unvote" %> onclick="dislike_contribution(<%=contribution.id%>)" >unvote</p>
-          <% end %>
+          <p style="<%= "cursor:pointer; #{liked_contribution(contribution.id) ? '':'display:none;'}"%>" id=<%= "#{contribution.id}_unvote" %> onclick="dislike_contribution(<%=contribution.id%>)" >unvote</p>
         </div>
       </div>
     </div> 
