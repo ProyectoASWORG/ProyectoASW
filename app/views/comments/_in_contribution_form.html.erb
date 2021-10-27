@@ -1,0 +1,15 @@
+<% @comment = Comment.new %>
+<%= form_with(model: @comment, url: comments_path) do |form| %>
+
+  <div class="field">
+    <%= form.text_area :text %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :contribution_id, value: @contribution.id, type: :hidden%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :"add comment" %>
+  </div>
+<% end %>

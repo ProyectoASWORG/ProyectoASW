@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
 <p>
   <strong>Contribution type:</strong>
   <%= @contribution.url %>
@@ -16,3 +19,6 @@
 
 <%= link_to 'Edit', edit_contribution_path(@contribution) %> |
 <%= link_to 'Back', contributions_path %>
+
+<%=  render "comments/in_contribution_form" %>
+<%=  render "comments/comments_list", current_contribution: @contribution %>
