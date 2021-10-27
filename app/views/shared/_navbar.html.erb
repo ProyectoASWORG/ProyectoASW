@@ -1,5 +1,5 @@
 <div class="nav-bar-container">
-    <% if request.original_url == "http://localhost:3000/contributions/new" %>
+    <% if current_page?(new_contribution_url) %>
        <ul class="nav-bar">
            <li class="navbar-item">
                <%= link_to contributions_url do %>
