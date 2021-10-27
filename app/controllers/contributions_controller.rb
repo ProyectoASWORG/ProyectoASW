@@ -77,7 +77,6 @@ class ContributionsController < ApplicationController
 
   def like 
     @contribution.points += 1
-    
     if @contribution.save
       current_user.voted_contribution_ids << @contribution.id
       if current_user.save
