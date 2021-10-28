@@ -1,17 +1,26 @@
 <%@comments = Comment.where(contribution_id: current_contribution.id).order(created_at: :desc) %>
 
 <% @comments.each.with_index do |comment, index| %>
-    <div class="comment">
-      <div class="comment-title">
+    <div class="comment-item">
+      
+      <div class="comment-info">
         <%= comment.user.email %>
         <% from_time = Time.now %>
         <% to_time = comment.created_at %>
         <% time_passed = distance_of_time_in_words(from_time, to_time) %>
-        <p> (<%= time_passed %> ago)  </p>
+         (<%= time_passed %> ago)  
+         
+        <%if comment.user == current_user %>
+            <%=link_to 'Edit', edit_comment_path(comment) %>
+            <%=link_to 'Delete', comment, method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
       </div>
+      
       <br>
       <div class="comment-text">
         <%= comment.text%> 
       </div>
+      
+      <div class = 
     </div> 
 <% end %>

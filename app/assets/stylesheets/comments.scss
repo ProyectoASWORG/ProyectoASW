@@ -1,3 +1,28 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.comment-item {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+
+.comment-info {
+    display: inline-block;
+    margin-top: 2px;
+    margin-bottom: -10px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8pt;
+    color: #828282;
+}
+
+.comment-text {
+    max-width: 620px;
+    overflow: hidden;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 9pt;
+    color: #000000;
+    overflow-wrap: anywhere;
+}

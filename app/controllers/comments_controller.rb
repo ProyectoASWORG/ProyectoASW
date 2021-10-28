@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
 
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index ]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  
+  
+  
   # GET /comments
   # GET /comments.json
   def index
@@ -26,9 +30,11 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = current_user.comments.create(comment_params) 
+    #logger.debug "Person attributes hash: #{params.inspect}"
+    @contribution = Contribution.find(@comment.contribution_id)
     respond_to do |format|
       if @comment 
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @contribution }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -40,6 +46,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
@@ -54,11 +61,20 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @contribution = Contribution.find(@comment.contribution_id)
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @contribution , notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  
+  #Checks if the user trying to modify a comment is the one that created that comment
+  
+  def correct_user
+    @comment = current_user.comments.find_by(id: params[:id])
+    redirect_to comments_path, notice: "Not Authorized To Modify This Comment" if @comment.nil?
   end
 
   private
