@@ -1,18 +1,19 @@
 <table border = "0">
     <tr>
-        <td valign="top"> user:</td> 
-        <td><%= @user.email %></td> 
+        <td class='c-gray' valign="top"> user:</td> 
+        <td class='c-gray' ><%= @user.user_name %></td> 
         
     </tr>
     <tr>
-        <td valign="top">created:</td>
+        <td class='c-gray' valign="top">created:</td>
         <td><%= @user.created_at.strftime("%B %d, %Y") %></td>
     </tr>
     <tr>
-        <td valign="top">karma:</td>
-        <td>11231</td>
+        <td class='c-gray' valign="top">karma:</td>
+        <td class='c-gray' > <%= @user.karma %></td>
     </tr>
     <tr>
-        <td valign="top">about:</td>
+        <td class='c-gray' valign="top">about:</td>
+        <td class='c-gray' > <%= @user.about %></td>
     </tr>
 </table>

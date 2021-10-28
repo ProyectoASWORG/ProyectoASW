@@ -1,7 +1,7 @@
 <table border = "0">
     <tr>
         <td valign="top"> user:</td> 
-        <td><%= @user.email %></td> 
+        <td><%= @user.user_name %></td> 
         
     </tr>
     <tr>
@@ -17,21 +17,9 @@
     </tr>
 </table>
 
-<%= form_with do |form| %>
-   
-    <div class="field">
-      <%= form.label :text %>
-      <%= form.text_field :text %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :user%>
-      <%= form.text_field :user_id%>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+<%= render 'form', user: @user %>
+
+
+
 
 
