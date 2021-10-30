@@ -1,16 +1,39 @@
 <%= form_with(model: user, url: users_update_path(@user)) do |form| %>
-   
+   <table border = "0">
+
+      <tr>
+        <td class='c-gray' valign="top"> user:</td> 
+        <td class='current_username'><%= @user.user_name %></td> 
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top">created:</td>
+        <td><%= @user.created_at.strftime("%B %d, %Y") %></td>
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top">karma:</td>
+        <td class='c-gray'><%= @user.karma %></td>
+      </tr>
+      
+      <tr>
         <div class="field">
-         <%= form.label :about %>
-         <%= form.text_field :text %>
+         <td class='c-gray' valign= "top"> about: </td>
+         <td valign= "top"> <%= form.text_area(:text, cols:'60', rows:'5')%> <a class="help"> help</a> </td>
         </div>
-      
+      </tr>
+
+      <tr>
        <div class="field">
-         <%= form.label :email%>
-         <%= form.text_field :user_id%>
+         <td class='c-gray' valign="top"> email: </td>
+         <td valign="top"> <%= form.text_field(:text, size: '60') %> </td>
        </div>
-      
+      </tr>
+
+      <tr>
        <div class="actions">
-            <%= form.submit %>
+          <td valign="top"> <%= form.submit %> </td>
        </div>
+      </tr>
+    </table>
 <% end %>
