@@ -19,7 +19,7 @@
       <tr>
         <div class="field">
          <td class='c-gray' valign= "top"> about: </td>
-         <td valign= "top"> <%= form.text_area(:text, cols:'60', rows:'5')%> <a class="help"> help</a> </td>
+         <td valign= "top"> <%= form.text_area(:text, cols:'75', rows:'8')%> <a class="help"> help</a> </td>
         </div>
       </tr>
 
@@ -28,6 +28,66 @@
          <td class='c-gray' valign="top"> email: </td>
          <td valign="top"> <%= form.text_field(:text, size: '60') %> </td>
        </div>
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top"> showdead:</td> 
+        <td valign="top"> 
+          <select choice="no">
+            <option value="1"> yes</option>
+            <option value="2" selected="selected"> no</option>
+          </select>
+        </td> 
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top"> noprocrast:</td> 
+        <td valign="top"> 
+          <select choice="no">
+            <option value="1"> yes</option>
+            <option value="2" selected="selected"> no</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top"> maxvisit:</td> 
+        <td valign="top"> <%= form.text_field(:text, size: '16') %> </td> 
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top"> minaway:</td> 
+        <td valign="top"> <%= form.text_field(:text, size: '16') %> </td> 
+      </tr>
+
+      <tr>
+        <td class='c-gray' valign="top"> delay:</td> 
+        <td valign="top"> <%= form.text_field(:text, size: '16') %> </td> 
+      </tr>
+
+      <tr>
+        <td></td>
+        <td valign="top">change password</td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td valign="top">submissions</td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td valign="top">comments</td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td valign="top">hidden</td>
+      </tr>
+      
+      <tr>
+        <td></td>
+        <td valign="top"> <a> favorite submissions</a> <a> / </a> <a> comments </a> </td>
       </tr>
 
       <tr>
