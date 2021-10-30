@@ -1,4 +1,13 @@
 <%= form_with(model: user, url: users_update_path(@user)) do |form| %>
+
+    <table>
+      <% if @user.email = "" %>
+        <tr valign="center"><a class="comment"> Please put a valid address in the email field, or we won't be able to send you a new password if you forget yours. Your address is only visible to you and us. Crawlers and other users can't see it.</a></tr>
+      <% end %>
+    </table>
+    
+    
+
    <table border = "0">
 
       <tr>
@@ -19,8 +28,13 @@
       <tr>
         <div class="field">
          <td class='c-gray' valign= "top"> about: </td>
-         <td valign= "top"> <%= form.text_area(:text, cols:'75', rows:'8')%> <a class="help"> help</a> </td>
+         <td valign= "top"> <%= form.text_area(:text, cols:'75', rows:'8')%> <a class="comment"> help</a> </td>
         </div>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td><a class="comment">Only admins see your email below. To share publicly, add to the 'about' box.</a></td>
       </tr>
 
       <tr>
@@ -87,7 +101,7 @@
       
       <tr>
         <td></td>
-        <td valign="top"> <a> favorite submissions</a> <a> / </a> <a> comments </a> </td>
+        <td valign="top"> <a> favorite submissions</a> <a> / </a> <a> comments </a> <em class= "c-gray"> (public) </em> </td>
       </tr>
 
       <tr>
