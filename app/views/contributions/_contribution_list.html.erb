@@ -35,10 +35,12 @@ like_contribution = (id) =>{
       if(response.statusText === "Unprocessable Entity"){
         var url = `${window.location.origin}/users/sign_in`
         location.replace(url);
+      }else{
+        var unvote = document.getElementById(`${id}_unvote`);
+        unvote.style.display = "block";
+        location.reload();
       }
-      var unvote = document.getElementById(`${id}_unvote`);
-      unvote.style.display = "block";
-      location.reload();
+      
     })
 
 }
@@ -56,11 +58,11 @@ dislike_contribution = (id) =>{
       if(response.statusText === "Unprocessable Entity"){
         var url = `${window.location.origin}/users/sign_in`;
         location.replace(url);
+      }else{
+        var unvote = document.getElementById(`${id}_unvote`);
+        unvote.style.display = "none";
+        location.reload();
       }
-
-      var unvote = document.getElementById(`${id}_unvote`);
-      unvote.style.display = "none";
-      location.reload();
     })
     
 }
