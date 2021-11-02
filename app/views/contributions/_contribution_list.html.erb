@@ -27,13 +27,20 @@ like_contribution = (id) =>{
     var arrow = document.getElementById(id);
     arrow.style.visibility = "hidden";
     fetch(`http://localhost:3000/contributions/${id}/like`,{
-      method: 'PUT',
+      method: 'GET',
       headers:{
         'Content-Type':'application/json'
       }
+    }).then(response =>{
+      if(response.statusText === "Unprocessable Entity"){
+        var url = `${window.location.origin}/users/sign_in`
+        location.replace(url);
+      }
+      var unvote = document.getElementById(`${id}_unvote`);
+      unvote.style.display = "block";
+      location.reload();
     })
-    var unvote = document.getElementById(`${id}_unvote`);
-    unvote.style.display = "block";
+
 }
 
 dislike_contribution = (id) =>{
@@ -44,8 +51,17 @@ dislike_contribution = (id) =>{
       headers:{
         'Content-Type':'application/json'
       }
+    }).then(response =>{
+
+      if(response.statusText === "Unprocessable Entity"){
+        var url = `${window.location.origin}/users/sign_in`;
+        location.replace(url);
+      }
+
+      var unvote = document.getElementById(`${id}_unvote`);
+      unvote.style.display = "none";
+      location.reload();
     })
-    var unvote = document.getElementById(`${id}_unvote`);
-    unvote.style.display = "none";
+    
 }
 </script>

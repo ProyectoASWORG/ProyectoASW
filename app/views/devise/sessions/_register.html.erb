@@ -1,19 +1,26 @@
 <h2>Create Account</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+
 
   <div class="field input-field">
     <%= f.label :user_name %><br />
-    <%= f.text_field :user_name %>
+    <div class="input">
+      <%= f.text_field :user_name %>
+      <% if resource.errors[:user_name].length > 0 %>
+        <%= show_errors(resource, :user_name) %>
+      <%end%>
+    </div>
   </div>
 
   <div class="field input-field">
     <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <div class="input">
+      <%= f.password_field :password %>
+      <% if resource.errors[:encrypted_password].length > 0 %>
+        Something went wrong with the password ...
+      <% end %>
+    </div>
   </div>
 
   <!-- <div class="field">

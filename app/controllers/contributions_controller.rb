@@ -1,5 +1,10 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :edit, :update, :destroy, :like, :dislike]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+
+  # special actions on this actions because they are called by js and doesnt work fine, i dont know why
+  before_action :check_signed_in, only: [:like, :dislike] 
+
   skip_before_action :verify_authenticity_token, only: [:like, :dislike]
   # GET /contributions
   # GET /contributions.json
@@ -75,12 +80,15 @@ class ContributionsController < ApplicationController
     end
   end
 
+
+  # TODO: add logic to check if user is logged in before let make vote 
   def like 
+
     @contribution.points += 1
     if @contribution.save
       current_user.voted_contribution_ids << @contribution.id
       if current_user.save
-        head :ok
+        redirect_to contributions_url and return
       end
     else
       head :unprocessable_entity
@@ -88,15 +96,16 @@ class ContributionsController < ApplicationController
   end
 
   def dislike 
+
     @contribution.points -= 1
-    
+
     if @contribution.save
       current_user.voted_contribution_ids.delete(@contribution.id)
       if current_user.save
         head :ok
       end
     else
-      hoad :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 
@@ -110,5 +119,12 @@ class ContributionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def contribution_params
       params.require(:contribution).permit(:contribution_type, :text, :title, :url)
+    end
+
+    def check_signed_in
+      if !user_signed_in?
+        head :unprocessable_entity
+        return
+      end
     end
 end

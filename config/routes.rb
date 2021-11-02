@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     put :dislike, on: :member
   end
   resources :contributions do
-    put :like, on: :member 
+    get :like, on: :member 
     put :dislike, on: :member
     get :show_news, on: :collection
   end

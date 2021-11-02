@@ -6,6 +6,8 @@ class User < ApplicationRecord
     serialize(:voted_contribution_ids, Array)
     serialize(:voted_comment_ids, Array)
     validates :user_name, presence: true, uniqueness: true
+    validates :encrypted_password, presence: true
+
     has_many :contributions
     has_many :comments
 end
