@@ -27,7 +27,7 @@ like_contribution = (id) =>{
     var arrow = document.getElementById(id);
     arrow.style.visibility = "hidden";
     fetch(`http://localhost:3000/contributions/${id}/like`,{
-      method: 'GET',
+      method: 'PUT',
       headers:{
         'Content-Type':'application/json'
       }

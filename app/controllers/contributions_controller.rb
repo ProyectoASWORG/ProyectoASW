@@ -88,7 +88,7 @@ class ContributionsController < ApplicationController
     if @contribution.save
       current_user.voted_contribution_ids << @contribution.id
       if current_user.save
-        redirect_to contributions_url and return
+        head :ok
       end
     else
       head :unprocessable_entity
