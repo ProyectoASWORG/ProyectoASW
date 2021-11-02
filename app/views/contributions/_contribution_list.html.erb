@@ -17,7 +17,7 @@
         </div>
         <div class="contribution-info">
           <p><%= contribution.points %> points </p>
-          <p style="<%= "cursor:pointer; #{liked_contribution(contribution.id) ? '':'display:none;'}"%>" id=<%= "#{contribution.id}_unvote" %> onclick="dislike_contribution(<%=contribution.id%>)" >unvote</p>
+          <p style=<%= liked_contribution(contribution.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{contribution.id}_unvote" %> onclick="dislike_contribution(<%=contribution.id%>)" >unvote</p>
         </div>
       </div>
     </div> 
