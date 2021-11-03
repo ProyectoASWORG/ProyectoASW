@@ -11,7 +11,7 @@
           <%if contribution.url?%>
             <%= link_to contribution.title ,  contribution.url %>
           <%else%>
-            <%= contribution.title %>
+            <%= link_to contribution.title ,  contribution %>
           <% end %>
           <p> (<%= contribution.user.user_name%>) </p>
         </div>

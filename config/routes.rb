@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   get 'users/:id/edit', to: 'users#edit', as: 'users_edit'
+  get 'contribution/:id', to: 'contributions#show_one'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'contributions#index' 
 end

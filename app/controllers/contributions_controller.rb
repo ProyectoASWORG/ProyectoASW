@@ -22,6 +22,10 @@ class ContributionsController < ApplicationController
     @contributions = Contribution.all.order(created_at: :desc)
   end
 
+  def show_one
+    @contribution = Contribution.find(params[:id])
+  end
+
   # GET /contributions/new
   def new
     @contribution = Contribution.new
@@ -43,15 +47,35 @@ class ContributionsController < ApplicationController
     @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
     puts @contribution.inspect
     puts current_user.inspect
-    current_user.contributions << @contribution
 
-    respond_to do |format|
-      if current_user.save 
-        format.html { redirect_to show_news_contributions_url }
-        format.json { render :show, status: :created, location: @contribution }
-      else
-        format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
-        format.json { render json: @contribution.errors, status: :unprocessable_entity }
+    if @contribution.url.blank?
+      current_user.contributions << @contribution
+      respond_to do |format|
+        if current_user.save
+          format.html { redirect_to show_news_contributions_url }
+          format.json { render :show, status: :created, location: @contribution }
+        else
+          format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
+          format.json { render json: @contribution.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @contribution_existing = Contribution.find_by_url(@contribution.url)
+      respond_to do |format|
+        if @contribution_existing.present?
+          format.html { redirect_to @contribution_existing}
+          format.json { render :show, status: :ok, location: @contribution }
+
+        else
+          current_user.contributions << @contribution
+          if current_user.save
+            format.html { redirect_to show_news_contributions_url }
+            format.json { render :show, status: :created, location: @contribution }
+          else
+            format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
+            format.json { render json: @contribution.errors, status: :unprocessable_entity }
+          end
+        end
       end
     end
   end
