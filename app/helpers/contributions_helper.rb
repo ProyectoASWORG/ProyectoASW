@@ -3,7 +3,7 @@ module ContributionsHelper
         if !user_signed_in?
             return false
         end
-        if current_user.voted_contribution_ids.include?(contribution_id)
+        if current_user.voted_contributions.where(:id => contribution_id).exists?
             true
         end
     end

@@ -110,7 +110,7 @@ class ContributionsController < ApplicationController
 def like 
   @contribution.points += 1
   if @contribution.save
-    current_user.voted_contribution_ids << @contribution.id
+    current_user.voted_contributions << @contribution
     if current_user.save
       head :ok
     end
@@ -124,7 +124,7 @@ def dislike
   @contribution.points -= 1
   
   if @contribution.save
-    current_user.voted_contribution_ids.delete(@contribution.id)
+    current_user.voted_contributions.delete(@contribution)
     if current_user.save
       head :ok
     end
