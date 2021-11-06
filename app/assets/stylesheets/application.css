@@ -1,4 +1,35 @@
 
+.contribution{
+    display:grid;
+    grid-template-columns: auto 1fr;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.contribution-title{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    align-items:center;
+}
+
+.contribution-title a{
+    text-decoration: none;
+    color:black;
+}
+
+
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+li {
+    color: black;
+    text-decoration: none;
+}
+
+
 .content{
     background-color: #f6f6ef;
 }
