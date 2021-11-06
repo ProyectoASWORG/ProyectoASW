@@ -24,16 +24,17 @@
 <% end %>
 <script>
 like_contribution = (id) =>{
+    var origin = window.location.origin;
     var arrow = document.getElementById(id);
     arrow.style.visibility = "hidden";
-    fetch(`http://localhost:3000/contributions/${id}/like`,{
+    fetch(`${origin}/contributions/${id}/like`,{
       method: 'PUT',
       headers:{
         'Content-Type':'application/json'
       }
     }).then(response =>{
       if(response.statusText === "Unprocessable Entity"){
-        var url = `${window.location.origin}/users/sign_in`
+        var url = `${origin}/users/sign_in`
         location.replace(url);
       }else{
         var unvote = document.getElementById(`${id}_unvote`);
@@ -46,9 +47,10 @@ like_contribution = (id) =>{
 }
 
 dislike_contribution = (id) =>{
+    var origin = window.location.origin;
     var arrow = document.getElementById(id);
     arrow.style.visibility = "visible";
-    fetch(`http://localhost:3000/contributions/${id}/dislike`,{
+    fetch(`${origin}/contributions/${id}/dislike`,{
       method: 'PUT',
       headers:{
         'Content-Type':'application/json'
@@ -56,7 +58,7 @@ dislike_contribution = (id) =>{
     }).then(response =>{
 
       if(response.statusText === "Unprocessable Entity"){
-        var url = `${window.location.origin}/users/sign_in`;
+        var url = `${origin}/users/sign_in`;
         location.replace(url);
       }else{
         var unvote = document.getElementById(`${id}_unvote`);
