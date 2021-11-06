@@ -44,8 +44,13 @@ ActiveRecord::Schema.define(version: 2021_10_28_145305) do
     t.text "voted_contribution_ids"
     t.text "voted_comment_ids"
     t.string "user_name"
-    t.integer "karma"
-    t.string "about"
+    t.integer "karma", default: 0
+    t.string "about", default: ""
+    t.boolean "show_dead", default: false
+    t.boolean "no_procrast", default: false
+    t.integer "max_visit", default: 20
+    t.integer "min_away", default: 180
+    t.integer "delay", default: 0
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
