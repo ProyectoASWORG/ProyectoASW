@@ -105,33 +105,33 @@ class ContributionsController < ApplicationController
   end
 
 
-  # TODO: add logic to check if user is logged in before let make vote 
-  def like 
 
-    @contribution.points += 1
-    if @contribution.save
-      current_user.voted_contribution_ids << @contribution.id
-      if current_user.save
-        head :ok
-      end
-    else
-      head :unprocessable_entity
+# TODO: add logic to check if user is logged in before let make vote 
+def like 
+  @contribution.points += 1
+  if @contribution.save
+    current_user.voted_contribution_ids << @contribution.id
+    if current_user.save
+      head :ok
     end
+  else
+    head :unprocessable_entity
   end
-
-  def dislike 
-
-    @contribution.points -= 1
-
-    if @contribution.save
-      current_user.voted_contribution_ids.delete(@contribution.id)
-      if current_user.save
-        head :ok
-      end
-    else
-      head :unprocessable_entity
+end
+  
+def dislike 
+  
+  @contribution.points -= 1
+  
+  if @contribution.save
+    current_user.voted_contribution_ids.delete(@contribution.id)
+    if current_user.save
+      head :ok
     end
+  else
+    head :unprocessable_entity
   end
+end
 
 
   private
