@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
     devise :database_authenticatable, :registerable,
             :recoverable, :rememberable 
-    serialize(:voted_contribution_ids, Array)
-    serialize(:voted_comment_ids, Array)
+    serialize :voted_contribution_ids, Array
+    serialize :voted_comment_ids, Array
     validates :user_name, presence: true, uniqueness: true
     validates :encrypted_password, presence: true
 
