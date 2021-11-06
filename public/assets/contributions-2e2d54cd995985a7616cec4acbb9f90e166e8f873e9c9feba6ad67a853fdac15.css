@@ -1,0 +1,107 @@
+/* line 1, app/assets/stylesheets/contributions.scss */
+p {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #828282;
+}
+
+/* line 7, app/assets/stylesheets/contributions.scss */
+.contribution-body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #828282;
+}
+
+/* line 12, app/assets/stylesheets/contributions.scss */
+li {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 17, app/assets/stylesheets/contributions.scss */
+p {
+  margin: 0px;
+}
+
+/* line 21, app/assets/stylesheets/contributions.scss */
+.contribution {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* line 28, app/assets/stylesheets/contributions.scss */
+.contribution-index {
+  margin-right: 5px;
+  color: gray;
+}
+
+/* line 33, app/assets/stylesheets/contributions.scss */
+.contribution-text {
+  display: grid;
+}
+
+/* line 37, app/assets/stylesheets/contributions.scss */
+.contribution-info {
+  display: flex;
+  color: gray;
+  font-size: 8pt;
+}
+
+/* line 43, app/assets/stylesheets/contributions.scss */
+.contribution-info p {
+  margin: 2px;
+}
+
+/* line 47, app/assets/stylesheets/contributions.scss */
+.contribution-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+/* line 53, app/assets/stylesheets/contributions.scss */
+.contribution-title a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 59, app/assets/stylesheets/contributions.scss */
+.contribution-title p {
+  color: gray;
+  font-size: 8pt;
+  margin-left: 5px;
+}
+
+/* line 65, app/assets/stylesheets/contributions.scss */
+.text,
+.form-label {
+  width: 3em;
+  font-size: 12px;
+  color: gray;
+}
+
+/* line 72, app/assets/stylesheets/contributions.scss */
+.field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* line 78, app/assets/stylesheets/contributions.scss */
+.field textarea,
+.field input {
+  width: 415px;
+}
+
+/* line 83, app/assets/stylesheets/contributions.scss */
+.margin-left {
+  margin-left: 35px;
+}
+
+/* line 87, app/assets/stylesheets/contributions.scss */
+.text {
+  font-weight: bold;
+  font-size: 14px;
+}
