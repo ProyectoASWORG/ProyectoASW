@@ -1,4 +1,3 @@
-<%=@user.inspect%>
 <%= form_with(model: user, url: users_update_path(@user), method: :put) do |form| %>
     <table>
       <% if @user.email == "" %>
