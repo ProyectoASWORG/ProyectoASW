@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:about, :email, :max_visit, :min_away, :delay)
+    params.require(:user).permit(:about, :email, :max_visit, :min_away, :delay, :show_dead, :no_procrast)
   end
 
   def set_user

@@ -1,3 +1,4 @@
+<%=@user.inspect%>
 <%= form_with(model: user, url: users_update_path(@user), method: :put) do |form| %>
     <table>
       <% if @user.email == "" %>
@@ -5,11 +6,8 @@
       <% end %>
     </table>
     
-    
 
-   <table border = "0">
-
-
+   <table>
 
       <tr>
         <td class='c-gray' valign="top"> user:</td> 
@@ -37,7 +35,7 @@
         <td></td>
         <td><a class="comment">Only admins see your email below. To share publicly, add to the 'about' box.</a></td>
       </tr>
-      
+
       <tr>
        <div class="field">
          <td class='c-gray' valign="top"> email: </td>
@@ -47,21 +45,15 @@
 
       <tr>
         <td class='c-gray' valign="top"> showdead:</td> 
-        <td valign="top"> 
-          <select choice="no">
-            <option value="1"> yes</option>
-            <option value="2" selected="selected"> no</option>
-          </select>
+        <td valign="top">
+          <%=form.select(:show_dead, [['yes', true], ['no', false]])%>
         </td> 
       </tr>
 
       <tr>
         <td class='c-gray' valign="top"> noprocrast:</td> 
         <td valign="top"> 
-          <select choice="no">
-            <option value="true" selected= "<%= "#{@user.no_procrast ? '':'selected;'}"%>" > yes</option>
-            <option value="false" selected= "<%= "#{!@user.no_procrast ? '':'selected;'}"%>" > no</option>
-          </select>
+          <%=form.select(:no_procrast, [['yes', true], ['no', false]])%>
         </td>
       </tr>
 
@@ -82,7 +74,7 @@
 
       <tr>
         <td></td>
-        <td class="link" valign="top">change password</td>
+        <td class="link" valign="top"> <%= link_to 'change password',  edit_user_password_path(@user)%> </td>
       </tr>
 
       <tr>
