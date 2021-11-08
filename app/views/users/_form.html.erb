@@ -1,11 +1,5 @@
 <%= form_with(model: user, url: users_update_path(@user), method: :put) do |form| %>
-    <table>
-      <% if @user.email == "" %>
-        <tr valign="center"><a class="comment"> Please put a valid address in the email field, or we won't be able to send you a new password if you forget yours. Your address is only visible to you and us. Crawlers and other users can't see it.</a></tr>
-      <% end %>
-    </table>
     
-
    <table>
 
       <tr>
@@ -93,7 +87,7 @@
       
       <tr>
         <td></td>
-        <td valign="top"> <a class="link"> favorite submissions</a> <a> / </a> <a class="link"> comments </a> <em class= "c-gray"> (public) </em> </td>
+        <td valign="top"> <a class="link"> favorite submissions</a> <a> / </a> <a class="link"> comments</a> <em class= "c-gray"> (public) </em> </td>
       </tr>
 
       <tr>

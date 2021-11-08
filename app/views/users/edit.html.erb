@@ -1,5 +1,10 @@
-<%= render 'form', user: @user %>
+<table>
+      <% if @user.email == "" %>
+        <tr valign="center"><a class="email_comment"> Please put a valid address in the email field, or we won't be able to send you a new password if you forget yours. Your address is only visible to you and us. Crawlers and other users can't see it.</a></tr>
+      <% end %>
+    </table>
 
+<%= render 'form', user: @user %>
 
 
 
