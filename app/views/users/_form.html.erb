@@ -1,6 +1,4 @@
-<%=@user.inspect%>
 <%= form_with(model: user, url: users_update_path(@user), method: :put) do |form| %>
-<%=@user.inspect%>
     <table>
       <% if @user.email == "" %>
         <tr valign="center"><a class="comment"> Please put a valid address in the email field, or we won't be able to send you a new password if you forget yours. Your address is only visible to you and us. Crawlers and other users can't see it.</a></tr>
@@ -39,7 +37,7 @@
         <td></td>
         <td><a class="comment">Only admins see your email below. To share publicly, add to the 'about' box.</a></td>
       </tr>
-      <%= @user.inspect%>
+      
       <tr>
        <div class="field">
          <td class='c-gray' valign="top"> email: </td>
