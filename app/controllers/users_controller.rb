@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
 
   def edit
-    puts "dentro de edit"
-    puts @user.inspect
   end
 
   def show
