@@ -13,7 +13,7 @@
           <%else%>
             <%= link_to contribution.title ,  contribution %>
           <% end %>
-          <p> (<%= contribution.user.user_name%>) </p>
+          <p> <%=link_to contribution.user.user_name, users_edit_url(contribution.user)%> </p>
         </div>
         <div class="contribution-info">
           <p><%= contribution.points %> points </p>
