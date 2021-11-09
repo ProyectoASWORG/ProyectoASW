@@ -1,8 +1,6 @@
-<%@comments = Comment.where(contribution_id: current_contribution.id).order(created_at: :desc) %>
+<li>
 
-<% @comments.each.with_index do |comment, index| %>
-    <div class="comment-item">
-      
+   <div class="comment-item">
       <div class="comment-info">
         <%= comment.user.email %>
         <% from_time = Time.now %>
@@ -15,12 +13,24 @@
             <%=link_to 'Delete', comment, method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
       </div>
+    
       
       <br>
       <div class="comment-text">
         <%= comment.text%> 
       </div>
+  
+ <div class="comment-reply">
+        <% @comment = comment %>
+        <%= link_to 'reply' , reply_comment_path(comment)%> 
+      </div>
+
+  <ul>
+      <%= render partial: 'comments/comment', collection: comment.replays %>
+  </ul>
+
+</li>
+
+
       
-      <div class = 
-    </div> 
-<% end %>
+     

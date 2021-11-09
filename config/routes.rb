@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments do
+    get :reply, on: :member
+  end
   resources :contributions do
     get :show_news, on: :collection
   end

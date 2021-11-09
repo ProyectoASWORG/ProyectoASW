@@ -18,7 +18,12 @@
 
   <div class="field">
     <%= form.label :contribution_id%>
-    <%= form.text_field :contribution_id%>
+    <%= form.text_field :contribution_id, value: @comment.contribution_id, type: :hidden%>
+  </div>
+  
+  <div class="field">
+    <%= form.label :contribution_id%>
+    <%= form.text_field :contribution_id, value: @comment.contribution_id, type: :hidden%>
   </div>
 
   <div class="actions">

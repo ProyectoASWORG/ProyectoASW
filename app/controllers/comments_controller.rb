@@ -68,6 +68,13 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  
+  def reply
+      @comment = Comment.find(params[:id])
+      @comment_new = Comment.new
+  end
 
   
   #Checks if the user trying to modify a comment is the one that created that comment

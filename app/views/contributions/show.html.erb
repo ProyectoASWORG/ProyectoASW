@@ -21,4 +21,4 @@
 <%= link_to 'Back', contributions_path %>
 
 <%=  render "comments/in_contribution_form" %>
-<%=  render "comments/comments_list", current_contribution: @contribution %>
+<%=  render partial: 'comments/comment', collection: @contribution.comments, as: :comment %>
