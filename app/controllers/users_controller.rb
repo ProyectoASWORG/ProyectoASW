@@ -2,6 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
 
   def edit
+    respond_to do |format|
+      if current_user.id == @user.id
+        format.html { render :edit }
+        format.json { render :edit, status: :ok, location: @user }
+      else
+        format.html { redirect_to users_show_url(@user) }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
