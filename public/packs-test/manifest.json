@@ -1,14 +1,24 @@
 {
-  "application.js": "/packs-test/js/application-e7940745a05874b9b7bd.js",
-  "application.js.map": "/packs-test/js/application-e7940745a05874b9b7bd.js.map",
+  "application.js": "/packs-test/js/application-a3a5bf5dbfb45aaf9e6a.js",
+  "application.js.map": "/packs-test/js/application-a3a5bf5dbfb45aaf9e6a.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs-test/js/application-e7940745a05874b9b7bd.js"
+        "/packs-test/js/application-a3a5bf5dbfb45aaf9e6a.js"
       ],
       "js.map": [
-        "/packs-test/js/application-e7940745a05874b9b7bd.js.map"
+        "/packs-test/js/application-a3a5bf5dbfb45aaf9e6a.js.map"
+      ]
+    },
+    "manage_contribution_votes": {
+      "js": [
+        "/packs-test/js/manage_contribution_votes-ef34db46b14eea31db17.js"
+      ],
+      "js.map": [
+        "/packs-test/js/manage_contribution_votes-ef34db46b14eea31db17.js.map"
       ]
     }
-  }
+  },
+  "manage_contribution_votes.js": "/packs-test/js/manage_contribution_votes-ef34db46b14eea31db17.js",
+  "manage_contribution_votes.js.map": "/packs-test/js/manage_contribution_votes-ef34db46b14eea31db17.js.map"
 }
