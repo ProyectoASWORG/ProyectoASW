@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def edit
     respond_to do |format|
-      if current_user.id == @user.id
+      if user_signed_in? and current_user.id == @user.id
         format.html { render :edit }
         format.json { render :edit, status: :ok, location: @user }
       else
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update 
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.id == current_user.id and @user.update(user_params)
         format.html { redirect_to users_edit_url(@user)}
         format.json { render :edit, status: :ok, location: @user }
       else
