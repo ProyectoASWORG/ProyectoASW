@@ -2,7 +2,9 @@ li{list-style: none;}
 a{text-decoration: none;}
 p{margin:0px;}
 .c-gray{color: gray !important}
-
+.c-orange{color: orange !important}
+.m-5{margin: 5px;}
+.font-sm{font-size:11px;}
 
 body {
     font-family: Verdana, Geneva, sans-serif;

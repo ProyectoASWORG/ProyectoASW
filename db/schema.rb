@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_133147) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "contribution_id"
-    t.string "points"
+    t.string "points", default: "0"
   end
 
   create_table "comments_users", id: false, force: :cascade do |t|

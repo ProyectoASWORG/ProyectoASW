@@ -17,6 +17,10 @@ class CommentsController < ApplicationController
   def show
   end
 
+  def show_comments
+    @comments = Comment.where(user_id: params[:id])
+  end
+
   # GET /comments/new
   def new
     @comment = Comment.new

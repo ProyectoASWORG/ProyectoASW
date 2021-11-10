@@ -1,0 +1,12 @@
+<div >
+    <div class="comment-item-container font-sm">
+        <span class="c-orange m-5">*</span>
+        <p class="c-gray m-5"><%= comment.points %> points</p>
+        <p class="c-gray m-5">by <%= link_to comment.user.user_name, users_edit_path(comment.user) %></p>
+        <p class="c-gray m-5"> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago </p>
+    </div>
+    <div class="reply-link">
+        <p class="font-sm"><%= comment.text %></p>
+        <small> <%= link_to 'reply' , reply_comment_path(comment)%>  </small>
+    </div>
+</div>
