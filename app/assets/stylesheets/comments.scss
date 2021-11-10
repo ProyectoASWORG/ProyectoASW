@@ -4,9 +4,11 @@
 
 
 .comment-item {
+    list-style-type: none;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 10pt;
     color: #828282;
+    padding-left: 15px;
 }
 
 .comment-info {
@@ -25,4 +27,12 @@
     font-size: 9pt;
     color: #000000;
     overflow-wrap: anywhere;
+}
+
+li {
+   list-style-type: none; 
+}
+
+a {
+   color:inherit ;
 }
