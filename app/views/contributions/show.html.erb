@@ -1,3 +1,4 @@
+
 <div class="contribution">
   <p style="margin-left: 10px; margin-top:15px">
     <%= image_tag "grayarrow.gif", id:@contribution.id,
@@ -19,6 +20,10 @@
       <p style="margin-top:7px"><%= @contribution.text %></p>
   </div>
 </div>
+
+<%=  render "comments/in_contribution_form" %>
+<%=  render partial: 'comments/comment', collection: @contribution.comments, as: :comment %>
+
 
 <script>
     like_contribution = (id) =>{
@@ -42,7 +47,6 @@
         })
 
     }
-
     dislike_contribution = (id) =>{
         var arrow = document.getElementById(id);
         arrow.style.visibility = "visible";

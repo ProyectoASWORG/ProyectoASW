@@ -1,0 +1,36 @@
+ <%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+ <div class="comment-info">
+        <%= @comment.user.email %>
+        <% from_time = Time.now %>
+        <% to_time = @comment.created_at %>
+        <% time_passed = distance_of_time_in_words(from_time, to_time) %>
+         (<%= time_passed %> ago)  
+        
+      </div>
+      
+      <div class="comment-text">
+        <%= @comment.text%> 
+      </div>
+      
+   
+      <%= form_with(model: @comment_new, url: comments_path) do |form| %>
+      
+      <div class="field">
+        <%= form.text_area :text %>
+      </div>
+    
+      <div class="field">
+        <%= form.text_field :contribution_id, value: @comment.contribution_id, type: :hidden%>
+      </div>
+      
+      <div class="field">
+        <%= form.text_field :replayedComment_id, value: @comment.id, type: :hidden%>
+      </div>
+      
+      <div class="actions">
+        <%= form.submit :"reply" %>
+      </div>
+    <% end %>
+      
+<%= link_to 'Back', comments_path %>

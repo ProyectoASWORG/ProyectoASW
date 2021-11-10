@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :comments do
     put :like, on: :member 
     put :dislike, on: :member
+    get :reply, on: :member
   end
   resources :contributions do
     put :like, on: :member 

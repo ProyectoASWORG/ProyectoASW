@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% if comment.replayedComment_id.nil? %>
+<li>
+   <div class="comment-item">
+      <div class="comment-info" id = "<%= comment.id %>" >
+        <%if comment.user == current_user %>
+          <%= link_to comment.user.user_name , users_edit_path(comment.user.id) %>
+        <%else %>
+          <%= link_to comment.user.user_name , users_show_path(comment.user.id) %>
+        <%end%>
+        <%= comment.user.user_name %>
+        <% from_time = Time.now %>
+        <% to_time = comment.created_at %>
+        <% time_passed = distance_of_time_in_words(from_time, to_time) %>
+         (<%= time_passed %> ago)  
+         
+        <%if comment.user == current_user %>
+            <%=link_to 'Edit', edit_comment_path(comment) %>
+            <%=link_to 'Delete', comment, method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
+      </div>
+    
+      
+      <br>
+      <div class="comment-text">
+        <%= comment.text%> 
+      </div>
+  
+ <div class="comment-reply">
+        <% @comment = comment %>
+        <small> <%= link_to 'reply' , reply_comment_path(comment)%>  </small>
+      </div>
+  <ul>
+      <%= render partial: 'comments/comment_reply', collection: comment.replays, as: :comment %>
+  </ul>
+
+</li>
+<% end %>
+      
+     
