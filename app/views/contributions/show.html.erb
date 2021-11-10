@@ -1,8 +1,8 @@
 
 <div class="contribution">
   <p style="margin-left: 10px; margin-top:15px">
-    <%= image_tag "grayarrow.gif", id:@contribution.id,
-                  style:"cursor:pointer;#{liked_contribution(@contribution.id) ? "visibility:hidden":""}", onClick:"like_contribution(#{@contribution.id})" %>
+      <%= image_tag "grayarrow.gif", id:@contribution.id,
+                    style:"cursor:pointer;#{liked_contribution(@contribution.id) ? "visibility:hidden":""}", onClick:"like_contribution(#{@contribution.id})" %>
   </p>
   <div style="margin-top: 15px; margin-bottom:20px; margin-left:15px">
     <div class="contribution-title">
@@ -11,11 +11,10 @@
     </div>
       <small class = "contribution-body">
         <%=@contribution.points%> points by
-        <%=link_to @contribution.user.user_name%>
-        at
-        <%=link_to @contribution.created_at, @contribution%>
+        <%=link_to @contribution.user.user_name, users_edit_url(@contribution.user), class: "c-gray"%>
+        <%=link_to distance_of_time_in_words(Time.now, @contribution.created_at), @contribution%> ago
           |
-        <%= link_to 'comments', @contribution%>
+        <%= link_to 'discuss', @contribution%>
       </small>
       <p style="margin-top:7px"><%= @contribution.text %></p>
   </div>
