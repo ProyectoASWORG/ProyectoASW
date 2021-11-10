@@ -38,15 +38,8 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-
-    #TODO: change this to redirect if user is not logged in
-    ################################################################
-
-    ################################################################
-    
+   
     @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
-    puts @contribution.inspect
-    puts current_user.inspect
 
     if @contribution.url.blank?
       current_user.contributions << @contribution

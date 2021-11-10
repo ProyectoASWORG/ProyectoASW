@@ -16,7 +16,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     get new_comment_url
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should create comment" do
@@ -25,26 +25,18 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       post comments_url, params: { comment: { text: @comment.text, contribution_id: @comment.contribution_id} }
     end
 
-    assert_redirected_to comment_url(Comment.last) 
+    assert_redirected_to contribution_url(@comment.contribution_id) 
   end
 
 
 
   test "should show comment" do
     get comment_url(@comment)
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should get edit" do
     get edit_comment_url(@comment)
-    assert_response :success
-  end
-
-  test "should destroy comment" do
-    assert_difference('Comment.count', -1) do
-      delete comment_url(@comment)
-    end
-
-    assert_redirected_to comments_url
+    assert_response :redirect
   end
 end

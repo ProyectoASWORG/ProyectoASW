@@ -35,7 +35,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    puts @user.inspect
   end
 
 end
