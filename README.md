@@ -9,6 +9,12 @@ Students:
 
 * Rodríguez, Daniel
 * Sabat, Pau
-* Daniel
+* Escribane, Daniel
 * Mariana
+
+Link de la aplicación en producción: https://aswapplication.herokuapp.com
+Link de la aplicación en test: https://testaswapplication.herokuapp.com/
+
+
+Link Taiga: https://tree.taiga.io/project/mymeds-asw-hackernews/timeline
 
