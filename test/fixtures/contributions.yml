@@ -1,9 +1,9 @@
 
-contribution_one:
+one:
   id: 1
-  url: url de la contribucion
+  url: https://www.google.com 
   text: 
   title: titulo de la contribución
   user_id: 1
-  points: 0
+  points: 10
   contribution_type: url

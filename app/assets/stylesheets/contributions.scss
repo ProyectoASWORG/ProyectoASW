@@ -1,3 +1,19 @@
+p {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #828282;
+}
+
+.contribution-body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #828282;
+}
+li {
+  color: black;
+  text-decoration: none;
+}
+
 p{
     margin:0px;
 }
@@ -19,8 +35,13 @@ p{
 }
 
 .contribution-info{
+    display:flex;
     color:gray;
     font-size:8pt;
+}
+
+.contribution-info p{
+    margin:2px;
 }
 
 .contribution-title{

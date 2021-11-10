@@ -33,6 +33,7 @@ end
 
 group :production, :test do
   gem 'pg'
+  gem 'rack-cors'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

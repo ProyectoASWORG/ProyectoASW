@@ -9,6 +9,16 @@
       "js.map": [
         "/packs/js/application-be412d64645010827f4e.js.map"
       ]
+    },
+    "manage_contribution_votes": {
+      "js": [
+        "/packs/js/manage_contribution_votes-3842cb7cb7466c5ede5f.js"
+      ],
+      "js.map": [
+        "/packs/js/manage_contribution_votes-3842cb7cb7466c5ede5f.js.map"
+      ]
     }
-  }
+  },
+  "manage_contribution_votes.js": "/packs/js/manage_contribution_votes-3842cb7cb7466c5ede5f.js",
+  "manage_contribution_votes.js.map": "/packs/js/manage_contribution_votes-3842cb7cb7466c5ede5f.js.map"
 }

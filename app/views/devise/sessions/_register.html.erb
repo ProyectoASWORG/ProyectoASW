@@ -1,0 +1,35 @@
+<h2>Create Account</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+
+  <div class="field input-field">
+    <%= f.label :user_name %><br />
+    <div class="input">
+      <%= f.text_field :user_name %>
+      <% if resource.errors[:user_name].length > 0 %>
+        <%= show_errors(resource, :user_name) %>
+      <%end%>
+    </div>
+  </div>
+
+  <div class="field input-field">
+    <%= f.label :password %>
+    <div class="input">
+      <%= f.password_field :password %>
+      <% if resource.errors[:encrypted_password].length > 0 %>
+        Something went wrong with the password ...
+      <% end %>
+    </div>
+  </div>
+
+  <!-- <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div> -->
+
+  <div class="actions">
+    <%= f.submit "Create account" %>
+  </div>
+<% end %>
+
