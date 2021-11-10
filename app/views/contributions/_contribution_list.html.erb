@@ -1,3 +1,5 @@
-<% @contributions.each.with_index do |contribution, index| %>
-  <%= render partial: 'contribution_item', locals: {contribution: contribution, index: index} %>
-<% end %>
+<div class="contribution-list">
+  <% @contributions.each.with_index do |contribution, index| %>
+    <%= render partial: 'contribution_item', locals: {contribution: contribution, index: index} %>
+  <% end %>
+</div>
