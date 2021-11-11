@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2021_11_11_185036) do
     t.string "full_name"
     t.string "uid"
     t.string "avatar_url"
-    t.index "\"reset_password_token\"", name: "index_users_on_reset_password_token", unique: true
   end
 
 end
