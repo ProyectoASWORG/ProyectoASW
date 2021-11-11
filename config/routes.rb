@@ -3,11 +3,13 @@ Rails.application.routes.draw do
     put :like, on: :member 
     put :dislike, on: :member
     get :reply, on: :member
+    get :show_comments, on: :member, as: 'show'
   end
   resources :contributions do
     put :like, on: :member 
     put :dislike, on: :member
     get :show_news, on: :collection
+    get :show_ask, on: :collection
   end
   devise_for :users
   get 'contribution/:id', to: 'contributions#show_one'

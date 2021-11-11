@@ -28,3 +28,12 @@
     color: #000000;
     overflow-wrap: anywhere;
 }
+
+.comment-item-container{
+    display:flex;
+    align-items:center;
+    padding-left:5px;
+}
+.reply-link{
+    padding-left:2em;
+}

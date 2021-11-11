@@ -1,0 +1,6 @@
+<div class="comments-list">
+
+    <% comments.each.with_index do |comment, index| %>
+        <%= render partial: 'comment_item', locals: {comment: comment, index: index}%>
+    <%end%>
+</div>
