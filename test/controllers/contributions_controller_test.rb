@@ -11,7 +11,7 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "like contribution" do
-    post user_session_url, params: { user: { user_name: @user.user_name, password: @user.password } }
+    post user_session_url, params: { user: { user_name: @user.full_name, password: @user.password } }
     assert_difference "Contribution.find(@contribution.id).points", 1 do
       put like_contribution_path(@contribution)
     end
@@ -21,7 +21,7 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
 
   test "dislike contribution" do
     
-    post user_session_url, params: { user: { user_name: @user.user_name, password: @user.password } }
+    post user_session_url, params: { user: { user_name: @user.full_name, password: @user.password } }
     assert_difference "Contribution.find(@contribution.id).points", -1 do
       put dislike_contribution_path(@contribution)
     end
