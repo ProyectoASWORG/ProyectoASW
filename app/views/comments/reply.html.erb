@@ -1,11 +1,11 @@
  <%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
 
  <div class="comment-info">
-        <%= @comment.user.email %>
+        <p><%= @comment.user.user_name %> </p>
         <% from_time = Time.now %>
         <% to_time = @comment.created_at %>
         <% time_passed = distance_of_time_in_words(from_time, to_time) %>
-         (<%= time_passed %> ago)  
+        <p> (<%= time_passed %> ago) </p>   
         
       </div>
       
@@ -32,5 +32,4 @@
         <%= form.submit :"reply" %>
       </div>
     <% end %>
-      
-<%= link_to 'Back', comments_path %>
+
