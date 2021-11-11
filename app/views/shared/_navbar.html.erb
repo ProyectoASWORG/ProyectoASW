@@ -1,5 +1,5 @@
 <div class="nav-bar-container">
-    <% if request.original_url == "http://localhost:3000/contributions/new" %>
+    <% if current_page?(new_contribution_url) %>
        <ul class="nav-bar">
            <li class="navbar-item">
                <%= link_to contributions_url do %>
@@ -18,14 +18,19 @@
             <li class="navbar-item">
                 <%= link_to "Haker News", contributions_url %>
             </li>
-            <li class="navbar-item">welcome</li>
             <li class="navbar-item">
                 <%= link_to "news", show_news_contributions_url %>
             </li>
-            <li class="navbar-item">threads</li>
+            <%if user_signed_in?%>
+            <li class="navbar-item">
+                <%= link_to "threads", show_comment_url(current_user) %>
+            </li>
+            <%end%>
             <li class="navbar-item">past</li>
             <li class="navbar-item">comments</li>
-            <li class="navbar-item">ask</li>
+            <li class="navbar-item">
+                <%= link_to "ask", show_ask_contributions_path %>
+            </li>
             <li class="navbar-item">show</li>
             <li class="navbar-item">jobs</li>
             <li class="navbar-item">
@@ -34,7 +39,10 @@
         </ul>
         <ul class="nav-bar-auth">
             <% if user_signed_in? %>
-                <li class="navbar-item" style="overflow-wrap:anywhere;"><p><%= current_user.email %></p></li>
+                <li class="navbar-item" style="overflow-wrap:anywhere;">
+                    <%= link_to current_user.user_name, users_edit_path(current_user) %>
+                    (<%=current_user.karma%>)
+                </li>
                 <li class="navbar-item">
                     <%= link_to "Log Out", destroy_user_session_url, method: :delete %>
                 </li>

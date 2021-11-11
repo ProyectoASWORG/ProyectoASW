@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: "texto primer comentario" 
+  replayedComment_id: 
+  contribution_id: 1
+
+two:
+  text: "texto segundo comentario" 
+  replayedComment_id: 
+  contribution_id: 1

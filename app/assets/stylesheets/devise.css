@@ -1,0 +1,15 @@
+.login-container{
+    padding: 1em;
+}
+.input-field{
+    display:flex;
+    margin-bottom:5px;
+}
+
+.input-field label{
+    min-width: 100px;
+}
+
+.input-field div{
+    display:grid;
+}

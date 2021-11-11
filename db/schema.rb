@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_185203) do
+ActiveRecord::Schema.define(version: 2021_11_11_071533) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "text"
+    t.string "user_id"
+    t.string "replayedComment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "contribution_id"
+    t.integer "points", default: 0
+  end
+
+  create_table "comments_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
+  end
 
   create_table "contributions", force: :cascade do |t|
     t.string "url"
@@ -23,6 +38,11 @@ ActiveRecord::Schema.define(version: 2021_10_18_185203) do
     t.string "contribution_type"
   end
 
+  create_table "contributions_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "contribution_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -31,7 +51,14 @@ ActiveRecord::Schema.define(version: 2021_10_18_185203) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.string "user_name"
+    t.integer "karma", default: 0
+    t.string "about", default: ""
+    t.boolean "show_dead", default: false
+    t.boolean "no_procrast", default: false
+    t.integer "max_visit", default: 20
+    t.integer "min_away", default: 180
+    t.integer "delay", default: 0
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

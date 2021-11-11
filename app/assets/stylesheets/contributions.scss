@@ -1,5 +1,11 @@
-p{
-    margin:0px;
+.contribution-list{
+    margin-left:5px;
+}
+
+.contribution-body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #828282;
 }
 
 .contribution{
@@ -19,8 +25,13 @@ p{
 }
 
 .contribution-info{
+    display:flex;
     color:gray;
     font-size:8pt;
+}
+
+.contribution-info p{
+    margin:2px;
 }
 
 .contribution-title{
