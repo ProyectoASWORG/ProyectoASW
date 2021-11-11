@@ -20,6 +20,7 @@ class ContributionsController < ApplicationController
   # GET /contributions/show_news
   def show_news
     @contributions = Contribution.all.order(created_at: :desc)
+    render :index
   end
 
   def show_one
@@ -28,7 +29,12 @@ class ContributionsController < ApplicationController
 
   def show_ask
     @contributions = Contribution.where(contribution_type: "ask").order(points: :desc)
-    render :show_news
+    render :index
+  end
+
+  def show_user
+    @contributions = Contribution.where(user_id: params[:id]).order(points: :desc)
+    render :index
   end
 
   # GET /contributions/new

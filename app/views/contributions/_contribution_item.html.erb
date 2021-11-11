@@ -1,7 +1,7 @@
     <div class="contribution">
       <div class="contribution-index">
         <p><%= index %>. 
-            <%if contribution.user.id == current_user.id %>
+            <%if user_signed_in? and contribution.user.id == current_user.id %>
                 <span class="c-orange">*</span>
             <%else%>
                 <%= image_tag "grayarrow.gif", id:contribution.id, 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     put :dislike, on: :member
     get :show_news, on: :collection
     get :show_ask, on: :collection
+    get :show_user, on: :member, as: 'show_user'
   end
   devise_for :users
   get 'contribution/:id', to: 'contributions#show_one'
