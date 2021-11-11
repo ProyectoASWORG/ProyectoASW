@@ -1,34 +1,40 @@
 <%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
 <% if comment.replayedComment_id.nil? %>
-<li>
-   <div class="comment-item">
-      <div class="comment-info" id = "<%= comment.id %>" >
+<li class = "comment-item">
+      <div class="comment-info"  >
+          <p>
+            <%= image_tag "grayarrow.gif", id:comment.id, 
+            style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id})" %>    
+          </p>
+          
         <%if comment.user == current_user %>
-          <%= link_to comment.user.user_name , users_edit_path(comment.user.id) %>
+          <%= link_to comment.user.user_name , users_edit_path(comment.user.id), class: "comment-link" %>
         <%else %>
-          <%= link_to comment.user.user_name , users_show_path(comment.user.id) %>
+          <%= link_to comment.user.user_name , users_show_path(comment.user.id), class: "comment-link" %>
         <%end%>
-        <%= comment.user.user_name %>
+        
         <% from_time = Time.now %>
         <% to_time = comment.created_at %>
         <% time_passed = distance_of_time_in_words(from_time, to_time) %>
-         (<%= time_passed %> ago)  
+         <p>(<%= time_passed %> ago)  </p>
          
+        <p style=<%= liked_comment(comment.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{comment.id}_unvote" %> onclick="dislike_comment(<%=comment.id%>)" >unvote | </p>
+        
         <%if comment.user == current_user %>
-            <%=link_to 'Edit', edit_comment_path(comment) %>
-            <%=link_to 'Delete', comment, method: :delete, data: {confirm: 'Are you sure?'} %>
-        <% end %>
-      </div>
-    
-      
+           <small>  <%=link_to 'Edit',  edit_comment_path(comment), class: "comment-link" %> </small>
+           <small>  <%=link_to 'Delete',  comment, method: :delete, data: {confirm: 'Are you sure?'}, class: "comment-link"%> </small>
+        <% end %> 
       <br>
+      
+      </div>
+      
       <div class="comment-text">
-        <%= comment.text%> 
+        <p> <%= comment.text%> </p> 
       </div>
   
- <div class="comment-reply">
+     <div class="comment-reply">
         <% @comment = comment %>
-        <small> <%= link_to 'reply' , reply_comment_path(comment)%>  </small>
+        <small> <%= link_to 'reply' ,  reply_comment_path(comment), class: "comment-link"%>  </small>
       </div>
   <ul>
       <%= render partial: 'comments/comment_reply', collection: comment.replays, as: :comment %>
@@ -36,5 +42,54 @@
 
 </li>
 <% end %>
+
+
+<script>
+like_comment = (id) =>{
+    var origin = window.location.origin;
+    var arrow = document.getElementById(id);
+    arrow.style.visibility = "hidden";
+    fetch(`${origin}/comments/${id}/like`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(response =>{
+      if(response.statusText === "Unprocessable Entity"){
+        var url = `${origin}/users/sign_in`
+        location.replace(url);
+      }else{
+        var unvote = document.getElementById(`${id}_unvote`);
+        unvote.style.display = "block";
+        location.reload();
+      }
+      
+    })
+
+}
+
+dislike_comment = (id) =>{
+    var origin = window.location.origin;
+    var arrow = document.getElementById(id);
+    arrow.style.visibility = "visible";
+    fetch(`${origin}/comments/${id}/dislike`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(response =>{
+
+      if(response.statusText === "Unprocessable Entity"){
+        var url = `${origin}/users/sign_in`;
+        location.replace(url);
+      }else{
+        var unvote = document.getElementById(`${id}_unvote`);
+        unvote.style.display = "none";
+        location.reload();
+      }
+    })
+}
+
+</script>
       
      
