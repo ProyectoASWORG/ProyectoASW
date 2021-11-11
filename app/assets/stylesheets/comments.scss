@@ -34,8 +34,17 @@
 .comment-reply{
     padding-left: 15px;
 
+
 }
 
 .comment-link {
     color:inherit ;
+
+.comment-item-container{
+    display:flex;
+    align-items:center;
+    padding-left:5px;
+}
+.reply-link{
+    padding-left:2em;
 }

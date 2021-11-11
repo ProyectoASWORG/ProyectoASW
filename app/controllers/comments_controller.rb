@@ -19,6 +19,10 @@ class CommentsController < ApplicationController
   def show
   end
 
+  def show_comments
+    @comments = Comment.where(user_id: params[:id])
+  end
+
   # GET /comments/new
   def new
     @comment = Comment.new
@@ -71,6 +75,7 @@ class CommentsController < ApplicationController
     end
   end
   
+
   # TODO: add logic to check if user is logged in before let make vote 
 def like 
   @comment = Comment.find(params[:id])
@@ -99,20 +104,20 @@ def dislike
   end
 end
   
+
   def reply
       @comment = Comment.find(params[:id])
       @comment_new = Comment.new
   end
-
   
+  private
   #Checks if the user trying to modify a comment is the one that created that comment
   
-  def correct_user
-    @comment = current_user.comments.find_by(id: params[:id])
-    redirect_to comments_path, notice: "Not Authorized To Modify This Comment" if @comment.nil?
-  end
+    def correct_user
+      @comment = current_user.comments.find_by(id: params[:id])
+      redirect_to comments_path, notice: "Not Authorized To Modify This Comment" if @comment.nil?
+    end
 
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])

@@ -26,6 +26,11 @@ class ContributionsController < ApplicationController
     @contribution = Contribution.find(params[:id])
   end
 
+  def show_ask
+    @contributions = Contribution.where(contribution_type: "ask").order(points: :desc)
+    render :show_news
+  end
+
   # GET /contributions/new
   def new
     @contribution = Contribution.new
@@ -38,15 +43,8 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-
-    #TODO: change this to redirect if user is not logged in
-    ################################################################
-
-    ################################################################
-    
+   
     @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
-    puts @contribution.inspect
-    puts current_user.inspect
 
     if @contribution.url.blank?
       current_user.contributions << @contribution
@@ -103,8 +101,6 @@ class ContributionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
 
 # TODO: add logic to check if user is logged in before let make vote 
 def like 
