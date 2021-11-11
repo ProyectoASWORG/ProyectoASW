@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index ]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
+  skip_before_action :verify_authenticity_token, only: [:like, :dislike]
+  
   
   
   # GET /comments
@@ -15,6 +17,10 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+  end
+
+  def show_comments
+    @comments = Comment.where(user_id: params[:id])
   end
 
   # GET /comments/new
@@ -69,22 +75,49 @@ class CommentsController < ApplicationController
     end
   end
   
+
+  # TODO: add logic to check if user is logged in before let make vote 
+def like 
+  @comment = Comment.find(params[:id])
+  @comment.points += 1
+  if @comment.save!
+    current_user.voted_comments << @comment
+    if current_user.save
+      head :ok
+    end
+  else
+    head :unprocessable_entity
+  end
+end
   
+def dislike 
+  @comment = Comment.find(params[:id])
+  @comment.points -= 1
   
+  if @comment.save
+    current_user.voted_comments.delete(@comment)
+    if current_user.save
+      head :ok
+    end
+  else
+    head :unprocessable_entity
+  end
+end
+  
+
   def reply
       @comment = Comment.find(params[:id])
       @comment_new = Comment.new
   end
-
   
+  private
   #Checks if the user trying to modify a comment is the one that created that comment
   
-  def correct_user
-    @comment = current_user.comments.find_by(id: params[:id])
-    redirect_to comments_path, notice: "Not Authorized To Modify This Comment" if @comment.nil?
-  end
+    def correct_user
+      @comment = current_user.comments.find_by(id: params[:id])
+      redirect_to comments_path, notice: "Not Authorized To Modify This Comment" if @comment.nil?
+    end
 
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])

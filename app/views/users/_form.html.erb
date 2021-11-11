@@ -72,12 +72,14 @@
 
       <tr>
         <td></td>
-        <td class="link" valign="top">submissions</td>
+        <td class="link" valign="top"> <%= link_to 'submissions', show_user_contribution_path(@user)%></td>
       </tr>
 
       <tr>
         <td></td>
-        <td class="link" valign="top">comments</td>
+        <td class="link" valign="top">
+          <%= link_to "comments", show_comment_path(@user) %>
+        </td>
       </tr>
 
       <tr>
