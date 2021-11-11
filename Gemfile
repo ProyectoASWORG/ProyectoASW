@@ -10,6 +10,9 @@ gem 'jbuilder',   '2.10.0'
 gem 'bootsnap',   '1.7.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'rexml'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 group :development do
   gem 'sqlite3', '1.4.2'
 end

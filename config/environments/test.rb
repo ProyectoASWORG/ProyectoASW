@@ -6,6 +6,8 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = '96715383090-50irgv29hlto877g5aijk5085cdocbce.apps.googleusercontent.com'
+  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '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'
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.cache_classes = false
