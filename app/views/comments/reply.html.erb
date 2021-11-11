@@ -1,7 +1,7 @@
  <%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
 
  <div class="comment-info">
-        <p><%= @comment.user.user_name %> </p>
+        <p> <%= link_to @comment.user.user_name , users_show_path(@comment.user.id), class: "comment-link" %> </p>
         <% from_time = Time.now %>
         <% to_time = @comment.created_at %>
         <% time_passed = distance_of_time_in_words(from_time, to_time) %>
