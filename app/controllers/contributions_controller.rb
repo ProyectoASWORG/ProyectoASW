@@ -27,7 +27,7 @@ class ContributionsController < ApplicationController
   end
 
   def show_ask
-    @contributions = Contribution.where(contribution_type: "ask").order(punctuation: :desc)
+    @contributions = Contribution.where(contribution_type: "ask").order(points: :desc)
     render :show_news
   end
 
