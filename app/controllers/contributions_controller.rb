@@ -3,7 +3,7 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
-  before_action :check_signed_in, only: [:like, :dislike] 
+  before_action :check_signed_in, only: [:like, :dislike]
 
   skip_before_action :verify_authenticity_token, only: [:like, :dislike]
   # GET /contributions
@@ -16,25 +16,14 @@ class ContributionsController < ApplicationController
   # GET /contributions/1.json
   def show
   end
-  
+
   # GET /contributions/show_news
   def show_news
     @contributions = Contribution.all.order(created_at: :desc)
-    render :index
   end
 
   def show_one
     @contribution = Contribution.find(params[:id])
-  end
-
-  def show_ask
-    @contributions = Contribution.where(contribution_type: "ask").order(points: :desc)
-    render :index
-  end
-
-  def show_user
-    @contributions = Contribution.where(user_id: params[:id]).order(points: :desc)
-    render :index
   end
 
   # GET /contributions/new
@@ -49,7 +38,7 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-   
+
     @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
 
     if @contribution.url.blank?
@@ -71,18 +60,43 @@ class ContributionsController < ApplicationController
           format.json { render :show, status: :ok, location: @contribution }
 
         else
-          current_user.contributions << @contribution
-          if current_user.save
-            format.html { redirect_to show_news_contributions_url }
-            format.json { render :show, status: :created, location: @contribution }
+          if !@contribution.text.blank?
+            @contribution_new = Contribution.new
+            @contribution_new.url = @contribution.url
+            @contribution_new.title = @contribution.title
+            @contribution_new.user_id = @contribution.user_id
+            @contribution_new.created_at = @contribution.created_at
+            @contribution_new.updated_at = @contribution.updated_at
+            @contribution_new.points = @contribution.points
+            @contribution_new.contribution_type = @contribution.contribution_type
+
+            current_user.contributions << @contribution_new
+
+
+            current_user.comments.create({ :text => @contribution.text, :contribution_id => @contribution_new.id, :replayedComment_id => nil})
+            @comment = @contribution_new.comments.create({ :text => @contribution.text, :contribution_id => @contribution_new.id, :replayedComment_id => nil})
+            if current_user.save
+              format.html { redirect_to @contribution_new }
+              format.json { render :show, status: :created, location: @contribution_new}
+            else
+              format.html { redirect_to new_contribution_path, alert: @contribution_new.errors.full_messages.join(', ') }
+              format.json { render json: @contribution_new.errors, status: :unprocessable_entity }
+            end
           else
-            format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
-            format.json { render json: @contribution.errors, status: :unprocessable_entity }
+            current_user.contributions << @contribution
+            if current_user.save
+              format.html { redirect_to show_news_contributions_url }
+              format.json { render :show, status: :created, location: @contribution }
+            else
+              format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
+              format.json { render json: @contribution.errors, status: :unprocessable_entity }
+            end
           end
         end
       end
     end
   end
+
 
   # PATCH/PUT /contributions/1
   # PATCH/PUT /contributions/1.json
@@ -108,49 +122,51 @@ class ContributionsController < ApplicationController
     end
   end
 
-# TODO: add logic to check if user is logged in before let make vote 
-def like 
-  @contribution.points += 1
-  if @contribution.save
-    current_user.voted_contributions << @contribution
-    if current_user.save
-      head :ok
+
+
+  # TODO: add logic to check if user is logged in before let make vote
+  def like
+    @contribution.points += 1
+    if @contribution.save
+      current_user.voted_contributions << @contribution
+      if current_user.save
+        head :ok
+      end
+    else
+      head :unprocessable_entity
     end
-  else
-    head :unprocessable_entity
   end
-end
-  
-def dislike 
-  
-  @contribution.points -= 1
-  
-  if @contribution.save
-    current_user.voted_contributions.delete(@contribution)
-    if current_user.save
-      head :ok
+
+  def dislike
+
+    @contribution.points -= 1
+
+    if @contribution.save
+      current_user.voted_contributions.delete(@contribution)
+      if current_user.save
+        head :ok
+      end
+    else
+      head :unprocessable_entity
     end
-  else
-    head :unprocessable_entity
   end
-end
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contribution
-      @contribution = Contribution.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contribution
+    @contribution = Contribution.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def contribution_params
-      params.require(:contribution).permit(:contribution_type, :text, :title, :url)
-    end
+  # Only allow a list of trusted parameters through.
+  def contribution_params
+    params.require(:contribution).permit(:contribution_type, :text, :title, :url)
+  end
 
-    def check_signed_in
-      if !user_signed_in?
-        head :unprocessable_entity
-        return
-      end
+  def check_signed_in
+    if !user_signed_in?
+      head :unprocessable_entity
+      return
     end
+  end
 end
