@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     put :dislike, on: :member
     get :reply, on: :member
     get :show_comments, on: :member, as: 'show'
+    get :show_upvoted_comments, on: :member, as: 'show_upvoted'
   end
   resources :contributions do
     put :like, on: :member 
