@@ -1,19 +1,22 @@
     <div class="contribution">
       <div class="contribution-index">
-        <p><%= index %>. 
-            <%if user_signed_in? and contribution.user.id == current_user.id %>
-                <span class="c-orange">*</span>
-            <%else%>
-                <%= image_tag "grayarrow.gif", id:contribution.id, 
-                style:"cursor:pointer;#{liked_contribution(contribution.id) ? "visibility:hidden":""}", onClick:"like_contribution(#{contribution.id})" %>
-            <%end%>
+        <p>
+          <%if index != -1%>
+            <%= index %>. 
+          <%end%>
+          <%if user_signed_in? and contribution.user.id == current_user.id %>
+              <span class="c-orange">*</span>
+          <%else%>
+              <%= image_tag "grayarrow.gif", id:contribution.id, 
+              style:"cursor:pointer;#{liked_contribution(contribution.id) ? "visibility:hidden":""}", onClick:"like_contribution(#{contribution.id})" %>
+          <%end%>
         </p>
       </div>
       <div class="contribution-text">
         <div class="contribution-title">
           <%if contribution.url?%>
             <%= link_to contribution.title ,  contribution.url %>
-            <p class="c-gray"> (<%=link_to contribution.url, users_edit_url(contribution.user), class: "c-gray"%>) </p>
+            <p class="c-gray"> (<%=link_to contribution.url, contribution_path(contribution), class: "c-gray"%>) </p>
           <%else%>
             <%= link_to contribution.title ,  contribution %>
           <% end %>

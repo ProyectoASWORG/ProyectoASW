@@ -1,70 +1,8 @@
 
-<div class="contribution">
-  <p style="margin-left: 10px; margin-top:15px">
-      <%= image_tag "grayarrow.gif", id:@contribution.id,
-                    style:"cursor:pointer;#{liked_contribution(@contribution.id) ? "visibility:hidden":""}", onClick:"like_contribution(#{@contribution.id})" %>
-  </p>
-  <div style="margin-top: 15px; margin-bottom:20px; margin-left:15px">
-    <div class="contribution-title">
-      <a  href="<%= @contribution %>"><%= @contribution.title %>
-      </a>
-    </div>
-      <small class = "contribution-body">
-        <%=@contribution.points%> points by
-        <%=link_to @contribution.user.full_name, users_edit_url(@contribution.user), class: "c-gray"%>
-        <%=link_to distance_of_time_in_words(Time.now, @contribution.created_at), @contribution%> ago
-          |
-        <%= link_to 'discuss', @contribution%>
-      </small>
-      <p style="margin-top:7px"><%= @contribution.text %></p>
-  </div>
-</div>
 
+
+<%=  render partial: "contribution_item", locals: {contribution: @contribution, index: -1} %>
 <%=  render "comments/in_contribution_form" %>
 <%=  render partial: 'comments/comment', collection: @contribution.comments, as: :comment %>
 
 
-<script>
-    like_contribution = (id) =>{
-        var arrow = document.getElementById(id);
-        arrow.style.visibility = "hidden";
-        fetch(`http://localhost:3000/contributions/${id}/like`,{
-            method: 'GET',
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }).then(response =>{
-            if(response.statusText === "Unprocessable Entity"){
-                var url = `${window.location.origin}/users/sign_in`
-                location.replace(url);
-            }else{
-                var unvote = document.getElementById(`${id}_unvote`);
-                unvote.style.display = "block";
-                location.reload();
-            }
-
-        })
-
-    }
-    dislike_contribution = (id) =>{
-        var arrow = document.getElementById(id);
-        arrow.style.visibility = "visible";
-        fetch(`http://localhost:3000/contributions/${id}/dislike`,{
-            method: 'PUT',
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }).then(response =>{
-
-            if(response.statusText === "Unprocessable Entity"){
-                var url = `${window.location.origin}/users/sign_in`;
-                location.replace(url);
-            }else{
-                var unvote = document.getElementById(`${id}_unvote`);
-                unvote.style.display = "none";
-                location.reload();
-            }
-        })
-
-    }
-</script>

@@ -1,8 +1,14 @@
 <div >
     <div class="comment-item-container font-sm">
-        <span class="c-orange m-5">*</span>
+        <%if user_signed_in? and comment.user.id == current_user.id %>
+            <span class="c-orange">*</span>
+        <%else%>
+            <%= image_tag "grayarrow.gif", id:comment.id, 
+            style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id})" %>
+        <%end%>
         <p class="c-gray m-5"><%= comment.points %> points</p>
         <p class="c-gray m-5">by <%= link_to comment.user.full_name, users_edit_path(comment.user) %></p>
+        <p class="c-gray m-5" style=<%= liked_comment(comment.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{comment.id}_unvote" %> onclick="dislike_comment(<%=comment.id%>)" >| unvote | </p>
         <p class="c-gray m-5"> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago </p>
     </div>
     <div class="reply-link">
@@ -10,3 +16,53 @@
         <small> <%= link_to 'reply' , reply_comment_path(comment)%>  </small>
     </div>
 </div>
+
+<script>
+like_comment = (id) =>{
+    var origin = window.location.origin;
+    var arrow = document.getElementById(id);
+    arrow.style.visibility = "hidden";
+    fetch(`${origin}/comments/${id}/like`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(response =>{
+      if(response.statusText === "Unprocessable Entity"){
+        var url = `${origin}/users/sign_in`
+        location.replace(url);
+      }else{
+        var unvote = document.getElementById(`${id}_unvote`);
+        unvote.style.display = "block";
+        location.reload();
+      }
+      
+    })
+
+}
+
+dislike_comment = (id) =>{
+    var origin = window.location.origin;
+    var arrow = document.getElementById(id);
+    arrow.style.visibility = "visible";
+    fetch(`${origin}/comments/${id}/dislike`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }).then(response =>{
+
+      if(response.statusText === "Unprocessable Entity"){
+        var url = `${origin}/users/sign_in`;
+        location.replace(url);
+      }else{
+        var unvote = document.getElementById(`${id}_unvote`);
+        unvote.style.display = "none";
+        location.reload();
+      }
+    })
+}
+
+</script>
+      
+ 
