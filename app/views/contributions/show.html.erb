@@ -1,6 +1,5 @@
 
 
-
 <%=  render partial: "contribution_item", locals: {contribution: @contribution, index: -1} %>
 <%=  render "comments/in_contribution_form" %>
 <%=  render partial: 'comments/comment', collection: @contribution.comments, as: :comment %>

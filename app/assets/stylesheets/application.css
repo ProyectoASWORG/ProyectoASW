@@ -5,23 +5,15 @@ p{margin:0px;}
 .c-orange{color: orange !important}
 .m-5{margin: 5px;}
 .font-sm{font-size:11px;}
-
-body {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 10pt;
-}
-
-.content{
-    background-color: #f6f6ef;
-}
-
+body {font-family: Verdana, Geneva, sans-serif;font-size: 10pt;}
+.content{background-color: #f6f6ef;}
+.content-body{padding:10px;}
 .nav-bar-container{
     display:grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
     background-color: #ff6600;
 }
-
 .nav-bar,
 .nav-bar-auth{
     display:grid;
@@ -31,17 +23,12 @@ body {
     padding:0px;
     list-style: none;
 }
-
-.nav-bar{
-    grid-template-columns: repeat(4, auto);
-}
+.nav-bar{grid-template-columns: repeat(4, auto);}
 
 .nav-bar :first-child,
 .nav-bar-auth :first-child,
 .nav-bar-auth :nth-child(2),
-.nav-bar :nth-child(2){
-    border-left:none;
-}
+.nav-bar :nth-child(2){border-left:none;}
 
 .nav-bar :nth-child(2) a{
     font-size:14px;
@@ -89,5 +76,4 @@ body {
     .nav-bar-auth{
         grid-template-columns: auto auto;
     }
-    
 }
