@@ -10,8 +10,8 @@
         <p class="c-gray m-5">by <%= link_to comment.user.full_name, users_edit_path(comment.user) %></p>
         <p class="c-gray m-5" style=<%= liked_comment(comment.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{comment.id}_unvote" %> onclick="dislike_comment(<%=comment.id%>)" >| unvote | </p>
         <p class="c-gray m-5"> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago </p>
-        <% c = Contribution.find(comment.contribution_id)%>
-        <p class="c-gray m-5">on: <%= c.title %> </p>
+        <% contribucion = Contribution.find(comment.contribution_id)%>
+        <p class="c-gray m-5">on: <%= link_to contribucion.title, contribution_path(comment.contribution_id) %> </p>
     </div>
     <div class="reply-link">
         <p class="font-sm"><%= comment.text %></p>
