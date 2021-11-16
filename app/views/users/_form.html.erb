@@ -79,12 +79,16 @@
 
       <tr>
         <td></td>
-        <td class="link" valign="top">hidden</td>
+        <td valiclass="link" valign="top"> 
+          <%= link_to "upvoted submissions" %>
+        </td>
       </tr>
-      
+
       <tr>
         <td></td>
-        <td valign="top"> <a class="link"> favorite submissions</a> <a> / </a> <a class="link"> <%= link_to "comments", show_upvoted_comment_path(@user) %> </a> <em class= "c-gray"> (public) </em> </td>
+        <td valiclass="link" valign="top"> 
+          <%= link_to "upvoted comments", show_upvoted_comment_path(@user) %>
+        </td>
       </tr>
 
       <tr>
