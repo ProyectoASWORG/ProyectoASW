@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get :show_ask, on: :collection
     get :show_user, on: :member, as: 'show_user'
     get 'contribution/:id', to: 'contributions#show_one'
+    get :show_upvoted_contributions, on: :member, as: 'show_upvoted_ctb'
   end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do

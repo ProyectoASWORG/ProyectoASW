@@ -157,6 +157,16 @@ class ContributionsController < ApplicationController
     end
   end
 
+  def show_upvoted_contributions
+    @contributions = current_user.voted_contributions
+    respond_to do |format|
+      if @contributions
+        format.html { render "show_news" }
+        format.json { render :show, status: :created, location: @contribution }
+      end
+    end
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
