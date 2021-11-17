@@ -9,8 +9,8 @@ Students:
 
 * Rodríguez, Daniel
 * Sàbat, Pau  -  username: pausabat99
-* Escribane, Daniel
-* Mariana
+* Escribano, Daniel - username: dani-kjh
+* Shabanova, Mariana - username: mariianaSh
 
 Link de la aplicación en producción: https://aswapplication.herokuapp.com
 Link de la aplicación en test: https://testaswapplication.herokuapp.com/
