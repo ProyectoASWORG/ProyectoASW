@@ -3,9 +3,11 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
-  before_action :check_signed_in, only: [:like, :dislike]
+  # before_action :check_signed_in, only: [:like, :dislike]
+  before_action :get_user_from_token, only: [:like, :dislike]
 
   skip_before_action :verify_authenticity_token, only: [:like, :dislike]
+
   # GET /contributions
   # GET /contributions.json
   def index
@@ -132,40 +134,107 @@ class ContributionsController < ApplicationController
 
   # TODO: add logic to check if user is logged in before let make vote
   def like
-    auth_token = request.headers["Authorization"]
-    puts auth_token
-    @contribution.points += 1
-    if @contribution.save
-      current_user.voted_contributions << @contribution
-      if current_user.save
-        head :ok
+    begin
+      if @user.nil?
+        render json:{
+          error: "You need to be logged in to vote",
+          status: :unauthorized
+        }, status: :unauthorized
+      elsif @user.voted_contributions.include?(@contribution)
+        render json:{
+          error: "user already voted",
+          status: :unprocessable_entity
+        }, status: :unprocessable_entity
+      elsif @contribution.nil?
+        render json:{
+          error: "contribution not found",
+          status: :unprocessable_entity
+        }, status: :unprocessable_entity
+      else
+        @contribution.points += 1
+        if @contribution.save
+          @user.voted_contributions << @contribution
+          if @user.save
+            render json:{
+              message: "user voted",
+              status: :ok
+            }, status: :ok
+          end
+        else
+          render json:{
+            error: "error saving vote",
+            status: :unprocessable_entity
+          }, status: :unprocessable_entity
+        end
       end
-    else
-      head :unprocessable_entity
+    rescue => e
+      render json:{
+        error: e.message,
+        status: :unprocessable_entity
+      }, status: :unprocessable_entity
     end
   end
 
   def dislike
+    begin
+      if @user.nil?
+        render json:{
+          error: "user not authorized",
+          status: :unauthorized
+        }, status: :unauthorized
 
-    @contribution.points -= 1
+      elsif !@user.voted_contributions.include?(@contribution)
+        render json:{
+          error: "user not voted yet",
+          status: :unprocessable_entity
+        }, status: :unprocessable_entity
+      elsif @contribution.nil?
+        render json:{
+          error: "contribution not found",
+          status: :unprocessable_entity
+        }, status: :unprocessable_entity
+      else
+        @contribution.points -= 1
 
-    if @contribution.save
-      current_user.voted_contributions.delete(@contribution)
-      if current_user.save
-        head :ok
+        if @contribution.save
+          @user.voted_contributions.delete(@contribution)
+          if @user.save
+            render json:{
+              message: "user unvoted",
+              status: :ok
+            }, status: :ok
+          end
+        else
+          render json:{
+            error: "user not unvoted",
+            status: :unprocessable_entity
+          }, status: :unprocessable_entity
+        end
       end
-    else
-      head :unprocessable_entity
+    rescue => e
+      render json:{
+        error: e.message,
+        status: :unprocessable_entity
+      }, status: :unprocessable_entity
     end
   end
 
   def show_upvoted_contributions
-    @contributions = current_user.voted_contributions
-    respond_to do |format|
-      if @contributions
-        format.html { render "show_news" }
-        format.json { render :show, status: :created, location: @contribution }
+    begin
+      user = User.find(params[:id])
+      @contributions = user.voted_contributions
+      puts @contributions.inspect
+      respond_to do |format|
+        if @contributions
+          format.html { render :show_news }
+          format.json { render :json => @contributions, status: :ok}
+        end
       end
+    rescue => e
+      render json:{
+        error: e.message,
+        status: :unprocessable_entity
+      }, status: :unprocessable_entity
     end
   end
 
@@ -173,7 +242,11 @@ class ContributionsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_contribution
-    @contribution = Contribution.find(params[:id])
+    begin
+      @contribution = Contribution.find(params[:id])
+    rescue => e
+      @contribution = nil
+    end
   end
 
   # Only allow a list of trusted parameters through.
@@ -185,6 +258,17 @@ class ContributionsController < ApplicationController
     if !user_signed_in?
       head :unprocessable_entity
       return
+    end
+  end
+
+  def get_user_from_token
+    begin
+      header = request.headers['Authorization'].split(' ').last
+      auth_token = JWT.decode header, "secreto", true, { verify_iat: true, algorithm: 'HS256' }
+      user_id = auth_token[0]["user_id"]
+      @user = User.find(user_id)
+    rescue => e
+      @user = nil
     end
   end
 end

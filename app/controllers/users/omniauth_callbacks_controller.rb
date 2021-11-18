@@ -2,7 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     user = User.from_google(from_google_params)
     
-    jwt_payload = { user_id: user.id }
+    jwt_payload = { user_id: user.id, creation_time: Time.now.to_i }
     
     token = JWT.encode jwt_payload, "secreto", 'HS256'
     

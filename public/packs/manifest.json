@@ -1,24 +1,24 @@
 {
-  "application.js": "/packs/js/application-c52329f49d6b740975cd.js",
-  "application.js.map": "/packs/js/application-c52329f49d6b740975cd.js.map",
+  "application.js": "/packs/js/application-a2bc71cb8e8b7065e220.js",
+  "application.js.map": "/packs/js/application-a2bc71cb8e8b7065e220.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-c52329f49d6b740975cd.js"
+        "/packs/js/application-a2bc71cb8e8b7065e220.js"
       ],
       "js.map": [
-        "/packs/js/application-c52329f49d6b740975cd.js.map"
+        "/packs/js/application-a2bc71cb8e8b7065e220.js.map"
       ]
     },
     "manage-votations": {
       "js": [
-        "/packs/js/manage-votations-7859cd4d1746db4d96d0.js"
+        "/packs/js/manage-votations-d8e0e69d808670ac97a2.js"
       ],
       "js.map": [
-        "/packs/js/manage-votations-7859cd4d1746db4d96d0.js.map"
+        "/packs/js/manage-votations-d8e0e69d808670ac97a2.js.map"
       ]
     }
   },
-  "manage-votations.js": "/packs/js/manage-votations-7859cd4d1746db4d96d0.js",
-  "manage-votations.js.map": "/packs/js/manage-votations-7859cd4d1746db4d96d0.js.map"
+  "manage-votations.js": "/packs/js/manage-votations-d8e0e69d808670ac97a2.js",
+  "manage-votations.js.map": "/packs/js/manage-votations-d8e0e69d808670ac97a2.js.map"
 }
