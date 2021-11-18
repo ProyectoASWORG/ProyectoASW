@@ -13,6 +13,7 @@ gem 'rexml'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+gem 'jwt'
 group :development do
   gem 'sqlite3', '1.4.2'
 end
