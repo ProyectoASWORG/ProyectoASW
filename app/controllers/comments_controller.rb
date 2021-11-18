@@ -22,6 +22,17 @@ class CommentsController < ApplicationController
   def show_comments
     @comments = Comment.where(user_id: params[:id])
   end
+  
+   
+  def show_upvoted_comments
+    @comments = current_user.voted_comments
+    respond_to do |format|
+      if @comments 
+        format.html { render "show_comments" }
+        format.json { render :show, status: :created, location: @comment }
+      end
+    end
+  end
 
   # GET /comments/new
   def new

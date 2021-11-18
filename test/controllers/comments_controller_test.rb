@@ -20,7 +20,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create comment" do
-    post user_session_url, params: { user: { user_name: @user.user_name, password: @user.password } }
+    post user_session_url, params: { user: { user_name: @user.full_name, password: @user.password } }
     assert_difference('Comment.count') do
       post comments_url, params: { comment: { text: @comment.text, contribution_id: @comment.contribution_id} }
     end

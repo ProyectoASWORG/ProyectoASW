@@ -4,7 +4,7 @@
 
       <tr>
         <td class='c-gray' valign="top"> user:</td> 
-        <td class='current_username'><%= @user.user_name %></td> 
+        <td class='current_username'><%= @user.full_name%></td> 
       </tr>
 
       <tr>
@@ -67,11 +67,6 @@
 
       <tr>
         <td></td>
-        <td class="link" valign="top"> <%= link_to 'change password',  edit_user_registration_url%> </td>
-      </tr>
-
-      <tr>
-        <td></td>
         <td class="link" valign="top"> <%= link_to 'submissions', show_user_contribution_path(@user)%></td>
       </tr>
 
@@ -84,15 +79,15 @@
 
       <tr>
         <td></td>
-        <td class="link" valign="top">
-          <%=link_to "upvoted submissions"%>
+        <td class="link" valign="top"> 
+          <%= link_to "upvoted submissions", show_upvoted_ctb_contribution_url(@user) %>
         </td>
       </tr>
-      
+
       <tr>
         <td></td>
-        <td class="link" valign="top">
-          <%=link_to "upvoted comments"%>
+        <td class="link" valign="top"> 
+          <%= link_to "upvoted comments", show_upvoted_comment_path(@user) %>
         </td>
       </tr>
 

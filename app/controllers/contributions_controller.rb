@@ -20,12 +20,18 @@ class ContributionsController < ApplicationController
   # GET /contributions/show_news
   def show_news
     @contributions = Contribution.all.order(created_at: :desc)
+    render :index
   end
 
-  def show_one
-    @contribution = Contribution.find(params[:id])
+  def show_user
+    @contributions = Contribution.where(user_id: params[:id])
+    render :index
   end
 
+  def show_ask
+    @contributions = Contribution.where(contribution_type: "ask").order(points: :desc)
+    render :index
+  end
   # GET /contributions/new
   def new
     @contribution = Contribution.new
@@ -148,6 +154,16 @@ class ContributionsController < ApplicationController
       end
     else
       head :unprocessable_entity
+    end
+  end
+
+  def show_upvoted_contributions
+    @contributions = current_user.voted_contributions
+    respond_to do |format|
+      if @contributions
+        format.html { render "show_news" }
+        format.json { render :show, status: :created, location: @contribution }
+      end
     end
   end
 
