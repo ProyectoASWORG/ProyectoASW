@@ -1,6 +1,6 @@
 
 <%= stylesheet_link_tag 'contributions', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= form_with(model: contribution) do |form| %>
+<%= form_with(model: contribution, :url => create_contribution_contributions_path(current_user.token)) do |form| %>
   <br>
 
   <div class="field">

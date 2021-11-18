@@ -1,10 +1,10 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :edit, :update, :destroy, :like, :dislike]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
   # before_action :check_signed_in, only: [:like, :dislike]
-  before_action :get_user_from_token, only: [:like, :dislike]
+  before_action :get_user_from_token, only: [:like, :dislike, :create, :new]
 
   skip_before_action :verify_authenticity_token, only: [:like, :dislike]
 
@@ -36,7 +36,19 @@ class ContributionsController < ApplicationController
   end
   # GET /contributions/new
   def new
-    @contribution = Contribution.new
+    if @user.nil?
+      respond_to do |format|
+        format.html {redirect_to :contributions, notice: "You are not allowed to create new contributions"}
+        format.json {
+          render json: {
+            error: "user not found",
+            status: :unauthorized
+          }, status: :unauthorized 
+        }
+      end
+    else
+      @contribution = Contribution.new
+    end
   end
 
   # GET /contributions/1/edit
@@ -46,61 +58,79 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-
-    @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
-
-    if @contribution.url.blank?
-      current_user.contributions << @contribution
-      respond_to do |format|
-        if current_user.save
-          format.html { redirect_to show_news_contributions_url }
-          format.json { render :show, status: :created, location: @contribution }
-        else
-          format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
-          format.json { render json: @contribution.errors, status: :unprocessable_entity }
+    begin
+      if @user.nil?
+        respond_to do |format|
+          format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution' }
+          format.json {
+            render json: {
+              error: "user not found",
+              status: :unauthorized
+            }, status: :unauthorized
+          }
         end
-      end
-    else
-      @contribution_existing = Contribution.find_by_url(@contribution.url)
-      respond_to do |format|
-        if @contribution_existing.present?
-          format.html { redirect_to @contribution_existing}
-          format.json { render :show, status: :ok, location: @contribution }
+      else
+        @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
 
-        else
-          if !@contribution.text.blank?
-            @contribution_new = Contribution.new
-            @contribution_new.url = @contribution.url
-            @contribution_new.title = @contribution.title
-            @contribution_new.user_id = @contribution.user_id
-            @contribution_new.created_at = @contribution.created_at
-            @contribution_new.updated_at = @contribution.updated_at
-            @contribution_new.points = @contribution.points
-            @contribution_new.contribution_type = @contribution.contribution_type
-
-            current_user.contributions << @contribution_new
-
-
-            current_user.comments.create({ :text => @contribution.text, :contribution_id => @contribution_new.id, :replayedComment_id => nil})
-            @comment = @contribution_new.comments.create({ :text => @contribution.text, :contribution_id => @contribution_new.id, :replayedComment_id => nil})
-            if current_user.save
-              format.html { redirect_to @contribution_new }
-              format.json { render :show, status: :created, location: @contribution_new}
-            else
-              format.html { redirect_to new_contribution_path, alert: @contribution_new.errors.full_messages.join(', ') }
-              format.json { render json: @contribution_new.errors, status: :unprocessable_entity }
-            end
-          else
-            current_user.contributions << @contribution
-            if current_user.save
+        if @contribution.url.blank?
+          @user.contributions << @contribution
+          respond_to do |format|
+            if @user.save
               format.html { redirect_to show_news_contributions_url }
-              format.json { render :show, status: :created, location: @contribution }
+              format.json { render :json => @contribution, status: :created}
             else
               format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
               format.json { render json: @contribution.errors, status: :unprocessable_entity }
             end
           end
+        else
+          @contribution_existing = Contribution.find_by_url(@contribution.url)
+          respond_to do |format|
+            if @contribution_existing.present?
+              format.html { redirect_to @contribution_existing}
+              format.json { render json: @contribution_existing, status: :created}
+
+            else
+              if !@contribution.text.blank?
+                @contribution_new = Contribution.new
+                @contribution_new.url = @contribution.url
+                @contribution_new.title = @contribution.title
+                @contribution_new.user_id = @contribution.user_id
+                @contribution_new.created_at = @contribution.created_at
+                @contribution_new.updated_at = @contribution.updated_at
+                @contribution_new.points = @contribution.points
+                @contribution_new.contribution_type = @contribution.contribution_type
+
+                @user.contributions << @contribution_new
+
+
+                @user.comments.create({ :text => @contribution.text, :contribution_id => @contribution_new.id, :replayedComment_id => nil})
+                @comment = @contribution_new.comments.create({ :text => @contribution.text, :contribution_id => @contribution_new.id, :replayedComment_id => nil})
+                if @user.save
+                  format.html { redirect_to @contribution_new }
+                  format.json { render json: @contribution_new, status: :created}
+                else
+                  format.html { redirect_to new_contribution_path, alert: @contribution_new.errors.full_messages.join(', ') }
+                  format.json { render json: @contribution_new.errors, status: :unprocessable_entity }
+                end
+              else
+                @user.contributions << @contribution
+                if @user.save
+                  format.html { redirect_to show_news_contributions_url }
+                  format.json { render json: @contribution, status: :created }
+                else
+                  format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
+                  format.json { render json: @contribution.errors, status: :unprocessable_entity }
+                end
+              end
+            end
+          end
         end
+      end
+    rescue => e
+      respond_to do |format|
+        format.html { redirect_to new_contribution_path, alert: e.message }
+        format.json { render json: e.message, status: :unprocessable_entity }
       end
     end
   end
@@ -263,7 +293,13 @@ class ContributionsController < ApplicationController
 
   def get_user_from_token
     begin
-      header = request.headers['Authorization'].split(' ').last
+      header = request.headers['Authorization']
+      if header.nil?
+        header = params[:token]
+      else 
+        header = header.split(' ').last
+      end
+
       auth_token = JWT.decode header, "secreto", true, { verify_iat: true, algorithm: 'HS256' }
       user_id = auth_token[0]["user_id"]
       @user = User.find(user_id)
