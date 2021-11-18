@@ -64,6 +64,12 @@
         <td class='c-gray' valign="top"> delay:</td> 
         <td valign="top"> <%= form.text_field(:delay, size: '16') %> </td> 
       </tr>
+      
+      <tr>
+        <td class='c-gray' valign="top">Auth Token: </td>
+        <td valign="top"> <%= current_user.token %> </td> 
+
+      </tr>
 
       <tr>
         <td></td>

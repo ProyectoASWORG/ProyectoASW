@@ -1,12 +1,27 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     user = User.from_google(from_google_params)
-
+    
+    jwt_payload = { user_id: user.id }
+    
+    token = JWT.encode jwt_payload, "secreto", 'HS256'
+    
+    puts "Token: " + token
+    
+    decoded_token = JWT.decode token, "secreto", true, {algorithm: 'HS256'}
+    
+    puts "Decoded token: " + decoded_token.inspect
+    
     if user.present?
       sign_out_all_scopes
       flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in user 
-      redirect_to contributions_path
+      current_user.token = token
+      current_user.save
+      respond_to do |format|
+        format.html { redirect_to contributions_path }
+        format.json { render :json => token }
+      end
       return
     else
       flash[:alert] = t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
