@@ -6,12 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     token = JWT.encode jwt_payload, "secreto", 'HS256'
     
-    puts "Token: " + token
-    
-    decoded_token = JWT.decode token, "secreto", true, {algorithm: 'HS256'}
-    
-    puts "Decoded token: " + decoded_token.inspect
-    
     if user.present?
       sign_out_all_scopes
       flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
