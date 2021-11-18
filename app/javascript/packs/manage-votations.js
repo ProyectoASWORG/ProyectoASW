@@ -1,11 +1,12 @@
-like_contribution = (id) =>{
+like_contribution = (id,token) =>{
         var origin = window.location.origin;
         var arrow = document.getElementById(id);
         arrow.style.visibility = "hidden";
         fetch(`${origin}/contributions/${id}/like`,{
         method: 'PUT',
         headers:{
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            'Authorization': token
         }
         }).then(response =>{
         if(response.statusText === "Unprocessable Entity"){
@@ -21,14 +22,15 @@ like_contribution = (id) =>{
 
     }
 
-    dislike_contribution = (id) =>{
+    dislike_contribution = (id,token) =>{
         var origin = window.location.origin;
         var arrow = document.getElementById(id);
         arrow.style.visibility = "visible";
         fetch(`${origin}/contributions/${id}/dislike`,{
         method: 'PUT',
         headers:{
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            'Authorization': token
         }
         }).then(response =>{
 

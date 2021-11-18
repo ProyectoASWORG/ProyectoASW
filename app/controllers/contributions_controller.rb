@@ -132,6 +132,8 @@ class ContributionsController < ApplicationController
 
   # TODO: add logic to check if user is logged in before let make vote
   def like
+    auth_token = request.headers["Authorization"]
+    puts auth_token
     @contribution.points += 1
     if @contribution.save
       current_user.voted_contributions << @contribution
