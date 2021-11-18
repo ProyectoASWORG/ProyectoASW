@@ -6,7 +6,7 @@ class ContributionsController < ApplicationController
   # before_action :check_signed_in, only: [:like, :dislike]
   before_action :get_user_from_token, only: [:like, :dislike, :create, :new]
 
-  skip_before_action :verify_authenticity_token, only: [:like, :dislike]
+  skip_before_action :verify_authenticity_token, only: [:like, :dislike, :create, :new]
 
   # GET /contributions
   # GET /contributions.json
@@ -58,7 +58,11 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
+
     begin
+      if @format == "json" 
+        request.format = :json
+      end
       if @user.nil?
         respond_to do |format|
           format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution' }
@@ -296,6 +300,10 @@ class ContributionsController < ApplicationController
       header = request.headers['Authorization']
       if header.nil?
         header = params[:token]
+        if header.include? ".json"
+          @format = "json"
+          header.slice! ".json"
+        end
       else 
         header = header.split(' ').last
       end
