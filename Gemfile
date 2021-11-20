@@ -14,12 +14,18 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem 'jwt'
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
+
 group :development do
   gem 'sqlite3', '1.4.2'
 end
 
 group :development, :test do
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do

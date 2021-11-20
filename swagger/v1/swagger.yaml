@@ -1,0 +1,182 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/contributions/{token}":
+    parameters:
+    - name: token
+      in: path
+      type: string
+      description: token
+      required: true
+    post:
+      summary: create contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{id}/like":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: like contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{id}/dislike":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: dislike contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/show_news":
+    get:
+      summary: show_news contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/show_ask":
+    get:
+      summary: show_ask contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{id}/show_user":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_user contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{contribution_id}/contribution/{id}":
+    parameters:
+    - name: contribution_id
+      in: path
+      type: string
+      description: contribution_id
+      required: true
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_one contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{id}/show_upvoted_contributions":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_upvoted_contributions contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/new/{token}":
+    parameters:
+    - name: token
+      in: path
+      type: string
+      description: token
+      required: true
+    get:
+      summary: new contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions":
+    get:
+      summary: list contributions
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/new":
+    get:
+      summary: new contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{id}/edit":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: edit contribution
+      responses:
+        '200':
+          description: successful
+  "/contributions/{id}":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show contribution
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update contribution
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update contribution
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete contribution
+      responses:
+        '200':
+          description: successful
+  "/":
+    get:
+      summary: list contributions
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

@@ -35,6 +35,9 @@ class ContributionsController < ApplicationController
   end
   # GET /contributions/new
   def new
+    if @format == "json" 
+      request.format = :json
+    end
     if @user.nil?
       respond_to do |format|
         format.html {redirect_to :contributions, notice: "You are not allowed to create new contributions"}
@@ -63,7 +66,7 @@ class ContributionsController < ApplicationController
       end
       if @user.nil?
         respond_to do |format|
-          format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution' }
+          format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
           format.json {
             render json: {
               error: "user not found",
@@ -166,6 +169,8 @@ class ContributionsController < ApplicationController
 
   # TODO: add logic to check if user is logged in before let make vote
   def like
+    puts @user.inspect
+    puts request.headers["Authorization"].inspect
     begin
       if @user.nil?
         render json:{
