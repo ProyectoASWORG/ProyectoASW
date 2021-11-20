@@ -34,7 +34,7 @@
             <li class="navbar-item">show</li>
             <li class="navbar-item">jobs</li>
             <li class="navbar-item">
-                <%= link_to "submit", new_contribution_contributions_path(token: user_signed_in? ? current_user.token : " ") %>
+                <%= link_to "submit", new_contribution_path %>
             </li>
         </ul>
         <ul class="nav-bar-auth">

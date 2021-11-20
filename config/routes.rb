@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     get :show_user, on: :member, as: 'show_user'
     get 'contribution/:id', to: 'contributions#show_one'
     get :show_upvoted_contributions, on: :member, as: 'show_upvoted_ctb'
-    get 'new/:token', to: 'contributions#new', on: :collection, as: 'new_contribution', constraints: { token: /[^\/]+/ }
   end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
