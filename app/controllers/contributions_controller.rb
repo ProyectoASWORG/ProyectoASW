@@ -307,11 +307,13 @@ class ContributionsController < ApplicationController
       else 
         header = header.split(' ').last
       end
-
       auth_token = JWT.decode header, "secreto", true, { verify_iat: true, algorithm: 'HS256' }
       user_id = auth_token[0]["user_id"]
       @user = User.find(user_id)
-    rescue => e
+    rescue => JWT::ExpiredSignature 
+      puts "El token ha expirado"
+      @user = nil
+    rescue 
       @user = nil
     end
   end
