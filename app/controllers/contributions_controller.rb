@@ -140,18 +140,16 @@ class ContributionsController < ApplicationController
   # PATCH/PUT /contributions/1
   # PATCH/PUT /contributions/1.json
   def update
-    if @user.nil?
-        respond_to do |format|
-          format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
-          format.json {
-            render json: {
-              error: "user not found",
-              status: :unauthorized
-            }, status: :unauthorized
-          }
-        end
-    else
-      respond_to do |format|
+    respond_to do |format|
+      if @user.nil?
+        format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
+        format.json {
+          render json: {
+            error: "user not found",
+            status: :unauthorized
+          }, status: :unauthorized
+        }
+      else
         if @contribution.update(contribution_params)
           format.html { redirect_to @contribution, notice: 'Contribution was successfully updated.' }
           format.json { render :show, status: :ok, location: @contribution }
@@ -166,9 +164,6 @@ class ContributionsController < ApplicationController
   # DELETE /contributions/1
   # DELETE /contributions/1.json
   def destroy
-    puts @user.inspect
-    puts @contribution.inspect
-
     respond_to do |format|
       if @contribution.nil?
         format.html { redirect_to :contributions, notice: 'Contribution not found', status: :not_found }
@@ -178,13 +173,13 @@ class ContributionsController < ApplicationController
           }, status: :not_found
         }
       elsif @user.nil? || @user.id.to_s != @contribution.user_id.to_s
-          format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
-          format.json {
-            render json: {
-              error: "user not found",
-              status: :unauthorized
-            }, status: :unauthorized
-          }
+        format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
+        format.json {
+          render json: {
+            error: "user not found",
+            status: :unauthorized
+          }, status: :unauthorized
+        }
       else
         @contribution.destroy
         format.html { redirect_to contributions_url, notice: 'Contribution was successfully destroyed.' }
@@ -322,5 +317,4 @@ class ContributionsController < ApplicationController
   def contribution_params
     params.require(:contribution).permit(:contribution_type, :text, :title, :url)
   end
-  
 end
