@@ -3,8 +3,7 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
-  # before_action :check_signed_in, only: [:like, :dislike]
-  before_action :get_user_from_token, only: [:like, :dislike, :create, :new]
+  before_action :get_user, only: [:like, :dislike, :create, :new]
 
   skip_before_action :verify_authenticity_token, only: [:like, :dislike, :create, :new]
 
@@ -58,7 +57,6 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-
     begin
       if @format == "json" 
         request.format = :json
@@ -278,7 +276,7 @@ class ContributionsController < ApplicationController
   def set_contribution
     begin
       @contribution = Contribution.find(params[:id])
-    rescue => e
+    rescue
       @contribution = nil
     end
   end
@@ -287,34 +285,5 @@ class ContributionsController < ApplicationController
   def contribution_params
     params.require(:contribution).permit(:contribution_type, :text, :title, :url)
   end
-
-  def check_signed_in
-    if !user_signed_in?
-      head :unprocessable_entity
-      return
-    end
-  end
-
-  def get_user_from_token
-    begin
-      header = request.headers['Authorization']
-      if header.nil?
-        header = params[:token]
-        if header.include? ".json"
-          @format = "json"
-          header.slice! ".json"
-        end
-      else 
-        header = header.split(' ').last
-      end
-      auth_token = JWT.decode header, "secreto", true, { verify_iat: true, algorithm: 'HS256' }
-      user_id = auth_token[0]["user_id"]
-      @user = User.find(user_id)
-    rescue => JWT::ExpiredSignature 
-      puts "El token ha expirado"
-      @user = nil
-    rescue 
-      @user = nil
-    end
-  end
+  
 end

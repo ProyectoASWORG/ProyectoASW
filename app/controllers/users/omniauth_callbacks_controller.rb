@@ -1,12 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     user = User.from_google(from_google_params)
-  
-    # Expires in 4 hours
-    exp = Time.now.to_i + (4 * 3600)
-    jwt_payload = { user_id: user.id, creation_time: Time.now.to_i, exp: exp }
-    token = JWT.encode jwt_payload, "secreto", 'HS256'
-    
+    token = encode_token(user.id) 
     if user.present?
       sign_out_all_scopes
       flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
