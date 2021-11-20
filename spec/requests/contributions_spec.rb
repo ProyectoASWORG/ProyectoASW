@@ -3,24 +3,29 @@ require 'swagger_helper'
 RSpec.describe 'contributions', type: :request do
 
   path '/contributions' do
-    # You'll want to customize the parameter types...
+    get('list contributions') do
+      response(200, :success) do
+        run_test!
+      end
+    end
 
-    parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
-    parameter name: 'contribution', in: :body, schema: {
-      type: :object,
-      properties: {
-        contribution: {
-          type: :object,
-          properties: {
-            contribution_type: { type: :string },
-            text: { type: :string },
-            title: { type: :string },
-            url: { type: :string }, 
+    # You'll want to customize the parameter types...
+    post('create contribution') do
+      parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
+      parameter name: 'contribution', in: :body, schema: {
+        type: :object,
+        properties: {
+          contribution: {
+            type: :object,
+            properties: {
+              contribution_type: { type: :string },
+              text: { type: :string },
+              title: { type: :string },
+              url: { type: :string }, 
+            }
           }
         }
       }
-    }
-    post('create contribution') do
       response(200, :success) do
         run_test!
       end
@@ -115,15 +120,6 @@ RSpec.describe 'contributions', type: :request do
     # You'll want to customize the parameter types...
 
     get('new contribution') do
-      response(200, :success) do
-        run_test!
-      end
-    end
-  end
-
-  path '/contributions' do
-
-    get('list contributions') do
       response(200, :success) do
         run_test!
       end

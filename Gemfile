@@ -17,6 +17,8 @@ gem 'jwt'
 gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'rspec'
+gem 'rspec-core'
 
 group :development do
   gem 'sqlite3', '1.4.2'
