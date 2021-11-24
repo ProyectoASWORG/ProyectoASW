@@ -4,3 +4,4 @@ log/
 node_modules/
 db/development.sqlite3
 public/
+.idea/
