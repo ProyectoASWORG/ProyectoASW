@@ -27,8 +27,8 @@ group :development do
   gem 'listen',             '3.4.1'
   gem 'spring',             '2.1.1'
   gem 'sqlite3', '1.4.2'
-  gem 'tzinfo-data'
-  gem 'wdm'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'wdm', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
 group :test do
