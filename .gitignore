@@ -1,7 +1,13 @@
 tmp/
 log/
 .vscode/
+.vscode\
 node_modules/
+node_modules\
 db/development.sqlite3
+db\development.sqlite3
 public/
 .idea/
+.idea\
+.bundle/
+.bundle\
