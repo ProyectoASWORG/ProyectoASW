@@ -19,9 +19,13 @@ gem 'rswag-api'
 gem 'rswag-ui'
 gem 'rspec'
 gem 'rspec-core'
+gem 'rack-cors'
 
 group :development do
   gem 'sqlite3', '1.4.2'
+  gem 'tzinfo-data'
+  gem 'wdm'
+
 end
 
 group :development, :test do
@@ -45,7 +49,7 @@ end
 
 group :production, :test do
   gem 'pg'
-  gem 'rack-cors'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
