@@ -13,19 +13,22 @@ gem 'rexml'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
-group :development do
-  gem 'sqlite3', '1.4.2'
-end
-
-group :development, :test do
-  gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
-end
+gem 'jwt'
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
+gem 'rspec'
+gem 'rspec-core'
+gem 'rack-cors'
 
 group :development do
   gem 'web-console',        '4.1.0'
   gem 'rack-mini-profiler', '2.3.1'
   gem 'listen',             '3.4.1'
   gem 'spring',             '2.1.1'
+  gem 'sqlite3', '1.4.2'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'wdm', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
 group :test do
@@ -34,9 +37,14 @@ group :test do
   gem 'webdrivers',         '4.6.0'
 end
 
+group :development, :test do
+  gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+end
+
 group :production, :test do
   gem 'pg'
-  gem 'rack-cors'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

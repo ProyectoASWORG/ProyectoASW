@@ -1,0 +1,199 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/contributions":
+    get:
+      summary: list contributions
+      responses:
+        '200':
+          description: success
+    post:
+      summary: create contribution
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      - name: contribution
+        in: body
+        schema:
+          type: object
+          properties:
+            contribution:
+              type: object
+              properties:
+                contribution_type:
+                  type: string
+                text:
+                  type: string
+                title:
+                  type: string
+                url:
+                  type: string
+      responses:
+        '200':
+          description: success
+        '201':
+          description: created
+        '401':
+          description: unauthorized
+  "/contributions/{id}/like":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: like contribution
+      responses:
+        '200':
+          description: success
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+  "/contributions/{id}/dislike":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: dislike contribution
+      responses:
+        '200':
+          description: success
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+  "/contributions/show_news":
+    get:
+      summary: show_news contribution
+      responses:
+        '200':
+          description: success
+  "/contributions/show_ask":
+    get:
+      summary: show_ask contribution
+      responses:
+        '200':
+          description: success
+  "/contributions/{id}/show_user":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_user contribution
+      responses:
+        '200':
+          description: success
+  "/contributions/{id}/show_upvoted_contributions":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_upvoted_contributions contribution
+      responses:
+        '200':
+          description: success
+        '422':
+          description: unprocessable_entity
+  "/contributions/new":
+    get:
+      summary: new contribution
+      responses:
+        '200':
+          description: success
+  "/contributions/{id}/edit":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: edit contribution
+      responses:
+        '200':
+          description: success
+  "/contributions/{id}":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show contribution
+      responses:
+        '200':
+          description: success
+    patch:
+      summary: update contribution
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+    put:
+      summary: update contribution
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+    delete:
+      summary: delete contribution
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      responses:
+        '200':
+          description: success
+        '401':
+          description: unauthorized
+        '404':
+          description: not_found
+  "/":
+    get:
+      summary: list contributions
+      responses:
+        '200':
+          description: success
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

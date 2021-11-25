@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_185036) do
     t.string "full_name"
     t.string "uid"
     t.string "avatar_url"
+    t.string "token"
   end
 
 end

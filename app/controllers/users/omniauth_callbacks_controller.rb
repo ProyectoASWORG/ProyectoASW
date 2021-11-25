@@ -1,12 +1,18 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    user = User.from_google(from_google_params)
-
+    puts from_google_params.inspect
+    user = User.create_from_google(email: from_google_params[:email], uid: from_google_params[:uid], full_name: from_google_params[:full_name], avatar_url: from_google_params[:avatar_url])
+    token = encode_token(user.id) 
     if user.present?
       sign_out_all_scopes
       flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in user 
-      redirect_to contributions_path
+      current_user.token = token
+      current_user.save
+      respond_to do |format|
+        format.html { redirect_to contributions_path }
+        format.json { render :json => token }
+      end
       return
     else
       flash[:alert] = t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
