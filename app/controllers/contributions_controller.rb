@@ -40,9 +40,16 @@ class ContributionsController < ApplicationController
   # GET /contributions/new
   def new
     respond_to do |format|
-      @contribution = Contribution.new
-      format.html {render :new}
-      format.json {render json: @contribution}
+      puts @user.inspect
+      if @user.nil?
+        puts "user is nil"
+        format.html {redirect_to contributions_path, notice: 'You need to be logged in to create a contribution'}
+        format.json {render json: {error: "user unauthorized", status: :unauthorized}, status: :unauthorized}
+      else
+        @contribution = Contribution.new
+        format.html {render :new}
+        format.json {render json: @contribution}
+      end
     end
   end
 
@@ -63,7 +70,7 @@ class ContributionsController < ApplicationController
       end
       if @user.nil?
         respond_to do |format|
-          format.html { redirect_to contributions_url, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
+          format.html { redirect_to contributions_url, notice: 'You need to be logged in to create a contribution'}
           format.json {
             render json: {
               error: "user not found",
