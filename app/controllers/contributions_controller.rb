@@ -3,7 +3,7 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
-  before_action :get_user, only: [:like, :dislike, :create, :update, :destroy]
+  before_action :get_user, only: [:like, :dislike, :create, :new, :update, :destroy]
 
   skip_before_action :verify_authenticity_token 
 
@@ -39,10 +39,17 @@ class ContributionsController < ApplicationController
   end
   # GET /contributions/new
   def new
-    @contribution = Contribution.new
+    puts @user
+    puts "hello"
     respond_to do |format|
-      format.html {render :new}
-      format.json {render json: @contribution}
+      if @user.nil?
+        format.html { redirect_to root_path, notice: 'You need to be logged in to create a new contribution' }
+        format.json { render json: { error: "user not logged in", status: :unauthorized }, status: :unauthorized }
+      else
+        @contribution = Contribution.new
+        format.html {render :new}
+        format.json {render json: @contribution}
+      end
     end
   end
 

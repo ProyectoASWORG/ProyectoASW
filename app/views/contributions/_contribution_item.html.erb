@@ -33,6 +33,9 @@
             <p><%= link_to "#{contribution.comments.count} comments", contribution, class:"c-gray" %></p>
           <%end%>
         </div>
+        <% if current_page?(contribution_path(contribution))%>
+          <p class="c-gray"><%= contribution.text %></p> 
+        <%end%>
       </div>
     </div> 
 <script>
