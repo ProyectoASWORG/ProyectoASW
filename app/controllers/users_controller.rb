@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
 
+  before_action :get_user, only: [:edit, :update]
+
   def edit
     respond_to do |format|
       if user_signed_in? and current_user.id == @user.id
@@ -13,6 +15,8 @@ class UsersController < ApplicationController
     end
   end
 
+  #GET /users/1
+  #GET /users/1.json
   def show
   end
 
