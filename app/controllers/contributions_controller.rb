@@ -39,17 +39,10 @@ class ContributionsController < ApplicationController
   end
   # GET /contributions/new
   def new
-    puts @user
-    puts "hello"
     respond_to do |format|
-      if @user.nil?
-        format.html { redirect_to root_path, notice: 'You need to be logged in to create a new contribution' }
-        format.json { render json: { error: "user not logged in", status: :unauthorized }, status: :unauthorized }
-      else
-        @contribution = Contribution.new
-        format.html {render :new}
-        format.json {render json: @contribution}
-      end
+      @contribution = Contribution.new
+      format.html {render :new}
+      format.json {render json: @contribution}
     end
   end
 
@@ -70,13 +63,14 @@ class ContributionsController < ApplicationController
       end
       if @user.nil?
         respond_to do |format|
-          format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
+          format.html { redirect_to contributions_url, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
           format.json {
             render json: {
               error: "user not found",
               status: :unauthorized
             }, status: :unauthorized
           }
+          return;
         end
       else
         @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
