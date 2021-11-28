@@ -7,8 +7,31 @@ RSpec.describe 'users', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('edit user') do
-      response(200, 'successful') do
-
+      parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
+      parameter name: 'user', in: :body, schema: {
+        type: :object,
+        properties: {
+          user: {
+            type: :object,
+            properties: {
+              about: { type: :string },
+              email: { type: :string },
+              max_visit: { type: :integer },
+              min_away: { type: :integer }, 
+              delay: { type: :integer }, 
+              show_dead: { type: :boolean }, 
+              no_procrast: { type: :boolean }, 
+            }
+          }
+        }
+      }
+      response(200, :success) do
+        run_test!
+      end
+      response(404, :not_found) do
+        run_test!
+      end
+      response(401, :unauthorized) do
         run_test!
       end
     end
