@@ -1,31 +1,31 @@
 <table border = "0">
     <tr>
         <td class='c-gray' valign="top"> user:</td> 
-        <td class='c-gray' ><%= @user.full_name%></td> 
+        <td class='c-gray' ><%= @usuario.full_name%></td> 
         
     </tr>
     <tr>
         <td class='c-gray' valign="top">created:</td>
-        <td><%= time_ago_in_words(@user.created_at)%> ago</td>
+        <td><%= time_ago_in_words(@usuario.created_at)%> ago</td>
     </tr>
     <tr>
         <td class='c-gray' valign="top">karma:</td>
-        <td class='c-gray' > <%= @user.karma %></td>
+        <td class='c-gray' > <%= @usuario.karma %></td>
     </tr>
     <tr>
         <td class='c-gray' valign="top">about:</td>
-        <td class='c-gray' > <%= @user.about %></td>
+        <td class='c-gray' > <%= @usuario.about %></td>
     </tr>
     <tr>
         <td></td>
         <td class="link">
-            <%= link_to "submissions", show_user_contribution_path(@user) %>
+            <%= link_to "submissions", show_user_contribution_path(@usuario) %>
         </td>
     </tr>
     <tr>
         <td></td>
         <td class="link">
-            <%= link_to "comments", show_comment_url(@user) %>
+            <%= link_to "comments", show_comment_url(@usuario) %>
         </td>
     </tr>
     <tr>

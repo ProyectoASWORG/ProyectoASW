@@ -192,6 +192,77 @@ paths:
       responses:
         '200':
           description: success
+  "/users/{id}/edit":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: edit user
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not_found
+        '401':
+          description: unauthorized
+    put:
+      summary: update user
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      - name: user
+        in: body
+        schema:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                about:
+                  type: string
+                email:
+                  type: string
+                max_visit:
+                  type: integer
+                min_away:
+                  type: integer
+                delay:
+                  type: integer
+                show_dead:
+                  type: boolean
+                no_procrast:
+                  type: boolean
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not_found
+        '401':
+          description: unauthorized
+  "/users/{id}/show":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show user
+      responses:
+        '200':
+          description: success
+        '404':
+          description: not_found
 servers:
 - url: http://{defaultHost}
   variables:

@@ -24,7 +24,11 @@
         <div class="contribution-info">
           <p><%= contribution.points %> points </p>
           <p>by</p>
-          <p><%=link_to contribution.user.full_name, users_edit_url(contribution.user), class: "c-gray"%> </p>
+          <%if current_user.id == contribution.user.id%>
+           <p><%=link_to contribution.user.full_name, users_edit_url(id: current_user.id, token: current_user.token), class: "c-gray"%> </p>
+          <%else%>
+            <p><%=link_to contribution.user.full_name, users_show_url(contribution.user), class: "c-gray"%> </p>
+          <%end %>
           <p><%= distance_of_time_in_words(Time.now, contribution.created_at) %> ago | </p>
           <p style=<%= liked_contribution(contribution.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{contribution.id}_unvote" %> onclick="dislike_contribution(<%=contribution.id%>, '<%=user_signed_in? ? current_user.token : "" %>')" >unvote | </p>
           <%if contribution.comments.count == 0%>

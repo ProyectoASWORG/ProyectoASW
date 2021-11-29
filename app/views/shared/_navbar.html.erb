@@ -40,7 +40,7 @@
         <ul class="nav-bar-auth">
             <% if user_signed_in? %>
                 <li class="navbar-item" style="overflow-wrap:anywhere;">
-                    <%= link_to current_user.full_name, users_edit_path(current_user) %>
+                    <%= link_to current_user.full_name, users_edit_path(id: current_user.id, token: current_user.token) %>
                     (<%=current_user.karma%>)
                 </li>
                 <li class="navbar-item">
