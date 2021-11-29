@@ -12,9 +12,9 @@ RSpec.describe 'comments', type: :request do
           comment: {
             type: :object,
             properties: {
-              contribution_id: { type: :string },
+              contribution_id: { type: :integer },
               text: { type: :string },
-              replayedComment_id: { type: :string },
+              replayedComment_id: { type: :integer,  nullable: true },
             }
           }
         }

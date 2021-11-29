@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   before_action :get_user, only: [:like, :dislike, :create, :update, :destroy]
-  skip_before_action :verify_authenticity_token, only: [:like, :dislike]
+  skip_before_action :verify_authenticity_token
 
 
 

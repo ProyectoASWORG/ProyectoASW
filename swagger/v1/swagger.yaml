@@ -21,11 +21,12 @@ paths:
               type: object
               properties:
                 contribution_id:
-                  type: string
+                  type: integer
                 text:
                   type: string
                 replayedComment_id:
-                  type: string
+                  type: integer
+                  nullable: true
       responses:
         '200':
           description: success
