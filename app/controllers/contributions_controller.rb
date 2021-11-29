@@ -87,7 +87,7 @@ class ContributionsController < ApplicationController
               format.html { redirect_to show_news_contributions_url }
               format.json { render :json => @contribution, status: :created}
             else
-              format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
+              format.html { redirect_to new_contribution_contributions_path(@user.token), alert: @contribution.errors.full_messages.join(', ') }
               format.json { render json: @contribution.errors, status: :unprocessable_entity }
             end
           end
@@ -118,7 +118,7 @@ class ContributionsController < ApplicationController
                   format.html { redirect_to @contribution_new }
                   format.json { render json: @contribution_new, status: :created}
                 else
-                  format.html { redirect_to new_contribution_path, alert: @contribution_new.errors.full_messages.join(', ') }
+                  format.html { redirect_to new_contribution_contributions_path(@user.token), alert: @contribution_new.errors.full_messages.join(', ') }
                   format.json { render json: @contribution_new.errors, status: :unprocessable_entity }
                 end
               else
@@ -127,7 +127,7 @@ class ContributionsController < ApplicationController
                   format.html { redirect_to show_news_contributions_url }
                   format.json { render json: @contribution, status: :created }
                 else
-                  format.html { redirect_to new_contribution_path, alert: @contribution.errors.full_messages.join(', ') }
+                  format.html { redirect_to new_contribution_contributions_path(@user.token), alert: @contribution.errors.full_messages.join(', ') }
                   format.json { render json: @contribution.errors, status: :unprocessable_entity }
                 end
               end
@@ -137,7 +137,11 @@ class ContributionsController < ApplicationController
       end
     rescue => e
       respond_to do |format|
-        format.html { redirect_to new_contribution_path, alert: e.message }
+        if @user.nil?
+          format.html { redirect_to contribution_path, alert: e.message }
+        else
+          format.html { redirect_to new_contribution_contributions_path(@user.token), alert: @contribution.errors.full_messages.join(', ') }
+        end
         format.json { render json: e.message, status: :unprocessable_entity }
       end
     end
