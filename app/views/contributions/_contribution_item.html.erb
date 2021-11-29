@@ -24,7 +24,7 @@
         <div class="contribution-info">
           <p><%= contribution.points %> points </p>
           <p>by</p>
-          <%if current_user.id == contribution.user.id%>
+          <%if user_signed_in? and current_user.id == contribution.user.id%>
            <p><%=link_to contribution.user.full_name, users_edit_url(id: current_user.id, token: current_user.token), class: "c-gray"%> </p>
           <%else%>
             <p><%=link_to contribution.user.full_name, users_show_url(contribution.user), class: "c-gray"%> </p>

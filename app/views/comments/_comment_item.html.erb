@@ -9,7 +9,7 @@
         <p class="c-gray m-5"><%= comment.points %> points</p>
         <p class="c-gray m-5">by</p>
         <% contribucion = Contribution.find(comment.contribution_id)%>
-        <%if current_user.id == contribucion.user.id%>
+        <%if user_signed_in? and current_user.id == contribucion.user.id%>
           <p><%=link_to contribucion.user.full_name, users_edit_url(id: current_user.id, token: current_user.token), class: "c-gray"%> </p>
         <%else%>
           <p><%=link_to contribucion.user.full_name, users_show_url(contribucion.user), class: "c-gray"%> </p>
