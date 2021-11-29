@@ -7,6 +7,8 @@ paths:
   "/comments":
     post:
       summary: create comment
+      tags:
+        - Comments
       parameters:
       - name: Authorization
         in: header
@@ -47,6 +49,8 @@ paths:
       description: Authorization
     put:
       summary: like comment
+      tags:
+        - Comments
       responses:
         '200':
           description: success
@@ -67,6 +71,8 @@ paths:
       description: Authorization
     put:
       summary: dislike comment
+      tags:
+        - Comments
       responses:
         '200':
           description: success
@@ -83,6 +89,8 @@ paths:
       required: true
     get:
       summary: show_upvoted_comments comment
+      tags:
+        - Comments
       responses:
         '200':
           description: success
@@ -97,6 +105,8 @@ paths:
       required: true
     get:
       summary: show_comment comment
+      tags:
+        - Comments
       responses:
         '200':
           description: success
@@ -105,12 +115,16 @@ paths:
   "/comments/new":
     get:
       summary: new comment
+      tags:
+        - Comments
       responses:
         '200':
           description: success
   "/comments/{id}":
     delete:
       summary: delete comment
+      tags:
+        - Comments
       parameters:
       - name: Authorization
         in: header
@@ -428,6 +442,8 @@ tags:
   description: User management
 - name: Contributions
   description: Contribution management
+- name: Comments
+  description: Comment management
 servers:
 - url: http://{defaultHost}
   variables:
