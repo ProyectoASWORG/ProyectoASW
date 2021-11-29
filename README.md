@@ -7,7 +7,7 @@ El proyecto que vamos a realizar consiste en realizar un clon de un aplicación 
 </p>
 Students:
 
-* Rodríguez, Daniel
+* Rodríguez, Daniel - username: Rashgaron
 * Sàbat, Pau  -  username: pausabat99
 * Escribano, Daniel - username: dani-kjh
 * Shabanova, Mariana - username: mariianaSh
