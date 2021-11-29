@@ -42,7 +42,6 @@ class ContributionsController < ApplicationController
     respond_to do |format|
       puts @user.inspect
       if @user.nil?
-        puts "user is nil"
         format.html {redirect_to contributions_path, notice: 'You need to be logged in to create a contribution'}
         format.json {render json: {error: "user unauthorized", status: :unauthorized}, status: :unauthorized}
       else

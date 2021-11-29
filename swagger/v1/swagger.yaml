@@ -7,11 +7,15 @@ paths:
   "/contributions":
     get:
       summary: list contributions
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
     post:
       summary: create contribution
+      tags:
+      - Contributions
       parameters:
       - name: Authorization
         in: header
@@ -53,6 +57,8 @@ paths:
       description: Authorization
     put:
       summary: like contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -73,6 +79,8 @@ paths:
       description: Authorization
     put:
       summary: dislike contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -83,12 +91,16 @@ paths:
   "/contributions/show_news":
     get:
       summary: show_news contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
   "/contributions/show_ask":
     get:
       summary: show_ask contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -101,6 +113,8 @@ paths:
       required: true
     get:
       summary: show_user contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -113,14 +127,23 @@ paths:
       required: true
     get:
       summary: show_upvoted_contributions contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
         '422':
           description: unprocessable_entity
   "/contributions/new":
+    parameters:
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
     get:
       summary: new contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -133,6 +156,8 @@ paths:
       required: true
     get:
       summary: edit contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -145,11 +170,15 @@ paths:
       required: true
     get:
       summary: show contribution
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
     patch:
       summary: update contribution
+      tags:
+      - Contributions
       parameters:
       - name: Authorization
         in: header
@@ -162,6 +191,8 @@ paths:
           description: unauthorized
     put:
       summary: update contribution
+      tags:
+      - Contributions
       parameters:
       - name: Authorization
         in: header
@@ -174,6 +205,8 @@ paths:
           description: unauthorized
     delete:
       summary: delete contribution
+      tags:
+      - Contributions
       parameters:
       - name: Authorization
         in: header
@@ -189,6 +222,8 @@ paths:
   "/":
     get:
       summary: list contributions
+      tags:
+      - Contributions
       responses:
         '200':
           description: success
@@ -201,6 +236,8 @@ paths:
       required: true
     get:
       summary: edit user
+      tags:
+      - Users
       parameters:
       - name: Authorization
         in: header
@@ -215,6 +252,8 @@ paths:
           description: unauthorized
     put:
       summary: update user
+      tags:
+      - Users
       parameters:
       - name: Authorization
         in: header
@@ -258,11 +297,18 @@ paths:
       required: true
     get:
       summary: show user
+      tags:
+      - Users
       responses:
         '200':
           description: success
         '404':
           description: not_found
+tags:
+- name: Users
+  description: User management
+- name: Contributions
+  description: Contribution management
 servers:
 - url: http://{defaultHost}
   variables:

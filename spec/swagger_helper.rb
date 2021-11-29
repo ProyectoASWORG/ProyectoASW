@@ -22,6 +22,16 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {},
+      tags:[
+        {
+          name: 'Users',
+          description: 'User management'
+        },
+        {
+          name: 'Contributions',
+          description: 'Contribution management'
+        }
+      ],
       servers: [
         {
           url: 'http://{defaultHost}',

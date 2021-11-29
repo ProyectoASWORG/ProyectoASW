@@ -7,6 +7,7 @@ RSpec.describe 'users', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('edit user') do
+      tags 'Users'
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
       response(200, :success) do
         run_test!
@@ -20,6 +21,7 @@ RSpec.describe 'users', type: :request do
     end
 
     put('update user') do
+      tags 'Users'
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
       parameter name: 'user', in: :body, schema: {
         type: :object,
@@ -55,6 +57,7 @@ RSpec.describe 'users', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show user') do
+      tags 'Users'
       response(200, :success) do
         run_test!
       end

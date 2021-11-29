@@ -3,7 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'contributions', type: :request do
 
   path '/contributions' do
-    get('list contributions') do
+    get('list contributions of type url') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -11,6 +12,7 @@ RSpec.describe 'contributions', type: :request do
 
     # You'll want to customize the parameter types...
     post('create contribution') do
+      tags 'Contributions'
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
       parameter name: 'contribution', in: :body, schema: {
         type: :object,
@@ -43,6 +45,7 @@ RSpec.describe 'contributions', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
     parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
     put('like contribution') do
+      tags 'Contributions'
       response(200, :success)do
         run_test!
       end
@@ -61,6 +64,7 @@ RSpec.describe 'contributions', type: :request do
     parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
 
     put('dislike contribution') do
+      tags 'Contributions'
       response(200, :success)do
         run_test!
       end
@@ -76,6 +80,7 @@ RSpec.describe 'contributions', type: :request do
   path '/contributions/show_news' do
 
     get('show_news contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -85,6 +90,7 @@ RSpec.describe 'contributions', type: :request do
   path '/contributions/show_ask' do
 
     get('show_ask contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -96,6 +102,7 @@ RSpec.describe 'contributions', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show_user contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -107,6 +114,7 @@ RSpec.describe 'contributions', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show_upvoted_contributions contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -120,6 +128,7 @@ RSpec.describe 'contributions', type: :request do
     # You'll want to customize the parameter types...
     parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
     get('new contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -131,6 +140,7 @@ RSpec.describe 'contributions', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('edit contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
@@ -142,12 +152,14 @@ RSpec.describe 'contributions', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show contribution') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
     end
 
     patch('update contribution') do
+      tags 'Contributions'
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
       response(200, 'successful') do
         run_test!
@@ -158,6 +170,7 @@ RSpec.describe 'contributions', type: :request do
     end
 
     put('update contribution') do
+      tags 'Contributions'
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
       response(200, 'successful') do
         run_test!
@@ -168,6 +181,7 @@ RSpec.describe 'contributions', type: :request do
     end
 
     delete('delete contribution') do
+      tags 'Contributions'
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
       response(200, :success) do
         run_test!
@@ -182,7 +196,8 @@ RSpec.describe 'contributions', type: :request do
   end
 
   path '/' do
-    get('list contributions') do
+    get('list contributions of type url') do
+      tags 'Contributions'
       response(200, :success) do
         run_test!
       end
