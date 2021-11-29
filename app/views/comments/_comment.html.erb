@@ -3,8 +3,10 @@
 <li class = "comment-item">
       <div class="comment-info"  >
           <p>
-            <%= image_tag "grayarrow.gif", id:comment.id, 
-            style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id}, '#{user_signed_in? ? current_user.token : ""}')" %>
+            <%if user_signed_in? and comment.user != current_user %>
+              <%= image_tag "grayarrow.gif", id:comment.id, 
+              style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id}, '#{user_signed_in? ? current_user.token : ""}')" %>
+            <%end%>
           </p>
           
         <%if comment.user == current_user %>

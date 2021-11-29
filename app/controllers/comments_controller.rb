@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order(created_at: :desc)
   end
 
   # GET /comments/1
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   end
 
   def show_comments
-    @comments = Comment.where(user_id: params[:id])
+    @comments = Comment.where(user_id: params[:id]).order(created_at: :desc)
     respond_to do |format|
       format.html {render :show_comments }
       format.json {render json: @comments}
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
 
   def show_upvoted_comments
     user = User.find(params[:id])
-    @comments = user.voted_comments
+    @comments = user.voted_comments.order(created_at: :desc)
     respond_to do |format|
       if @comments
         format.html { render "show_comments" }
