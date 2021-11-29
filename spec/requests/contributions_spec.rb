@@ -118,7 +118,7 @@ RSpec.describe 'contributions', type: :request do
 
   path '/contributions/new' do
     # You'll want to customize the parameter types...
-
+    parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
     get('new contribution') do
       response(200, :success) do
         run_test!
