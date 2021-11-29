@@ -8,7 +8,7 @@
           </p>
           
         <%if comment.user == current_user %>
-          <%= link_to comment.user.full_name, users_edit_path(comment.user.id), class: "comment-link" %>
+          <%= link_to comment.user.full_name, users_edit_path(comment.user.id, comment.user.token), class: "comment-link" %>
         <%else %>
           <%= link_to comment.user.full_name, users_show_path(comment.user.id), class: "comment-link" %>
         <%end%>
