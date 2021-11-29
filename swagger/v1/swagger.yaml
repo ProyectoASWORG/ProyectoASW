@@ -201,9 +201,18 @@ paths:
       required: true
     get:
       summary: edit user
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
       responses:
         '200':
-          description: successful
+          description: success
+        '404':
+          description: not_found
+        '401':
+          description: unauthorized
     put:
       summary: update user
       parameters:
@@ -251,7 +260,9 @@ paths:
       summary: show user
       responses:
         '200':
-          description: successful
+          description: success
+        '404':
+          description: not_found
 servers:
 - url: http://{defaultHost}
   variables:

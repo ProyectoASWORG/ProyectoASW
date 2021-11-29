@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/sign_in', to: 'users/sessions#new', as: :new_user_session
     get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
-    get 'users/:id/edit', to: 'users#edit', as: 'users_edit'
+    get 'users/:id/edit/:token', to: 'users#edit', as: 'users_edit', constraints: { token: /[^\/]+/ }
     get 'users/:id/show', to: 'users#show', as: 'users_show'
-    put 'users/:id/edit', to: 'users#update', as: 'users_update'
+    put 'users/:id/edit/:token', to: 'users#update', as: 'users_update', constraints: { token: /[^\/]+/ }
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'contributions#index' 

@@ -6,6 +6,23 @@ class UsersController < ApplicationController
   #GET /users/1
   #GET /users/1.json
   def show
+    respond_to do |format|
+      if @usuario.nil?
+        format.html { redirect_to :contributions,  notice: "The user not exists" }
+        format.json { render json: {
+            error: 'user not found',
+            status: :not_found
+          }, status: :not_found
+          }
+      else
+        format.html { render :show, status: :ok }
+        format.json { render json: {
+          user: @usuario,
+          status: :ok
+        }, status: :ok
+        }
+      end
+    end
   end
 
   def edit
@@ -35,7 +52,7 @@ class UsersController < ApplicationController
                 msg: "user edited",
                 status: :ok,
                 user: @usuario 
-              }, status: :success
+              }, status: :ok
             }
           #el usuario autorizado y el que se quiere actualizar no son el mismo
           else
@@ -78,7 +95,7 @@ class UsersController < ApplicationController
             format.json { render json:{
                 msg: "user updated", 
                 user: @usuario
-              }, status: :success
+              }, status: :ok
             }
           #el usuario autorizado y el que se quiere actualizar no son el mismo
           else
@@ -100,7 +117,11 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @usuario = User.find(params[:id])
+    begin
+      @usuario = User.find(params[:id])
+    rescue
+      @usuario = nil
+    end
   end
 
 end
