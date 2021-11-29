@@ -7,7 +7,12 @@
             style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id})" %>
         <%end%>
         <p class="c-gray m-5"><%= comment.points %> points</p>
-        <p class="c-gray m-5">by <%= link_to comment.user.full_name, users_edit_path(comment.user) %></p>
+        <p class="c-gray m-5">by</p>
+        <%if current_user.id == contribution.user.id%>
+          <p><%=link_to contribution.user.full_name, users_edit_url(id: current_user.id, token: current_user.token), class: "c-gray"%> </p>
+        <%else%>
+          <p><%=link_to contribution.user.full_name, users_show_url(contribution.user), class: "c-gray"%> </p>
+        <%end %>
         <p class="c-gray m-5" style=<%= liked_comment(comment.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{comment.id}_unvote" %> onclick="dislike_comment(<%=comment.id%>)" >| unvote | </p>
         <p class="c-gray m-5"> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago </p>
         <% contribucion = Contribution.find(comment.contribution_id)%>
