@@ -6,7 +6,7 @@ info:
 paths:
   "/contributions":
     get:
-      summary: list contributions
+      summary: list contributions of type url
       tags:
       - Contributions
       responses:
@@ -221,7 +221,7 @@ paths:
           description: not_found
   "/":
     get:
-      summary: list contributions
+      summary: list contributions of type url
       tags:
       - Contributions
       responses:
