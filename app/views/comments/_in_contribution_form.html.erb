@@ -1,5 +1,5 @@
 <% @comment = Comment.new %>
-<%= form_with(model: @comment, url: comments_path) do |form| %>
+<%= form_with(model: @comment, url: create_comment_comments_path(current_user.token)) do |form| %>
 
   <div class="field">
     <%= form.text_area :text %>

@@ -4,7 +4,7 @@
       <div class="comment-info"  >
           <p>
             <%= image_tag "grayarrow.gif", id:comment.id, 
-            style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id})" %>    
+            style:"cursor:pointer;#{liked_comment(comment.id) ? "visibility:hidden":""}", onClick:"like_comment(#{comment.id}, '#{user_signed_in? ? current_user.token : ""}')" %>
           </p>
           
         <%if comment.user == current_user %>
@@ -18,7 +18,7 @@
         <% time_passed = distance_of_time_in_words(from_time, to_time) %>
          <p>(<%= time_passed %> ago)  </p>
          
-        <p style=<%= liked_comment(comment.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{comment.id}_unvote" %> onclick="dislike_comment(<%=comment.id%>)" >unvote | </p>
+        <p style=<%= liked_comment(comment.id) ? 'cursor:pointer;':'display:none;cursor: pointer;'%> id=<%= "#{comment.id}_unvote" %> onclick="dislike_comment(<%=comment.id%>, '<%=user_signed_in? ? current_user.token : "" %>')" >unvote | </p>
         
         <%if comment.user == current_user %>
            <small>  <%=link_to 'Edit',  edit_comment_path(comment), class: "comment-link" %> </small>
@@ -45,14 +45,15 @@
 
 
 <script>
-like_comment = (id) =>{
+like_comment = (id, token) =>{
     var origin = window.location.origin;
     var arrow = document.getElementById(id);
     arrow.style.visibility = "hidden";
     fetch(`${origin}/comments/${id}/like`,{
       method: 'PUT',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Authorization': token
       }
     }).then(response =>{
       if(response.statusText === "Unprocessable Entity"){
@@ -68,14 +69,15 @@ like_comment = (id) =>{
 
 }
 
-dislike_comment = (id) =>{
+dislike_comment = (id, token) =>{
     var origin = window.location.origin;
     var arrow = document.getElementById(id);
     arrow.style.visibility = "visible";
     fetch(`${origin}/comments/${id}/dislike`,{
       method: 'PUT',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+          'Authorization': token
       }
     }).then(response =>{
 

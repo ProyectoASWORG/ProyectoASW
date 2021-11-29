@@ -4,6 +4,124 @@ info:
   title: API V1
   version: v1
 paths:
+  "/comments":
+    post:
+      summary: create comment
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      - name: comment
+        in: body
+        schema:
+          type: object
+          properties:
+            comment:
+              type: object
+              properties:
+                contribution_id:
+                  type: string
+                text:
+                  type: string
+                replayedComment_id:
+                  type: string
+      responses:
+        '200':
+          description: success
+        '201':
+          description: created
+        '401':
+          description: unauthorized
+  "/comments/{id}/like":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: like comment
+      responses:
+        '200':
+          description: success
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+  "/comments/{id}/dislike":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: dislike comment
+      responses:
+        '200':
+          description: success
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+  "/comments/{id}/show_upvoted_comments":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_upvoted_comments comment
+      responses:
+        '200':
+          description: success
+        '422':
+          description: unprocessable_entity
+  "/comments/{id}/show_comments":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_comment comment
+      responses:
+        '200':
+          description: success
+        '422':
+          description: unprocessable_entity
+  "/comments/new":
+    get:
+      summary: new comment
+      responses:
+        '200':
+          description: success
+  "/comments/{id}":
+    delete:
+      summary: delete comment
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      responses:
+        '200':
+          description: success
+        '401':
+          description: unauthorized
+        '404':
+          description: not_found
   "/contributions":
     get:
       summary: list contributions
