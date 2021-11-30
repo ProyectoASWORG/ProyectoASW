@@ -109,6 +109,8 @@ RSpec.describe 'comments', type: :request do
 
     delete('delete comment') do
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
+      parameter name: 'id', in: :path, type: :string, description: 'id'
+
       response(200, :success) do
         run_test!
       end
