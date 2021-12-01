@@ -95,7 +95,7 @@ class ContributionsController < ApplicationController
           @contribution_existing = Contribution.find_by_url(@contribution.url)
           respond_to do |format|
             if @contribution_existing.present?
-              format.html { redirect_to @contribution_existing, alert: @contribution_new.errors.full_messages.join(', ') }
+              format.html { redirect_to @contribution_existing, alert: @contribution_existing.errors.full_messages.join(', ') }
               format.json { render json: @contribution_existing, status: :created}
 
             else
@@ -140,7 +140,7 @@ class ContributionsController < ApplicationController
         if @user.nil?
           format.html { redirect_to contribution_path, alert: e.message }
         else
-          format.html { redirect_to new_contribution_contributions_path(@user.token), alert: @contribution_new.errors.full_messages.join(', ') }
+          format.html { redirect_to new_contribution_contributions_path(@user.token), alert: "something went wrong"}
         end
         format.json { render json: e.message, status: :unprocessable_entity }
       end
