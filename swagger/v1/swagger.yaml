@@ -7,8 +7,6 @@ paths:
   "/comments":
     post:
       summary: create comment
-      tags:
-        - Comments
       parameters:
       - name: Authorization
         in: header
@@ -49,8 +47,6 @@ paths:
       description: Authorization
     put:
       summary: like comment
-      tags:
-        - Comments
       responses:
         '200':
           description: success
@@ -71,8 +67,6 @@ paths:
       description: Authorization
     put:
       summary: dislike comment
-      tags:
-        - Comments
       responses:
         '200':
           description: success
@@ -89,8 +83,6 @@ paths:
       required: true
     get:
       summary: show_upvoted_comments comment
-      tags:
-        - Comments
       responses:
         '200':
           description: success
@@ -105,8 +97,6 @@ paths:
       required: true
     get:
       summary: show_comment comment
-      tags:
-        - Comments
       responses:
         '200':
           description: success
@@ -115,16 +105,12 @@ paths:
   "/comments/new":
     get:
       summary: new comment
-      tags:
-        - Comments
       responses:
         '200':
           description: success
   "/comments/{id}":
     delete:
       summary: delete comment
-      tags:
-        - Comments
       parameters:
       - name: Authorization
         in: header
@@ -137,6 +123,14 @@ paths:
           description: unauthorized
         '404':
           description: not_found
+  "/":
+    get:
+      summary: list contributions of type url
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
   "/contributions":
     get:
       summary: list contributions of type url
@@ -144,9 +138,158 @@ paths:
       - Contributions
       responses:
         '200':
-          description: success
+          description: ok
     post:
       summary: create contribution
+      tags:
+      - Contributions
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        description: Authorization
+      - name: contribution
+        in: body
+        schema:
+          type: object
+          properties:
+            contribution:
+              type: object
+              properties:
+                text:
+                  type: string
+                title:
+                  type: string
+                url:
+                  type: string
+      responses:
+        '200':
+          description: ok
+        '201':
+          description: created
+        '401':
+          description: unauthorized
+  "/contributions/show_news":
+    get:
+      summary: show_news contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+  "/contributions/show_ask":
+    get:
+      summary: show_ask contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+  "/contributions/{id}/show_user":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_user contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+  "/contributions/{id}/show_upvoted_contributions":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_upvoted_contributions contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+        '422':
+          description: unprocessable_entity
+  "/contributions/new":
+    parameters:
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    get:
+      summary: new contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+  "/contributions/{id}/like":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: like contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+  "/contributions/{id}/dislike":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
+    put:
+      summary: dislike contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+  "/contributions/{id}":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show contribution
+      tags:
+      - Contributions
+      responses:
+        '200':
+          description: ok
+        '404':
+          description: not_found
+    put:
+      summary: update contribution
       tags:
       - Contributions
       parameters:
@@ -172,170 +315,11 @@ paths:
                   type: string
       responses:
         '200':
-          description: success
-        '201':
-          description: created
-        '401':
-          description: unauthorized
-  "/contributions/{id}/like":
-    parameters:
-    - name: id
-      in: path
-      type: string
-      description: id
-      required: true
-    - name: Authorization
-      in: header
-      type: string
-      description: Authorization
-    put:
-      summary: like contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
+          description: ok
         '401':
           description: unauthorized
         '422':
           description: unprocessable_entity
-  "/contributions/{id}/dislike":
-    parameters:
-    - name: id
-      in: path
-      type: string
-      description: id
-      required: true
-    - name: Authorization
-      in: header
-      type: string
-      description: Authorization
-    put:
-      summary: dislike contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-        '401':
-          description: unauthorized
-        '422':
-          description: unprocessable_entity
-  "/contributions/show_news":
-    get:
-      summary: show_news contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-  "/contributions/show_ask":
-    get:
-      summary: show_ask contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-  "/contributions/{id}/show_user":
-    parameters:
-    - name: id
-      in: path
-      type: string
-      description: id
-      required: true
-    get:
-      summary: show_user contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-  "/contributions/{id}/show_upvoted_contributions":
-    parameters:
-    - name: id
-      in: path
-      type: string
-      description: id
-      required: true
-    get:
-      summary: show_upvoted_contributions contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-        '422':
-          description: unprocessable_entity
-  "/contributions/new":
-    parameters:
-    - name: Authorization
-      in: header
-      type: string
-      description: Authorization
-    get:
-      summary: new contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-  "/contributions/{id}/edit":
-    parameters:
-    - name: id
-      in: path
-      type: string
-      description: id
-      required: true
-    get:
-      summary: edit contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-  "/contributions/{id}":
-    parameters:
-    - name: id
-      in: path
-      type: string
-      description: id
-      required: true
-    get:
-      summary: show contribution
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
-    patch:
-      summary: update contribution
-      tags:
-      - Contributions
-      parameters:
-      - name: Authorization
-        in: header
-        type: string
-        description: Authorization
-      responses:
-        '200':
-          description: successful
-        '401':
-          description: unauthorized
-    put:
-      summary: update contribution
-      tags:
-      - Contributions
-      parameters:
-      - name: Authorization
-        in: header
-        type: string
-        description: Authorization
-      responses:
-        '200':
-          description: successful
-        '401':
-          description: unauthorized
     delete:
       summary: delete contribution
       tags:
@@ -347,19 +331,11 @@ paths:
         description: Authorization
       responses:
         '200':
-          description: success
+          description: ok
         '401':
           description: unauthorized
         '404':
           description: not_found
-  "/":
-    get:
-      summary: list contributions of type url
-      tags:
-      - Contributions
-      responses:
-        '200':
-          description: success
   "/users/{id}/edit":
     parameters:
     - name: id
@@ -442,8 +418,6 @@ tags:
   description: User management
 - name: Contributions
   description: Contribution management
-- name: Comments
-  description: Comment management
 servers:
 - url: http://{defaultHost}
   variables:
