@@ -1,9 +1,8 @@
 class ContributionsController < ApplicationController
-  before_action :set_contribution, only: [:show, :edit, :update, :destroy, :like, :dislike]
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :set_contribution, only: [:show, :destroy, :like, :dislike, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
-  before_action :get_user, only: [:like, :dislike, :create, :new, :update, :destroy]
+  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
 
   skip_before_action :verify_authenticity_token 
 
@@ -18,19 +17,25 @@ class ContributionsController < ApplicationController
   def show
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @contribution}
+      format.json {render json: @contribution, status: @contribution.nil? ? :not_found : :ok}
     end
   end
 
   # GET /contributions/show_news
   def show_news
     @contributions = Contribution.all.order(created_at: :desc)
-    render :index
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @contributions }
+    end
   end
 
   def show_user
     @contributions = Contribution.where(user_id: params[:id])
-    render :index
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @contributions}
+    end
   end
 
   def show_ask
@@ -49,14 +54,6 @@ class ContributionsController < ApplicationController
         format.html {render :new}
         format.json {render json: @contribution}
       end
-    end
-  end
-
-  # GET /contributions/1/edit
-  def edit
-    respond_to do |format|
-      format.html {render :edit}
-      format.json {render json: @contribution}
     end
   end
 
@@ -147,30 +144,41 @@ class ContributionsController < ApplicationController
     end
   end
 
-
-  # PATCH/PUT /contributions/1
-  # PATCH/PUT /contributions/1.json
-  def update
-    respond_to do |format|
-      if @user.nil?
-        format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
-        format.json {
-          render json: {
-            error: "user not found",
+  
+  def update 
+    begin
+      respond_to do |format|
+        if @user.nil?
+          format.html{ redirect_to :contributions, alert: 'You need to be logged in to update a contribution' }
+          format.json { render json:{
+            error: "user unauthorized",
+            status: :unauthorized
+          }, status: :unauthorized 
+        }
+        elsif @contribution.user_id != @user.id.to_s
+          format.html { redirect_to :contributions, alert: 'You are not authorized to update this contribution' }
+          format.json { render json: {
+            error: "You need to be the creator of the contribution to update it",
             status: :unauthorized
           }, status: :unauthorized
         }
-      else
-        if @contribution.update(contribution_params)
-          format.html { redirect_to @contribution, notice: 'Contribution was successfully updated.' }
-          format.json { render :show, status: :ok, location: @contribution }
-        else
-          format.html { render :edit }
-          format.json { render json: @contribution.errors, status: :unprocessable_entity }
+        else 
+          puts contribution_params
+          puts @contribution.inspect
+          @contribution.update(contribution_params)
+          format.html { redirect_to :contributions, notice: 'Contribution was successfully updated.' }
+          format.json { render json: @contribution, status: :ok}
         end
+
       end
+    rescue => exception
+      puts exception.message
+      format.html { redirect_to :contributions, alert: exception.message }
+      format.json { render json: { error: exception.message, status: :unprocessable_entity }, status: :unprocessable_entity }
+      
     end
   end
+
 
   # DELETE /contributions/1
   # DELETE /contributions/1.json
@@ -187,7 +195,7 @@ class ContributionsController < ApplicationController
         format.html { redirect_to :contributions, notice: 'You need to be logged in to create a contribution', status: :unauthorized }
         format.json {
           render json: {
-            error: "user not found",
+            error: "User not authorized to delete this contribution",
             status: :unauthorized
           }, status: :unauthorized
         }
