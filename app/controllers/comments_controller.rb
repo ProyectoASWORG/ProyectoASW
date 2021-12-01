@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
     end
     if @user.nil?
       respond_to do |format|
-        format.html { redirect_to :contributions, notice: 'You need to be logged in to create a comment', status: :unauthorized }
+        format.html { redirect_to :contributions, notice: 'You need to be logged in to create a comment' }
         format.json {
           render json: {
             error: "user not found",
@@ -102,7 +102,7 @@ class CommentsController < ApplicationController
   def destroy
     respond_to do |format|
       if @comment.nil?
-        format.html { redirect_to :contributions, notice: 'Comment not found', status: :not_found }
+        format.html { redirect_to :contributions, notice: 'Comment not found' }
         format.json {
           render json:{
             error: "Comment not found",

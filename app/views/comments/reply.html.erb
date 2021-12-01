@@ -14,7 +14,7 @@
       </div>
       
    
-      <%= form_with(model: @comment_new, url: create_comment_comments_path(current_user.token)) do |form| %>
+      <%= form_with(model: @comment_new, url: create_comment_comments_path(user_signed_in? ? current_user.token : 0)) do |form| %>
       
       <div class="field">
         <%= form.text_area :text %>
