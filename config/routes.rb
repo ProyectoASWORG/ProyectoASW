@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
   resources :comments do
     post ':token', to: 'comments#create', on: :collection, as: 'create_comment', constraints: { token: /[^\/]+/ }
+    delete '/comments/:id/:token', to: 'comments#destroy', on: :collection, as: 'delete_comment', constraints: { token: /[^\/]+/ }
     put :like, on: :member 
     put :dislike, on: :member
     get :reply, on: :member

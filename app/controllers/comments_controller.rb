@@ -110,7 +110,7 @@ class CommentsController < ApplicationController
         }
       elsif @user.nil? || @user.id.to_s != @comment.user_id.to_s
         @contribution = Contribution.find(@comment.contribution_id)
-        format.html { redirect_to @contribution, notice: 'You need to be logged in to destroy a comment', status: :unauthorized }
+        format.html { redirect_to @contribution, notice: 'You need to be logged in to destroy a comment'}
         format.json {
           render json: {
             error: "user not found",
