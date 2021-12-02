@@ -31,11 +31,13 @@ paths:
                   nullable: true
       responses:
         '200':
-          description: success
+          description: ok
         '201':
           description: created
         '401':
           description: unauthorized
+        '403':
+          description: forbidden
   "/comments/{id}/like":
     parameters:
     - name: id
@@ -53,7 +55,7 @@ paths:
       - Comments
       responses:
         '200':
-          description: success
+          description: ok
         '401':
           description: unauthorized
         '422':
@@ -75,7 +77,7 @@ paths:
       - Comments
       responses:
         '200':
-          description: success
+          description: ok
         '401':
           description: unauthorized
         '422':
@@ -97,7 +99,9 @@ paths:
       - Comments
       responses:
         '200':
-          description: success
+          description: ok
+        '401':
+          description: unauthorized
         '422':
           description: unprocessable_entity
   "/comments/{id}/show_comments":
@@ -113,7 +117,7 @@ paths:
       - Comments
       responses:
         '200':
-          description: success
+          description: ok
         '422':
           description: unprocessable_entity
   "/comments/{id}/show_contribution_comments":
@@ -129,7 +133,7 @@ paths:
       - Comments
       responses:
         '200':
-          description: success
+          description: ok
         '422':
           description: unprocessable_entity
   "/comments/new":
@@ -139,7 +143,7 @@ paths:
       - Comments
       responses:
         '200':
-          description: success
+          description: ok
   "/comments/{id}":
     parameters:
     - name: id
@@ -184,7 +188,7 @@ paths:
         description: Authorization
       responses:
         '200':
-          description: success
+          description: ok
         '401':
           description: unauthorized
         '404':

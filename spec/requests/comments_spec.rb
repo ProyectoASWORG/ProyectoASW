@@ -29,6 +29,9 @@ RSpec.describe 'comments', type: :request do
       response(401, :unauthorized) do
         run_test!
       end
+      response(403, :forbidden) do
+        run_test!
+      end
     end
   end
 

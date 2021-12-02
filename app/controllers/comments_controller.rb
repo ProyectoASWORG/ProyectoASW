@@ -104,15 +104,28 @@ class CommentsController < ApplicationController
         }
       end
     else
-      @comment = @user.comments.create(comment_params)
-      @contribution = Contribution.find(@comment.contribution_id)
-      respond_to do |format|
-        if @comment.save
-          format.html { redirect_to @contribution }
-          format.json { render json: @comment, status: :created }
-        else
-          format.html { render :new , alert: @comment.errors.full_messages.join(', ') }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
+      puts comment_params
+      if !params[:comment][:replayedComment_id].nil? && !Comment.find(params[:comment][:replayedComment_id]).nil? &&
+        params[:comment][:contribution_id].to_s != Comment.find(params[:comment][:replayedComment_id]).contribution_id.to_s
+        respond_to do |format|
+          format.json { render :json => {
+            error: "contribution id doesnt match the contribution of the comment about to be replied",
+            status: :forbidden
+            }, status: :forbidden
+          }
+        end
+
+      else
+        @comment = @user.comments.create(comment_params)
+        @contribution = Contribution.find(@comment.contribution_id)
+        respond_to do |format|
+          if @comment.save
+            format.html { redirect_to @contribution }
+            format.json { render json: @comment, status: :created }
+          else
+            format.html { render :new , alert: @comment.errors.full_messages.join(', ') }
+            format.json { render json: @comment.errors, status: :unprocessable_entity }
+          end
         end
       end
     end
