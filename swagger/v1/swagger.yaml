@@ -8,7 +8,7 @@ paths:
     post:
       summary: create comment
       tags:
-        - Comments
+      - Comments
       parameters:
       - name: Authorization
         in: header
@@ -50,7 +50,7 @@ paths:
     put:
       summary: like comment
       tags:
-        - Comments
+      - Comments
       responses:
         '200':
           description: success
@@ -72,7 +72,7 @@ paths:
     put:
       summary: dislike comment
       tags:
-        - Comments
+      - Comments
       responses:
         '200':
           description: success
@@ -90,7 +90,7 @@ paths:
     get:
       summary: show_upvoted_comments comment
       tags:
-        - Comments
+      - Comments
       responses:
         '200':
           description: success
@@ -106,7 +106,7 @@ paths:
     get:
       summary: show_comment comment
       tags:
-        - Comments
+      - Comments
       responses:
         '200':
           description: success
@@ -116,25 +116,52 @@ paths:
     get:
       summary: new comment
       tags:
-        - Comments
+      - Comments
       responses:
         '200':
           description: success
   "/comments/{id}":
-    delete:
-      summary: delete comment
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    put:
+      summary: update comment
       tags:
-        - Comments
+      - Comments
       parameters:
       - name: Authorization
         in: header
         type: string
         description: Authorization
-      - name: id
-        in: path
+      - name: comment
+        in: body
+        schema:
+          type: object
+          properties:
+            comment:
+              type: object
+              properties:
+                text:
+                  type: string
+      responses:
+        '200':
+          description: ok
+        '401':
+          description: unauthorized
+        '422':
+          description: unprocessable_entity
+    delete:
+      summary: delete comment
+      tags:
+      - Comments
+      parameters:
+      - name: Authorization
+        in: header
         type: string
-        description: id
-        required: true
+        description: Authorization
       responses:
         '200':
           description: success
@@ -437,8 +464,6 @@ tags:
   description: User management
 - name: Contributions
   description: Contribution management
-- name: Comments
-  description: Comment management
 servers:
 - url: http://{defaultHost}
   variables:

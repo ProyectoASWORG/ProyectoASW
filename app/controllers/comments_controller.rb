@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
 
-  before_action :get_user, only: [:like, :dislike, :create, :new,  :destroy]
+  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
   skip_before_action :verify_authenticity_token
 
 
@@ -85,15 +85,37 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    @contribution = @contribution.find(@comment.contribution_id)
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @contribution, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+
+    begin
+      respond_to do |format|
+        if @user.nil?
+          format.html{ redirect_to :contributions, alert: 'You need to be logged in to update a contribution' }
+          format.json { render json:{
+            error: "user unauthorized",
+            status: :unauthorized
+          }, status: :unauthorized
+          }
+        elsif @comment.user_id != @user.id.to_s
+          format.html { redirect_to :contributions, alert: 'You are not authorized to update this contribution' }
+          format.json { render json: {
+            error: "You need to be the creator of the comment to update it",
+            status: :unauthorized
+          }, status: :unauthorized
+          }
+        else
+          puts comment_params
+          puts @comment.inspect
+          @comment.update(comment_params)
+          format.html { redirect_to :contributions, notice: 'Comment was successfully updated.' }
+          format.json { render json: @comment, status: :ok}
+        end
+
       end
+    rescue => exception
+      puts exception.message
+      format.html { redirect_to :contributions, alert: exception.message }
+      format.json { render json: { error: exception.message, status: :unprocessable_entity }, status: :unprocessable_entity }
+
     end
   end
 
