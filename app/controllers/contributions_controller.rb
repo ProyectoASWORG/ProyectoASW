@@ -80,7 +80,6 @@ class ContributionsController < ApplicationController
               status: :unauthorized
             }, status: :unauthorized
           }
-          return;
         end
       else
         @contribution = ContributionServices::CreateContributionService.new(contribution_params).call
@@ -101,7 +100,6 @@ class ContributionsController < ApplicationController
             if @contribution_existing.present?
               format.html { redirect_to @contribution_existing, alert: @contribution_existing.errors.full_messages.join(', ') }
               format.json { render json: @contribution_existing, status: :ok}
-
             else
               if !@contribution.text.blank?
                 @contribution_new = Contribution.new
