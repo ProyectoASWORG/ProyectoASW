@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   #GET /users/1.json
   def show
     respond_to do |format|
+      #comprobar que el usuario que se consulta existe
       if @usuario.nil?
         format.html { redirect_to :contributions,  notice: "The user not exists" }
         format.json { render json: {
@@ -16,6 +17,10 @@ class UsersController < ApplicationController
           }, status: :not_found
           }
       else
+        #el usuario esta autenticado y no es el mismo que estoy mirando
+        if @user.nil? or (!@user.nil? and @user.id != @usuario.id)
+          @usuario.token = null
+        end
         format.html { render :show, status: :ok }
         format.json { render json: {
           user: @usuario,
