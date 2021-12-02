@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get 'users/:id/edit/:token', to: 'users#edit', as: 'users_edit', constraints: { token: /[^\/]+/ }
     get 'users/:id/show', to: 'users#show', as: 'users_show'
     put 'users/:id/edit/:token', to: 'users#update', as: 'users_update', constraints: { token: /[^\/]+/ }
+    put 'users/:id/edit', to: 'users#update'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'contributions#index' 
