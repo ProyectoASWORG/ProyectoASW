@@ -320,6 +320,13 @@ class ContributionsController < ApplicationController
             status: :unauthorized
             }, status: :unauthorized
           }
+        elsif @user.id != params[:id]
+          format.html { render :contributions, alert: 'You need to be logged in to see your contributions' }
+          format.json { render :json => {
+            error: "Can't acces to data of other users",
+            status: :unauthorized
+            }, status: :unauthorized
+          }
         else
           user = User.find(params[:id])
           @contributions = user.voted_contributions
