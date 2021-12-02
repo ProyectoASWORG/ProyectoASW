@@ -320,7 +320,7 @@ class ContributionsController < ApplicationController
             status: :unauthorized
             }, status: :unauthorized
           }
-        elsif @user.id != params[:id]
+        elsif @user.id.to_s != params[:id].to_s
           format.html { render :contributions, alert: 'You need to be logged in to see your contributions' }
           format.json { render :json => {
             error: "Can't acces to data of other users",
