@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'users/sign_in', to: 'users/sessions#new', as: :new_user_session
     get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
     get 'users/:id/edit/:token', to: 'users#edit', as: 'users_edit', constraints: { token: /[^\/]+/ }
+    get 'users/:id/edit', to: 'users#edit'
     get 'users/:id/show', to: 'users#show', as: 'users_show'
     put 'users/:id/edit/:token', to: 'users#update', as: 'users_update', constraints: { token: /[^\/]+/ }
     put 'users/:id/edit', to: 'users#update'
