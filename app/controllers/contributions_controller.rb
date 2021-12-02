@@ -10,6 +10,10 @@ class ContributionsController < ApplicationController
   # GET /contributions.json
   def index
     @contributions = Contribution.where(contribution_type: "url").order(points: :desc)
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @contributions }
+    end
   end
 
   # GET /contributions/1
@@ -40,7 +44,10 @@ class ContributionsController < ApplicationController
 
   def show_ask
     @contributions = Contribution.where(contribution_type: "ask").order(points: :desc)
-    render :index
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @contributions }
+    end
   end
   # GET /contributions/new
   def new
