@@ -60,8 +60,8 @@ class UsersController < ApplicationController
             format.html { redirect_to users_show_url(@usuario) }
             format.json { render json: {
                 error: "Authorized user does not match with updatable user",
-                status: :unprocessable_entity
-              }, status: :unprocessable_entity
+                status: :forbidden
+              }, status: :forbidden
             }
           end
         end
@@ -103,8 +103,8 @@ class UsersController < ApplicationController
             format.html { render :edit }
             format.json { render json: {
                 error: "Authorized user does not match with updatable user",
-                status: unprocessable_entity
-              }, status: unprocessable_entity
+                status: :forbidden
+              }, status: :forbidden
             }
           end
         end
