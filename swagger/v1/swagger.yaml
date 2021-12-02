@@ -87,6 +87,10 @@ paths:
       type: string
       description: id
       required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
     get:
       summary: show_upvoted_comments comment
       tags:
@@ -105,6 +109,22 @@ paths:
       required: true
     get:
       summary: show_comment comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: success
+        '422':
+          description: unprocessable_entity
+  "/comments/{id}/show_contribution_comments":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    get:
+      summary: show_contribution_comments comment
       tags:
       - Comments
       responses:

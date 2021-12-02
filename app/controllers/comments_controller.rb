@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
 
-  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
+  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update, :show_upvoted_comments]
   skip_before_action :verify_authenticity_token
 
 
@@ -30,8 +30,44 @@ class CommentsController < ApplicationController
 
 
   def show_upvoted_comments
-    user = User.find(params[:id])
-    @comments = user.voted_comments.order(created_at: :desc)
+    begin
+      respond_to do |format|
+        if @user.nil?
+          format.html{ redirect_to :contributions, alert: 'You need to be logged in to  view your  comments' }
+          format.json { render json:{
+            error: "user unauthorized",
+            status: :unauthorized
+          }, status: :unauthorized
+          }
+        elsif @user.id.to_s != params[:id].to_s
+          format.html { render :contributions, alert: 'You need to be logged in to see your comments' }
+          format.json { render :json => {
+            error: "Can't acces to data of other users",
+            status: :unauthorized
+          }, status: :unauthorized
+          }
+        else
+          user = User.find(params[:id])
+          @comments = user.voted_comments.order(created_at: :desc)
+            if @comments
+              format.html { render "show_comments" }
+              format.json { render json: @comments, status: :ok}
+            end
+        end
+      end
+    rescue => exception
+      puts exception.message
+      format.html { redirect_to :contributions, alert: exception.message }
+      format.json { render json: { error: exception.message, status: :unprocessable_entity }, status: :unprocessable_entity }
+
+    end
+  end
+
+
+
+  def show_contribution_comments
+    contribution = Contribution.find(params[:id])
+    @comments = contribution.comments.order(created_at: :desc)
     respond_to do |format|
       if @comments
         format.html { render "show_comments" }
