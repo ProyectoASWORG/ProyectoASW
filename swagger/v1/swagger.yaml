@@ -400,11 +400,13 @@ paths:
         description: Authorization
       responses:
         '200':
-          description: success
+          description: ok
         '404':
           description: not_found
         '401':
           description: unauthorized
+        '403':
+          description: forbidden
     put:
       summary: update user
       tags:
@@ -438,11 +440,13 @@ paths:
                   type: boolean
       responses:
         '200':
-          description: success
+          description: ok
         '404':
           description: not_found
         '401':
           description: unauthorized
+        '403':
+          description: forbidden
   "/users/{id}/show":
     parameters:
     - name: id
@@ -456,7 +460,7 @@ paths:
       - Users
       responses:
         '200':
-          description: success
+          description: ok
         '404':
           description: not_found
 tags:
