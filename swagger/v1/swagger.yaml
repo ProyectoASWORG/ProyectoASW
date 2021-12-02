@@ -252,6 +252,10 @@ paths:
       type: string
       description: id
       required: true
+    - name: Authorization
+      in: header
+      type: string
+      description: Authorization
     get:
       summary: show_upvoted_contributions contribution
       tags:
@@ -259,6 +263,8 @@ paths:
       responses:
         '200':
           description: ok
+        '401':
+          description: unauthorized
         '422':
           description: unprocessable_entity
   "/contributions/new":
@@ -274,6 +280,8 @@ paths:
       responses:
         '200':
           description: ok
+        '401':
+          description: unauthorized
   "/contributions/{id}/like":
     parameters:
     - name: id
