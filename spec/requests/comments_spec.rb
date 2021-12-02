@@ -20,7 +20,7 @@ RSpec.describe 'comments', type: :request do
           }
         }
       }
-      response(200, :success) do
+      response(200, :ok) do
         run_test!
       end
       response(201, :created) do
@@ -38,7 +38,7 @@ RSpec.describe 'comments', type: :request do
     parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
     put('like comment') do
       tags 'Comments'
-      response(200, :success)do
+      response(200, :ok)do
         run_test!
       end
       response(401, :unauthorized)do
@@ -57,7 +57,7 @@ RSpec.describe 'comments', type: :request do
 
     put('dislike comment') do
       tags 'Comments'
-      response(200, :success)do
+      response(200, :ok)do
         run_test!
       end
       response(401, :unauthorized)do
@@ -73,10 +73,14 @@ RSpec.describe 'comments', type: :request do
   path '/comments/{id}/show_upvoted_comments' do
     # You'll want to customize the parameter types...
     parameter name: 'id', in: :path, type: :string, description: 'id'
+    parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
 
     get('show_upvoted_comments comment') do
       tags 'Comments'
-      response(200, :success) do
+      response(200, :ok) do
+        run_test!
+      end
+      response(401, :unauthorized)do
         run_test!
       end
       response(422, :unprocessable_entity) do
@@ -91,7 +95,22 @@ RSpec.describe 'comments', type: :request do
 
     get('show_comment comment') do
       tags 'Comments'
-      response(200, :success) do
+      response(200, :ok) do
+        run_test!
+      end
+      response(422, :unprocessable_entity) do
+        run_test!
+      end
+    end
+  end
+
+  path '/comments/{id}/show_contribution_comments' do
+    # You'll want to customize the parameter types...
+    parameter name: 'id', in: :path, type: :string, description: 'id'
+
+    get('show_contribution_comments comment') do
+      tags 'Comments'
+      response(200, :ok) do
         run_test!
       end
       response(422, :unprocessable_entity) do
@@ -104,7 +123,7 @@ RSpec.describe 'comments', type: :request do
 
     get('new comment') do
       tags 'Comments'
-      response(200, :success) do
+      response(200, :ok) do
         run_test!
       end
     end
@@ -142,7 +161,7 @@ RSpec.describe 'comments', type: :request do
       parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
 
 
-      response(200, :success) do
+      response(200, :ok) do
         run_test!
       end
       response(401, :unauthorized) do
