@@ -100,7 +100,7 @@ class ContributionsController < ApplicationController
           respond_to do |format|
             if @contribution_existing.present?
               format.html { redirect_to @contribution_existing, alert: @contribution_existing.errors.full_messages.join(', ') }
-              format.json { render json: @contribution_existing, status: :created}
+              format.json { render json: @contribution_existing, status: :ok}
 
             else
               if !@contribution.text.blank?
