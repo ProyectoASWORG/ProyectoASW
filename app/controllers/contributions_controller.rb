@@ -2,7 +2,7 @@ class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :destroy, :like, :dislike, :update]
 
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
-  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
+  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update, :show_upvoted_contributions]
 
   skip_before_action :verify_authenticity_token 
 
@@ -304,20 +304,30 @@ class ContributionsController < ApplicationController
 
   def show_upvoted_contributions
     begin
-      user = User.find(params[:id])
-      @contributions = user.voted_contributions
-      puts @contributions.inspect
+
       respond_to do |format|
-        if @contributions
-          format.html { render :show_news }
-          format.json { render :json => @contributions, status: :ok}
+        if @user.nil?
+          format.html { render :contributions, alert: 'You need to be logged in to see your contributions' }
+          format.json { render :json => {
+            error: "user unauthorized",
+            status: :unauthorized
+            }, status: :unauthorized
+          }
+        else
+          user = User.find(params[:id])
+          @contributions = user.voted_contributions
+          puts @contributions.inspect
+            if @contributions
+              format.html { render :show_news }
+              format.json { render :json => @contributions, status: :ok}
+            end
         end
+      rescue => e
+        render json:{
+          error: e.message,
+          status: :unprocessable_entity
+        }, status: :unprocessable_entity
       end
-    rescue => e
-      render json:{
-        error: e.message,
-        status: :unprocessable_entity
-      }, status: :unprocessable_entity
     end
   end
 

@@ -86,7 +86,7 @@
       <tr>
         <td></td>
         <td class="link" valign="top"> 
-          <%= link_to "upvoted submissions", show_upvoted_ctb_contribution_url(@user) %>
+          <%= link_to "upvoted submissions", show_upvoted_ctb_contribution_url(id: @user.id, token: @user.token) %>
         </td>
       </tr>
 

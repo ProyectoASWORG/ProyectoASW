@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get :show_user, on: :member, as: 'show_user'
     get 'contribution/:id', to: 'contributions#show_one'
     get :show_upvoted_contributions, on: :member, as: 'show_upvoted_ctb'
+    get "/contributions/:id/show_upvoted_contributions/:token", to: 'contributions#show_upvoted_contributions', on: :member, as: 'show_upvoted_ctb_token', constraints: { token: /[^\/]+/ }
     get '/contributions/new/:token', to: 'contributions#new', on: :collection, as: 'new_contribution', constraints: { token: /[^\/]+/ }
   end
 

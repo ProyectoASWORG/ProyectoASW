@@ -82,10 +82,13 @@ RSpec.describe 'contributions', type: :request do
   path '/contributions/{id}/show_upvoted_contributions' do
     # You'll want to customize the parameter types...
     parameter name: 'id', in: :path, type: :string, description: 'id'
-
+    parameter name: 'Authorization', in: :header, type: :string, description: 'Authorization'
     get('show_upvoted_contributions contribution') do
       tags 'Contributions'
       response(200, :ok) do
+        run_test!
+      end
+      response(401, :unauthorized) do
         run_test!
       end
       response(422, :unprocessable_entity) do
@@ -100,6 +103,9 @@ RSpec.describe 'contributions', type: :request do
     get('new contribution') do
       tags 'Contributions'
       response(200, :ok) do
+        run_test!
+      end
+      response(401, :unauthorized) do
         run_test!
       end
     end
