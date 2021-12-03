@@ -13,6 +13,7 @@ gem 'rexml'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+gem 'google-id-token'
 gem 'jwt'
 gem 'rswag'
 gem 'rswag-api'

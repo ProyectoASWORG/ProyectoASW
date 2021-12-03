@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     put 'users/:id/edit/:token', to: 'users#update', as: 'users_update', constraints: { token: /[^\/]+/ }
     put 'users/:id/edit', to: 'users#update'
   end
+  
+  post 'auth/sign_in', to: 'auth#google_auth', as: 'sign_in'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'contributions#index' 
 

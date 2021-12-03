@@ -10,7 +10,7 @@ class User < ApplicationRecord
     has_many :contributions
     has_many :comments
 
-    def self.create_from_google(email:, full_name:, uid:, avatar_url:)
-      create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
+    def self.create_from_google(email:, full_name:)
+      create_with(full_name: full_name).find_or_create_by!(email: email)
     end
 end
