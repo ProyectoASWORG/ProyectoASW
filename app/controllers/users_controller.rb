@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
 
-  before_action :get_user, only: [:edit, :update]
-  
+  before_action :get_user, only: [:edit, :update, :show]
+
   #GET /users/1
   #GET /users/1.json
   def show
     respond_to do |format|
+      puts @usuario.inspect
+      puts @user.inspect
       #comprobar que el usuario que se consulta existe
       if @usuario.nil?
         format.html { redirect_to :contributions,  notice: "The user not exists" }
