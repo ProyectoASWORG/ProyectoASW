@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     put :dislike, on: :member
     get :reply, on: :member
     get :show_comments, on: :member, as: 'show'
+    get :show_contribution_comments, on: :member, as: 'show_contribution'
     get :show_upvoted_comments, on: :member, as: 'show_upvoted',  constraints: { token: /[^\/]+/ }
     get "/comments/:id/show_upvoted_comments/:token", to: 'comments#show_upvoted_comments', on: :member, as: 'show_upvoted_com_token', constraints: { token: /[^\/]+/ }
   end
