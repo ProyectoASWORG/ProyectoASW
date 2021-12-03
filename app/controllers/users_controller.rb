@@ -7,8 +7,6 @@ class UsersController < ApplicationController
   #GET /users/1.json
   def show
     respond_to do |format|
-      puts @usuario.inspect
-      puts @user.inspect
       #comprobar que el usuario que se consulta existe
       if @usuario.nil?
         format.html { redirect_to :contributions,  notice: "The user not exists" }
