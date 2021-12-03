@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
 
   before_action :get_user, only: [:edit, :update]
-
-  skip_before_action :verify_authenticity_token
+  
   #GET /users/1
   #GET /users/1.json
   def show
