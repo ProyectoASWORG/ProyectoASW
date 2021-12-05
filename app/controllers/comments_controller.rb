@@ -1,10 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
-
   before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
-  skip_before_action :verify_authenticity_token
 
 
 
@@ -72,6 +69,8 @@ class CommentsController < ApplicationController
       @contribution = Contribution.find(@comment.contribution_id)
       respond_to do |format|
         if @comment.save
+          @contribution.comment_count += 1
+          @contribution.save
           format.html { redirect_to @contribution }
           format.json { render json: @comment, status: :created }
         else
@@ -142,6 +141,8 @@ class CommentsController < ApplicationController
       else
         @contribution = Contribution.find(@comment.contribution_id)
         @comment.destroy
+        @contribution.comment_count -= 1
+        @contribution.save
         format.html { redirect_to @contribution , notice: 'Comment was successfully destroyed.' }
         format.json { render json:
                                {

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :show]
-
   before_action :get_user, only: [:edit, :update, :show]
 
   #GET /users/1
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
       else
         #el usuario esta autenticado y no es el mismo que estoy mirando
         if @user.nil? or (!@user.nil? and @user.id != @usuario.id)
-          @usuario.token = null
+          @usuario.token = nil
         end
         format.html { render :show, status: :ok }
         format.json { render json: {
