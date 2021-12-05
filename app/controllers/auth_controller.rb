@@ -13,7 +13,11 @@ class AuthController < ApplicationController
             if user.present?
                 user.token = token
                 user.save
-                render json: { user: user }, status: :ok
+                voted_contribution_ids = []
+                user.voted_contributions.each do |contribution|
+                    voted_contribution_ids << contribution.id
+                end
+                render json: { user: user, voted_contribution_ids: voted_contribution_ids }, status: :ok
             else
                 render json: {error: "You should add a token"}, status: :unauthorized
             end
