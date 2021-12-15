@@ -1,10 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
-
-  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update, :show_upvoted_comments]
-  skip_before_action :verify_authenticity_token
+  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
 
 
 
@@ -104,28 +101,17 @@ class CommentsController < ApplicationController
         }
       end
     else
-      puts comment_params
-      if !params[:comment][:replayedComment_id].nil? && !Comment.find(params[:comment][:replayedComment_id]).nil? &&
-        params[:comment][:contribution_id].to_s != Comment.find(params[:comment][:replayedComment_id]).contribution_id.to_s
-        respond_to do |format|
-          format.json { render :json => {
-            error: "contribution id doesnt match the contribution of the comment about to be replied",
-            status: :forbidden
-            }, status: :forbidden
-          }
-        end
-
-      else
-        @comment = @user.comments.create(comment_params)
-        @contribution = Contribution.find(@comment.contribution_id)
-        respond_to do |format|
-          if @comment.save
-            format.html { redirect_to @contribution }
-            format.json { render json: @comment, status: :created }
-          else
-            format.html { render :new , alert: @comment.errors.full_messages.join(', ') }
-            format.json { render json: @comment.errors, status: :unprocessable_entity }
-          end
+      @comment = @user.comments.create(comment_params)
+      @contribution = Contribution.find(@comment.contribution_id)
+      respond_to do |format|
+        if @comment.save
+          @contribution.comment_count += 1
+          @contribution.save
+          format.html { redirect_to @contribution }
+          format.json { render json: @comment, status: :created }
+        else
+          format.html { render :new , alert: @comment.errors.full_messages.join(', ') }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -191,6 +177,8 @@ class CommentsController < ApplicationController
       else
         @contribution = Contribution.find(@comment.contribution_id)
         @comment.destroy
+        @contribution.comment_count -= 1
+        @contribution.save
         format.html { redirect_to @contribution , notice: 'Comment was successfully destroyed.' }
         format.json { render json:
                                {

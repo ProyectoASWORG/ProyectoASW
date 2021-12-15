@@ -4,8 +4,6 @@ class ContributionsController < ApplicationController
   # special actions on this actions because they are called by js and doesnt work fine, i dont know why
   before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update, :show_upvoted_contributions]
 
-  skip_before_action :verify_authenticity_token 
-
   # GET /contributions
   # GET /contributions.json
   def index
