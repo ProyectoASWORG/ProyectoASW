@@ -103,6 +103,7 @@ class CommentsController < ApplicationController
     else
       @comment = @user.comments.create(comment_params)
       @contribution = Contribution.find(@comment.contribution_id)
+      @comment.contribution_title = @contribution.title
       respond_to do |format|
         if @comment.save
           @contribution.comment_count += 1
