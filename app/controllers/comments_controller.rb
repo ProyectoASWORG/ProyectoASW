@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update]
+  before_action :get_user, only: [:like, :dislike, :create, :new, :destroy, :update, :show_upvoted_comments]
 
 
 
